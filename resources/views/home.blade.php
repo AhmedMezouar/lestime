@@ -90,7 +90,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/ecommerce">
+                    <a href="{{route('ecommerce.show',['id' => 1])}}">
                         <img src="img/bg-img/1.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -103,7 +103,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                <a href="/ecommerce">
+                <a href="{{route('ecommerce.show',['id' => 2])}}">
                         <img src="img/bg-img/2.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -116,7 +116,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                <a href="/ecommerce">
+                <a href="{{route('ecommerce.show',['id' => 3])}}">
                         <img src="img/bg-img/3.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -129,7 +129,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/ecommerce">
+                <a href="{{route('ecommerce.show',['id' => 4])}}">
                         <img src="img/bg-img/4.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -142,7 +142,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/ecommerce">
+                <a href="{{route('ecommerce.show',['id' => 5])}}">
                         <img src="img/bg-img/5.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -155,7 +155,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/ecommerce">
+                <a href="{{route('ecommerce.show',['id' => 6])}}">
                         <img src="img/bg-img/6.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -168,7 +168,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/ecommerce">
+                <a href="{{route('ecommerce.show',['id' => 7])}}">
                         <img src="img/bg-img/7.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -181,7 +181,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/ecommerce">
+                <a href="{{route('ecommerce.show',['id' => 8])}}">
                         <img src="img/bg-img/8.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -192,7 +192,7 @@
                     </a>
                 </div>
                 <div class="single-products-catagory clearfix">
-                    <a href="/ecommerce">
+                <a href="{{route('ecommerce.show',['id' => 9])}}">
                         <img src="img/bg-img/8.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -203,7 +203,7 @@
                     </a>
                 </div>
                 <div class="single-products-catagory clearfix">
-                    <a href="/ecommerce">
+                <a href="{{route('ecommerce.show',['id' => 10])}}">
                         <img src="img/bg-img/10.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -214,7 +214,7 @@
                     </a>
                 </div>
                 <div class="single-products-catagory clearfix">
-                    <a href="/ecommerce">
+                <a href="{{route('ecommerce.show',['id' => 11])}}">
                         <img src="img/bg-img/11.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -226,7 +226,7 @@
                 </div>
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/ecommerce">
+                <a href="{{route('ecommerce.show',['id' => 12])}}">
                         <img src="img/bg-img/12.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">

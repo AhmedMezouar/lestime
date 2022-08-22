@@ -78,11 +78,11 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li class="active-menu">
+							<li>
 								<a href="/ecommerce">Acceuil</a>
 							</li>
 
-							<li>
+							<li class="active-menu">
 								<a href="/product">Produits</a>
 								<ul class="sub-menu">
 									<li><a href="/product">Parfum Homme</a></li>
@@ -97,11 +97,11 @@
 							</li>
 
 							<li>
-								<a href="blog.html">Actualité</a>
+								<a href="/actualite-blog">Actualité</a>
 							</li>
 
 							<li>
-								<a href="about.html">About</a>
+								<a href="/about">About</a>
 							</li>
 
 							<li>
@@ -207,15 +207,15 @@
 				</li>
 
 				<li>
-					<a href="/shoping-cart" class="label1 rs1" data-label1="NEW">Nouvelle Arrivage</a>
+					<a href="/nouvelle-arrivage" class="label1 rs1" data-label1="NEW">Nouvelle Arrivage</a>
 				</li>
 
 				<li>
-					<a href="blog.html">Actualité</a>
+					<a href="/actualite-blog">Actualité</a>
 				</li>
 
 				<li>
-					<a href="about.html">About</a>
+					<a href="/about">About</a>
 				</li>
 
 				<li>
@@ -248,7 +248,7 @@
 		<div class="header-cart flex-col-l p-l-65 p-r-25">
 			<div class="header-cart-title flex-w flex-sb-m p-b-8">
 				<span class="mtext-103 cl2">
-					Your Cart
+					Votre panier
 				</span>
 
 				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
@@ -269,7 +269,7 @@
 							</a>
 
 							<span class="header-cart-item-info">
-								1 x $19.00
+								1 x 1900.00 DA
 							</span>
 						</div>
 					</li>
@@ -285,8 +285,8 @@
 							</a>
 
 							<span class="header-cart-item-info">
-								1 x $39.00
-							</span>
+								2 x 3000.00 DA
+ 							</span>
 						</div>
 					</li>
 
@@ -301,7 +301,7 @@
 							</a>
 
 							<span class="header-cart-item-info">
-								1 x $17.00
+								1 x 1700.00 DA
 							</span>
 						</div>
 					</li>
@@ -309,22 +309,20 @@
 				
 				<div class="w-full">
 					<div class="header-cart-total w-full p-tb-40">
-						Total: $75.00
+						Total: 9600.00 DA
 					</div>
 
 					<div class="header-cart-buttons flex-w w-full">
-						<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							View Cart
-						</a>
-
-						<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-							Check Out
+						<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1002 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+							Finaliser la commande
 						</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+		
 
 	
 	<!-- Product -->
@@ -336,11 +334,11 @@
 						All Products
 					</button>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
 						Parfum Homme
 					</button>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
 						Parfum Femme
 					</button>
 
@@ -348,7 +346,7 @@
 						Accessories
 					</button>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".other">
 						Autres Produits
 					</button>
 
@@ -610,20 +608,24 @@
 						<div class="block2-pic hov-img0">
 							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
 
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Voir
+							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
+								Afficher le produit
 							</a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									Esprit Ruffle Shirt
 								</a>
-
-								<span class="stext-105 cl3">
-									2900.00 DA
-								</span>
+								<p class="pric">
+									<span class="stext-105 cl11 p-r-15-01 oldprice">
+										4200.00 DA 
+									</span>
+									<span class="stext-1055 cl3 p-r-15-01 newprice">
+										2900.00 DA
+									</span>
+								</p>
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
@@ -632,67 +634,13 @@
 									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-02.jpg" alt="IMG-PRODUCT">
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Voir
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Herschel supply
+							<div class="header-cart-buttons flex-w w-full" >
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
+									Achat Directement
 								</a>
-
-								<span class="stext-105 cl3">
-									2900.00 DA
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-03.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Voir
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Only Check Trouser
-								</a>
-
-								<span class="stext-105 cl3">
-									2900.00 DA
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+		
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
+									Ajouter au panier
 								</a>
 							</div>
 						</div>
@@ -705,20 +653,24 @@
 						<div class="block2-pic hov-img0">
 							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
 
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Voir
+							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
+								Afficher le produit
 							</a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Classic Trench Coat
+								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									Esprit Ruffle Shirt
 								</a>
-
-								<span class="stext-105 cl3">
-									2900.00 DA
-								</span>
+								<p class="pric">
+									<span class="stext-105 cl11 p-r-15-01 oldprice">
+										4200.00 DA 
+									</span>
+									<span class="stext-1055 cl3 p-r-15-01 newprice">
+										2900.00 DA
+									</span>
+								</p>
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
@@ -727,30 +679,42 @@
 									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
+							<div class="header-cart-buttons flex-w w-full" >
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
+									Achat Directement
+								</a>
+		
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
+									Ajouter au panier
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-02.jpg" alt="IMG-PRODUCT">
+							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
 
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Voir
+							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
+								Afficher le produit
 							</a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Front Pocket Jumper
+								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									Esprit Ruffle Shirt
 								</a>
-
-								<span class="stext-105 cl3">
-									2900.00 DA
-								</span>
+								<p class="pric">
+									<span class="stext-105 cl11 p-r-15-01 oldprice">
+										4200.00 DA 
+									</span>
+									<span class="stext-1055 cl3 p-r-15-01 newprice">
+										2900.00 DA
+									</span>
+								</p>
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
@@ -759,30 +723,42 @@
 									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
+							<div class="header-cart-buttons flex-w w-full" >
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
+									Achat Directement
+								</a>
+		
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
+									Ajouter au panier
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches">
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-06.jpg" alt="IMG-PRODUCT">
+							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
 
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Voir
+							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
+								Afficher le produit
 							</a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Vintage Inspired Classic 
+								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									Esprit Ruffle Shirt
 								</a>
-
-								<span class="stext-105 cl3">
-									2900.00 DA
-								</span>
+								<p class="pric">
+									<span class="stext-105 cl11 p-r-15-01 oldprice">
+										4200.00 DA 
+									</span>
+									<span class="stext-1055 cl3 p-r-15-01 newprice">
+										2900.00 DA
+									</span>
+								</p>
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
@@ -791,62 +767,42 @@
 									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-03.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Voir
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Shirt in Stretch Cotton
+							<div class="header-cart-buttons flex-w w-full" >
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
+									Achat Directement
 								</a>
-
-								<span class="stext-105 cl3">
-									2900.00 DA
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+		
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
+									Ajouter au panier
 								</a>
 							</div>
 						</div>
 					</div>
 				</div>
-
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
 
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Voir
+							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
+								Afficher le produit
 							</a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Pieces Metallic Printed
+								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									Esprit Ruffle Shirt
 								</a>
-
-								<span class="stext-105 cl3">
-									2900.00 DA
-								</span>
+								<p class="pric">
+									<span class="stext-105 cl11 p-r-15-01 oldprice">
+										4200.00 DA 
+									</span>
+									<span class="stext-1055 cl3 p-r-15-01 newprice">
+										2900.00 DA
+									</span>
+								</p>
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
@@ -855,94 +811,42 @@
 									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item shoes">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-09.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Voir
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Converse All Star Hi Plimsolls
+							<div class="header-cart-buttons flex-w w-full" >
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
+									Achat Directement
 								</a>
-
-								<span class="stext-105 cl3">
-									2900.00 DA
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+		
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
+									Ajouter au panier
 								</a>
 							</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-10.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Voir
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Femme T-Shirt In Stripe
-								</a>
-
-								<span class="stext-105 cl3">
-									2900.00 DA
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-11.jpg" alt="IMG-PRODUCT">
+							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
 
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Voir
+							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
+								Afficher le produit
 							</a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Herschel supply 
+								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									Esprit Ruffle Shirt
 								</a>
-
-								<span class="stext-105 cl3">
-									2900.00 DA
-								</span>
+								<p class="pric">
+									<span class="stext-105 cl11 p-r-15-01 oldprice">
+										4200.00 DA 
+									</span>
+									<span class="stext-1055 cl3 p-r-15-01 newprice">
+										2900.00 DA
+									</span>
+								</p>
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
@@ -951,30 +855,130 @@
 									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
+							<div class="header-cart-buttons flex-w w-full" >
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
+									Achat Directement
+								</a>
+		
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
+									Ajouter au panier
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item other">
+					<!-- Block2 -->
+					<div class="block2">
+						<div class="block2-pic hov-img0">
+							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
 
+							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
+								Afficher le produit
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">
+								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									Esprit Ruffle Shirt
+								</a>
+								<p class="pric">
+									<span class="stext-105 cl11 p-r-15-01 oldprice">
+										4200.00 DA 
+									</span>
+									<span class="stext-1055 cl3 p-r-15-01 newprice">
+										2900.00 DA
+									</span>
+								</p>
+							</div>
+
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+								</a>
+							</div>
+							<div class="header-cart-buttons flex-w w-full" >
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
+									Achat Directement
+								</a>
+		
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
+									Ajouter au panier
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+					<!-- Block2 -->
+					<div class="block2">
+						<div class="block2-pic hov-img0">
+							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
+
+							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
+								Afficher le produit
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">
+								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									Esprit Ruffle Shirt
+								</a>
+								<p class="pric">
+									<span class="stext-105 cl11 p-r-15-01 oldprice">
+										4200.00 DA 
+									</span>
+									<span class="stext-1055 cl3 p-r-15-01 newprice">
+										2900.00 DA
+									</span>
+								</p>
+							</div>
+
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+								</a>
+							</div>
+							<div class="header-cart-buttons flex-w w-full" >
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
+									Achat Directement
+								</a>
+		
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
+									Ajouter au panier
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-12.jpg" alt="IMG-PRODUCT">
+							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
 
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Voir
+							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
+								Afficher le produit
 							</a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Herschel supply
+								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									Esprit Ruffle Shirt
 								</a>
-
-								<span class="stext-105 cl3">
-									2900.00 DA
-								</span>
+								<p class="pric">
+									<span class="stext-105 cl11 p-r-15-01 oldprice">
+										4200.00 DA 
+									</span>
+									<span class="stext-1055 cl3 p-r-15-01 newprice">
+										2900.00 DA
+									</span>
+								</p>
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
@@ -983,30 +987,42 @@
 									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
+							<div class="header-cart-buttons flex-w w-full" >
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
+									Achat Directement
+								</a>
+		
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
+									Ajouter au panier
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
-
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-13.jpg" alt="IMG-PRODUCT">
+							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
 
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Voir
+							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
+								Afficher le produit
 							</a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									T-Shirt with Sleeve
+								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									Esprit Ruffle Shirt
 								</a>
-
-								<span class="stext-105 cl3">
-									2900.00 DA
-								</span>
+								<p class="pric">
+									<span class="stext-105 cl11 p-r-15-01 oldprice">
+										4200.00 DA 
+									</span>
+									<span class="stext-1055 cl3 p-r-15-01 newprice">
+										2900.00 DA
+									</span>
+								</p>
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
@@ -1015,30 +1031,42 @@
 									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
+							<div class="header-cart-buttons flex-w w-full" >
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
+									Achat Directement
+								</a>
+		
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
+									Ajouter au panier
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item other">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-14.jpg" alt="IMG-PRODUCT">
+							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
 
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Voir
+							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
+								Afficher le produit
 							</a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Pretty Little Thing
+								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									Esprit Ruffle Shirt
 								</a>
-
-								<span class="stext-105 cl3">
-									2900.00 DA
-								</span>
+								<p class="pric">
+									<span class="stext-105 cl11 p-r-15-01 oldprice">
+										4200.00 DA 
+									</span>
+									<span class="stext-1055 cl3 p-r-15-01 newprice">
+										2900.00 DA
+									</span>
+								</p>
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
@@ -1047,30 +1075,42 @@
 									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
+							<div class="header-cart-buttons flex-w w-full" >
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
+									Achat Directement
+								</a>
+		
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
+									Ajouter au panier
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches">
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-15.jpg" alt="IMG-PRODUCT">
+							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
 
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Voir
+							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
+								Afficher le produit
 							</a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Mini Silver Mesh Watch
+								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									Esprit Ruffle Shirt
 								</a>
-
-								<span class="stext-105 cl3">
-									2900.00 DA
-								</span>
+								<p class="pric">
+									<span class="stext-105 cl11 p-r-15-01 oldprice">
+										4200.00 DA 
+									</span>
+									<span class="stext-1055 cl3 p-r-15-01 newprice">
+										2900.00 DA
+									</span>
+								</p>
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
@@ -1079,47 +1119,25 @@
 									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-16.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Voir
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Square Neck Back
+							<div class="header-cart-buttons flex-w w-full" >
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
+									Achat Directement
 								</a>
-
-								<span class="stext-105 cl3">
-									2900.00 DA
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+		
+								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
+									Ajouter au panier
 								</a>
 							</div>
 						</div>
 					</div>
 				</div>
+
 			</div>
 
 			<!-- Load more -->
 			<div class="flex-c-m flex-w w-full p-t-45">
-				<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-					Load More
+				<a href="#" class="flex-c-m stext-101 cl5 size-1005 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+					Afficher Plus 
 				</a>
 			</div>
 		</div>
@@ -1263,8 +1281,8 @@
 
 				<p class="stext-107 cl6 txt-center">
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Golden Ideas</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">Bleu Star</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Golden Ideas</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">Bleu Star</a>
+			<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
 				</p>
 			</div>
@@ -1334,18 +1352,75 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					<div class="col-md-6 col-lg-5 p-b-30">
 						<div class="p-r-50 p-t-5 p-lr-0-lg">
 							<h4 class="mtext-105 cl2 js-name-detail p-b-14">
-								Lightweight Jacket
+								Lightweight Bleu Star
 							</h4>
-
-							<span class="mtext-106 cl2">
-								$58.79
-							</span>
-
+							<p class="pric">
+								<span class="oldprice">
+									1500.00 DA
+								</span>
+								<span class="mtext-111 cl2 newprice">
+									1500.00 DA
+								</span>
+							</p>
 							<p class="stext-102 cl3 p-t-23">
 								Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
 							</p>
-							
-							<!--  -->
+							<!-- <div class="col-md-12 col-lg-12 p-b-30 boxprice">
+								<div class="col-4 p-4">
+									<div class="contenance pointer colored-border" id="2012" price="1300">
+									  <h6>35 ML</h6>
+										<h5>1300 DA</h5>
+									</div>
+								</div>
+								<div class="col-4 p-4">
+									<div class="contenance colored-border select-active" id="2013" price="2450">
+									  <h6>50 ML</h6>
+										<h5>2450 DA</h5>
+									</div>
+								</div>
+								<div class="col-4 p-4">
+									<div class="contenance colored-border" id="2014" price="3700">
+									  <h6>100 ML</h6>
+										<h5>3700 DA</h5>
+									</div>
+								</div>
+							</div>-->
+							<div class="container01">
+								<label class="option_item">
+									<input type="checkbox" class="checkbox">
+									<div class="option_inner selected">
+									<div class="tickmark"></div>
+									<div class="icon"><img src="images/icons/iconlestime.png" width="30%" height="30%" ></div>
+									<div class="name">
+										<h6>35 ML</h6>
+										<h5>1200 DA</h5>
+									</div>
+									</div>
+								</label>
+								<label class="option_item">
+									<input type="checkbox" class="checkbox">
+									<div class="option_inner selected">
+									<div class="tickmark"></div>
+									<div class="icon"><img src="images/icons/iconlestime.png" width="30%" height="30%" ></div>
+									<div class="name">
+										<h6>50 ML</h6>
+										<h5>1750 DA</h5>
+									</div>
+									</div>
+								</label>
+								<label class="option_item">
+									<input type="checkbox" class="checkbox">
+									<div class="option_inner selected">
+									<div class="tickmark"></div>
+									<div class="icon"><img src="images/icons/iconlestime.png" width="30%" height="30%" ></div>
+									<div class="name">
+										<h6>100 ML</h6>
+										<h5>3700 DA</h5>
+									</div>
+									</div>
+								</label>
+							</div>
+							<!--  
 							<div class="p-t-33">
 								<div class="flex-w flex-r-m p-b-10">
 									<div class="size-203 flex-c-m respon6">
@@ -1356,10 +1431,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 										<div class="rs1-select2 bor8 bg0">
 											<select class="js-select2" name="time">
 												<option>Choose an option</option>
-												<option>Size S</option>
-												<option>Size M</option>
-												<option>Size L</option>
-												<option>Size XL</option>
+												<option>Size 35 ML</option>
+												<option>Size 50 ML</option>
+												<option>Size 100 ML</option>
 											</select>
 											<div class="dropDownSelect2"></div>
 										</div>
@@ -1383,7 +1457,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 											<div class="dropDownSelect2"></div>
 										</div>
 									</div>
-								</div>
+								</div>-->
 
 								<div class="flex-w flex-r-m p-b-10">
 									<div class="size-204 flex-w flex-m respon6-next">
@@ -1399,9 +1473,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 											</div>
 										</div>
 
-										<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-											Add to cart
+										<button class="flex-c-m stext-101 cl0 size-1002 bg3 bor22 hov-btn33 p-lr-15 trans-04 js-addcart-detail">
+											Ajouter au panier
 										</button>
+										
+										<button class="flex-c-m stext-101 cl2 size-1002 bg-none bor2222 hov-btn33 p-lr-15 trans-04 js-addcart-detail">
+											Acheter Directement
+										</button>
+										
 									</div>
 								</div>	
 							</div>

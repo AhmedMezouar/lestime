@@ -217,11 +217,13 @@
     $('.btn-num-product-down').on('click', function(){
         var numProduct = Number($(this).next().val());
         if(numProduct > 0) $(this).next().val(numProduct - 1);
+        //document.getElementById('qteinput').value =  Number($(this).next().val());
     });
 
     $('.btn-num-product-up').on('click', function(){
         var numProduct = Number($(this).prev().val());
-        $(this).prev().val(numProduct + 1);
+        if(numProduct > 0) $(this).prev().val(numProduct + 1);
+        //document.getElementById('qteinput').value =  Number($(this).prev().val());
     });
 
     /*==================================================================
@@ -270,6 +272,37 @@
     [ Show modal1 ]*/
     $('.js-show-modal1').on('click',function(e){
         e.preventDefault();
+        var myProdid =  $(this).data('id');
+        var myProdName =  $(this).data('name');
+        var myProdpriceold =  $(this).data('prixold');
+        var myProdprice =  $(this).data('prix');
+        var myProddesc =  $(this).data('description');
+        var promo =  $(this).data('promo');
+        var image =  $(this).data('mainimage');   
+        var imageName = $(this).data('onlyimage');   
+        console.log(image);  
+        $("#prodname").html(myProdName);
+        $("#proddesc").html(myProddesc);
+
+        if (promo >0 ) {
+        $("#oldprice").html(myProdpriceold + " DA");
+        $("#newprice").html(myProdprice + " DA");
+        }else{
+            $("#newprice").html(myProdprice + " DA");
+        }
+
+        var div = document.querySelector('#divdetails1');
+        console.log(div);
+        document.getElementById('imageprod').src =image;
+        document.getElementById('imageproda').src =image;
+        document.getElementById('imageproddetail1').src =image;
+        document.getElementById('imageproddetail2').src =image;
+        document.getElementById("inputprodid").value =myProdid;
+        document.getElementById("inputprodname").value =myProdName;
+        document.getElementById("inputprodimage").value =image;
+        document.getElementById("inputprodprice").value =myProdprice;
+        document.getElementById("imageNameInput").value =imageName;
+       
         $('.js-modal1').addClass('show-modal1');
     });
 
