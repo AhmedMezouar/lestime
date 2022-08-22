@@ -40,7 +40,7 @@ class CartController extends Controller
     {
         //
         if ($request->input('action') == "ajout") {
-            Cart::add($request->product_id,$request->product_name,$request->qteproduct,$request->product_price,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin])->associate('App\Models\Produit');
+            Cart::add($request->product_id,$request->product_name,$request->qteproduct,$request->product_price,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,])->associate('App\Models\Produit');
             session()->flash('suc','produit ajoutier');
             return redirect()->route('ecommerce.show',['id' => $request->id_magasin]);
             }else{

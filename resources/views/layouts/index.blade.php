@@ -754,15 +754,16 @@
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 						<img src="{{ asset('images/').'/'.$produit ->ImageFileName1}}" alt="IMG-PRODUCT">
-						@if ($produit->promo > 0)
-						<a href="#" 
+						@if ($produit->promo_35 > 0)
+						<a href="#"
+									data-obj = "{{$produit}}" 
 									data-id="{{$produit->id}}" 
 									data-name="{{$produit->nameProd}}" 
 									data-description="{{$produit->Caractiristique}}" 
-									data-prix="{{$produit->prix_new}}" 
-									data-prixold="{{$produit->prix_old}}"
+									data-prix="{{$produit->prix_new_35}}" 
+									data-prixold="{{$produit->prix_old_35}}"
 									data-name="{{$produit->nameProd}}" 
-									data-promo="{{$produit->promo}}"
+									data-promo="{{$produit->promo_35}}"
 									data-mainimage="{{ asset('images/').'/'.$produit ->ImageFileName1}}"
 									data-onlyimage="{{$produit ->ImageFileName1}}"
 									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
@@ -770,15 +771,16 @@
 						</a>
 					    @else
 						<a href="#" 
+						data-obj = "{{$produit}}" 
 									data-id="{{$produit->id}}" 
 									data-name="{{$produit->nameProd}}" 
-									data-promo="{{$produit->promo}}"
-									data-prixold="0"
 									data-description="{{$produit->Caractiristique}}" 
-									data-prix="{{$produit->prix_old}}"
-									data-onlyimage="{{$produit ->ImageFileName1}}"
+									data-prix="{{$produit->prix_new_35}}" 
+									data-prixold="{{$produit->prix_old_35}}"
 									data-name="{{$produit->nameProd}}" 
+									data-promo="{{$produit->promo_35}}"
 									data-mainimage="{{ asset('images/').'/'.$produit ->ImageFileName1}}"
+									data-onlyimage="{{$produit ->ImageFileName1}}"
 									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Afficher le produit
 						</a>
@@ -791,19 +793,19 @@
 								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 								{{$produit ->nameProd}}
 								</a>
-								@if($produit ->promo > 0)
+								@if($produit ->promo_35 > 0)
 								<p class="pric">
 									<span class="stext-105 cl11 p-r-15-01 oldprice">
-										{{$produit ->prix_old}} DA
+										{{$produit ->prix_old_35}} DA
 									</span>
 									<span class="stext-1055 cl3 p-r-15-01 newprice">
-									    {{$produit ->prix_new}} DA
+									    {{$produit ->prix_new_35}} DA
 									</span>
 								</p>
 								@else
 								<p class="pric">
 									<span class="stext-1055 cl3 p-r-15-01 newprice">
-									    {{$produit ->prix_old}} DA
+									    {{$produit ->prix_old_35}} DA
 									</span>
 								</p>
 								@endif
@@ -822,10 +824,10 @@
 										<input type="hidden" name="qteproduct" value="1" >
 										<input type="hidden" name="product_id" value="{{$produit->id}}">
 										<input type="hidden" name="product_name" value="{{$produit->nameProd}}">
-										@if ($produit->promo > 0)
-										<input type="hidden" name="product_price" value="{{$produit->prix_new}}">
+										@if ($produit->promo_35 > 0)
+										<input type="hidden" name="product_price" value="{{$produit->prix_new_35}}">
 										@else
-										<input type="hidden" name="product_price" value="{{$produit->prix_old}}">
+										<input type="hidden" name="product_price" value="{{$produit->prix_old_35}}">
 										@endif
 							<div class="header-cart-buttons flex-w w-full" >
 								<button type="submit" name="achat" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
@@ -1062,7 +1064,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					
 					<div class="col-md-6 col-lg-5 p-b-30">
 						<div class="p-r-50 p-t-5 p-lr-0-lg">
-							<h4 class="mtext-105 cl2 js-name-detail p-b-14">
+							<h4 id="nameofProduct" class="mtext-105 cl2 js-name-detail p-b-14" >
 								Lightweight Bleu Star
 							</h4>
 							<p class="pric">
@@ -1073,7 +1075,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									
 								</span>
 							</p>
-							<p class="stext-102 cl3 p-t-23">
+							<p id="descprod" class="stext-102 cl3 p-t-23" >
 								Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
 							</p>
 							<!-- <div class="col-md-12 col-lg-12 p-b-30 boxprice">
@@ -1097,39 +1099,51 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								</div>
 							</div>-->
 							<div class="container01">
+							<div id="div35">
 								<label class="option_item">
-									<input type="checkbox" class="checkbox">
+							     	
+									<input type="checkbox" class="checkbox" name="check35">
 									<div class="option_inner selected">
 									<div class="tickmark"></div>
 									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
 									<div class="name">
 										<h6>35 ML</h6>
-										<h5>1200 DA</h5>
+										<h5 id="prix35">1200 DA</h5>
 									</div>
 									</div>
+									
 								</label>
+								</div>
+								<div id="div50">
 								<label class="option_item">
-									<input type="checkbox" class="checkbox">
+									
+									<input type="checkbox" class="checkbox" name="check100">
 									<div class="option_inner selected">
 									<div class="tickmark"></div>
 									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
 									<div class="name">
 										<h6>50 ML</h6>
-										<h5>1750 DA</h5>
+										<h5 id="prix50">1750 DA</h5>
 									</div>
 									</div>
+									
 								</label>
+								</div>
+								<div id="div100">
 								<label class="option_item">
-									<input type="checkbox" class="checkbox">
+								   
+									<input type="checkbox" class="checkbox" name="check100">
 									<div class="option_inner selected">
 									<div class="tickmark"></div>
 									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
 									<div class="name">
 										<h6>100 ML</h6>
-										<h5>3700 DA</h5>
+										<h5 id="prix">3700 DA</h5>
 									</div>
 									</div>
+									
 								</label>
+								</div>
 							</div>
 							<!--  
 							<div class="p-t-33">
@@ -1185,6 +1199,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 											</div>
 										</div>
 										
+										<input type="hidden" name="obj" value="" id="inputprodobj">
 										<input type="hidden" name="filepath" value="" id="inputprodimage">
 										<input type="hidden" name="imagename" value="" id="imageNameInput">
 										<input type="hidden" name="id_magasin" value="{{$id_mag}}" >

@@ -272,6 +272,7 @@
     [ Show modal1 ]*/
     $('.js-show-modal1').on('click',function(e){
         e.preventDefault();
+        let obj = $(this).data('obj');
         var myProdid =  $(this).data('id');
         var myProdName =  $(this).data('name');
         var myProdpriceold =  $(this).data('prixold');
@@ -281,8 +282,8 @@
         var image =  $(this).data('mainimage');   
         var imageName = $(this).data('onlyimage');   
         console.log(image);  
-        $("#prodname").html(myProdName);
-        $("#proddesc").html(myProddesc);
+        $("#nameofProduct").html(myProdName);
+        $("#descprod").html(myProddesc);
 
         if (promo >0 ) {
         $("#oldprice").html(myProdpriceold + " DA");
@@ -290,9 +291,29 @@
         }else{
             $("#newprice").html(myProdprice + " DA");
         }
+        if (obj.Volum50 > 0) {
+        if ( obj.promo_50 > 0) {
+          $("#prix50").html(obj.prix_new_50 + " DA");
+        }else{
+            $("#prix50").html(obj.prix_old_50 + " DA");  
+        }}
+        else{
+            $("#div50").html("");
+        }
+        if (obj.Volum100 > 0) {
+        if (obj.promo_100 > 0) {
+            $("#prix100").html(obj.prix_new_100 + " DA");
+          }else{
+              $("#prix100").html(obj.prix_old_100 + " DA");  
+          }}
+          else{
+              $("#prix100").html("no-disponible");
+          }
 
         var div = document.querySelector('#divdetails1');
         console.log(div);
+       
+        document.getElementById("inputprodobj").value = $(this).data('obj');
         document.getElementById('imageprod').src =image;
         document.getElementById('imageproda').src =image;
         document.getElementById('imageproddetail1').src =image;
