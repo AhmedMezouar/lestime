@@ -31,13 +31,15 @@ Route::get('/dec/{idm}/{rowId}',[CartController::class,'DecreaseQte'])->name("ca
 Route::get('/sup/{idm}/{rowId}',[CartController::class,'Remove'])->name("cart.sup");
 Route::post('/ecommerce/magasin/{idmag}',[CartController::class,'update'])->name("cart.update");
 
-
+Route::get('/ecommerce/magasin/{idmag}/produit-detail',[EcommerceController::class,'showDetails'])->name("ecommerce.produitdetails.show");
+Route::get('/ecommerce/magasin/{idmagnewA}/new-arrival',[EcommerceController::class,'showNewAr'])->name("ecommerce.newArriv.show");
 Route::post('/ecommerce/magasin/{id}',[Search::class,'produit_search'])->name("produit.search");
 Route::get('/ecommerce/magasin/{id}/shoping-cart',[CartController::class,'index'])->name("cart.index");
 Route::post('/ecommerce/magasin/{id}/shoping-cart',[CommandeController::class,'store'])->name("cmd.store");
 Route::get('/ecommerce/magasin/{id}/{filtermode}',[Search::class,'produit_filter'])->name("produit.filter");
 Route::get('/ecommerce/magasin/{id}/{min}/{max}',[Search::class,'produit_prix'])->name("produit.filterprix");
 Route::get('/ecommerce/magasin/{id}',[EcommerceController::class,'show'])->name("ecommerce.show");
+
 
 
 Route::post('/shoping-cart',[CartController::class,'edit'])->name("cart.edit");

@@ -40,18 +40,19 @@ class CommandeController extends Controller
     public function store(Request $req)
     {
         //
-        $clientName = "Passager";
-        $clientTelephone= "0656565";
-        $CMDID = DB::insert('insert into commandes (id_magasin,ClientName,Clientstate,ClientTelephone,ClientHomeAddress,ClientCommune,EtatCommand,Typelaivr,netapayer,created_at,updated_at)	
-        values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [$req['idMag'],$clientName,$req['wilaya'],$clientTelephone,$req['adresse'], $req['state'],0,$req['livraison'],0,Carbon::now(),Carbon::now()]);
+        $clientName = $req->nomClient;
+        $clientTelephone= $req->numberTele;
+        $clientEmail= $req->emailClient;
+        $CMDID = DB::insert('insert into commandes (id_magasin,ClientEmail,ClientName,Clientstate,ClientTelephone,ClientHomeAddress,ClientCommune,EtatCommand,Typelaivr,netapayer,created_at,updated_at)	
+        values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [$req['idMag'],$clientEmail,$clientName,$req['wilaya'],$clientTelephone,$req['adresse'], $req['state'],0,$req['livraison'],0,Carbon::now(),Carbon::now()]);
         $netapayer = 0;
         $cmdid = DB::getPdo()->lastInsertId();
         foreach (Cart::content() as $item) {
             
         if ($req->idMag == $item->options->id_magasin) {
 
-              $CMDID2 = DB::insert('insert into lign_commandes (id_cmd,id_prod,qte_ht,Total)	
-              values (?, ?, ?, ?)', [$cmdid,$item->id,$item->qty,$item->qty*$item->price]);
+              $CMDID2 = DB::insert('insert into lign_commandes (id_cmd,id_prod,vol_prod,qte_ht,Total)	
+              values (?, ?, ?, ?, ?)', [$cmdid,$item->id,$item->options->volume,$item->qty,$item->qty*$item->price]);
               $netapayer = $netapayer + ($item->qty*$item->price);
         }
         }

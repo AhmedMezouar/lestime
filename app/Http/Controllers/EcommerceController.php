@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EcommerceController extends Controller
 {
@@ -61,7 +62,35 @@ class EcommerceController extends Controller
         }
     }
 
+    public function showDetails($idmag)
+    {
+        //
+        if ($idmag > 0 && $idmag <13) {
+        $produits = Produit::
+        where('id_magasin', '=', $idmag)
+        ->get();
+
+        return view('layouts.product-detail',['produits'=> $produits,"id_mag" => $idmag]);
+        }else{
+            return redirect()->route('P404');
+        }
+    }
     
+    public function showNewAr($idmag)
+    {
+        //
+        if ($idmag > 0 && $idmag <13) {
+       // $produits = DB::select('select * from produits');
+        $produits =Produit::select('*')
+        ->selectRaw('Qte_stock_35+Qte_stock_50+Qte_stock_100 as TotalQte')
+        ->orderByRaw('TotalQte DESC')
+        ->get();
+        return view('layouts.new-arrival',['produits'=> $produits,"id_mag" => $idmag]);
+        }else{
+            return redirect()->route('P404');
+        }
+    }
+
     public function showProd($id)
     {
         //

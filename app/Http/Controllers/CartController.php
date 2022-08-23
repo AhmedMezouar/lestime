@@ -39,14 +39,14 @@ class CartController extends Controller
     public function store(Request $request)
     {
         //
+        
         if ($request->input('action') == "ajout") {
-            Cart::add($request->product_id,$request->product_name,$request->qteproduct,$request->product_price,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,])->associate('App\Models\Produit');
+            Cart::add($request->product_id,$request->product_name."(35ML)",$request->qteproduct,$request->product_price,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'volume'=>"35"])->associate('App\Models\Produit');
             session()->flash('suc','produit ajoutier');
             return redirect()->route('ecommerce.show',['id' => $request->id_magasin]);
             }else{
-                Cart::add($request->product_id,$request->product_name,$request->qteproduct,$request->product_price,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin])->associate('App\Models\Produit');
+                Cart::add($request->product_id,$request->product_name."(35ML)",$request->qteproduct,$request->product_price,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'volume'=>"35"])->associate('App\Models\Produit');
                 session()->flash('suc','produit ajoutier');
-                
                 return redirect()->route('cart.index',['id' => $request->id_magasin]);
             }    
 
@@ -55,13 +55,20 @@ class CartController extends Controller
    
     public function storeQte(Request $request)
     {
+        
         //
+        $prodnam = $request->product_name.'('.$request->volume.'ML)';
+        if ($request->volume == "50") { 
+                $priceofprod = $request->product_price50;
+        }else if ($request->volume == "100") { 
+            $priceofprod = $request->product_price100;
+         }else   $priceofprod = $request->product_price;
         if ($request->input('action') == "ajout") {
-        Cart::add($request->product_id,$request->product_name,$request->numproduct,$request->product_price,['filepath' => $request->imagename,'id_magasin'=>$request->id_magasin])->associate('App\Models\Produit');
+        Cart::add($request->product_id, $prodnam,$request->numproduct,$priceofprod,['filepath' => $request->imagename,'id_magasin'=>$request->id_magasin,'volume'=>$request->volume])->associate('App\Models\Produit');
         session()->flash('suc','produit ajoutier');
         return redirect()->route('ecommerce.show',['id' => $request->id_magasin]);
         }else{
-            Cart::add($request->product_id,$request->product_name,$request->numproduct,$request->product_price,['filepath' => $request->imagename,'id_magasin'=>$request->id_magasin])->associate('App\Models\Produit');
+            Cart::add($request->product_id, $prodnam,$request->numproduct,$priceofprod,['filepath' => $request->imagename,'id_magasin'=>$request->id_magasin,'volume'=>$request->volume])->associate('App\Models\Produit');
             session()->flash('suc','produit ajoutier');
             return redirect()->route('cart.index',['id' => $request->id_magasin]);
         }
@@ -125,19 +132,6 @@ class CartController extends Controller
     public function update(Request $request)
     {
         //
-        $idd = intval($request->product_Rowid);
-        //dd($request->product_Rowid);
-        dd($request->qte);
-        //$cart = Cart::content()->where('rowId','7dce98eaf94baa66236f20c39ac9acd0');
-        //dd($cart);
-        $quantity = intval($request->qte);
-        //dd($quantity);
-            Cart::update($idd,$quantity);
-            session()->flash('suc','produit ajoutier');
-            Log::info('in if This is some useful information.');
-        
-        return redirect()->route('cart.index',['id' => $request->idmagsin]);
-        
     }
 
     /**

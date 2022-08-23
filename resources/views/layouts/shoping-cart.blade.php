@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>L'ESTIME :: Nouvelle Arrivage</title>
+	<title>L'ESTIME :: Finaliser la Commande</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -94,7 +94,7 @@
 							</li>
 
 							<li class="label1" data-label1="NEW">
-								<a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Nouvelle Arrivage</a>
+								<a href="{{route('ecommerce.newArriv.show',['idmagnewA' => $id_mag])}}">Nouvelle Arrivage</a>
 							</li>
 
 							<li>
@@ -207,7 +207,7 @@
 				</li>
 
 				<li>
-					<a href="/nouvelle-arrivage" class="label1 rs1" data-label1="NEW">Nouvelle Arrivage</a>
+					<a href="{{route('ecommerce.newArriv.show',['idmagnewA' => $id_mag])}}" class="label1 rs1" data-label1="NEW">Nouvelle Arrivage</a>
 				</li>
 
 				<li>
@@ -433,6 +433,11 @@
 							</div>
 						</div>
 						@endif
+						<div class="input-commande">
+							<input class="input2 plh1 stext-107 cl7" type="text" name="nomClient" placeholder="Nom Prenom">
+							<input class="input2 plh1 stext-107 cl7" type="text" name="numberTele" placeholder="Numero de téléphone">
+							<input class="input2 plh1 stext-107 cl7" type="text" name="email" placeholder="E-mail">
+						</div>
 						<div class="flex-w flex-t bor12 p-t-15 p-b-30">
 							<div class="size-208 w-full-ssm">
 								<span class="stext-110 cl2">

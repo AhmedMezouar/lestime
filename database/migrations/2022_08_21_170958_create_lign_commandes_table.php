@@ -17,6 +17,7 @@ class CreateLignCommandesTable extends Migration
             $table->id();
             $table->string('id_cmd');
             $table->string('id_prod');
+            $table->string('vol_prod');
             $table->integer('qte_ht');
             $table->double('Total');
         });

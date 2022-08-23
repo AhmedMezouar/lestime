@@ -17,6 +17,7 @@ class CreateCommandesTable extends Migration
             $table->id();
             $table->integer('id_magasin');
             $table->string('ClientName');
+            $table->string('ClientEmail'); 
             $table->double('Clientstate');
             $table->string('ClientTelephone');
             $table->string('ClientHomeAddress');

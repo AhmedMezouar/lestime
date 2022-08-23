@@ -36,7 +36,6 @@
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
-	
 	<!-- Header -->
 	<header>
 		<!-- Header desktop   -->
@@ -83,7 +82,7 @@
 							</li>
 
 							<li>
-							<a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Produits</a>
+							<a href="{{route('ecommerce.produitdetails.show',['idmag' => $id_mag])}}">Produits</a>
 								<ul class="sub-menu">
 									<li><a href="/product">Parfum Homme</a></li>
 									<li><a href="/product">Parfum Femme</a></li>
@@ -93,7 +92,7 @@
 							</li>
 
 							<li class="label1" data-label1="NEW">
-								<a href="{{route('cart.index',['id' => $id_mag])}}">Nouvelle Arrivage</a>
+								<a href="{{route('ecommerce.newArriv.show',['idmagnewA' => $id_mag])}}">Nouvelle Arrivage</a>
 							</li>
 
 							<li>
@@ -207,7 +206,7 @@
 				</li>
 
 				<li>
-					<a href="/nouvelle-arrivage" class="label1 rs1" data-label1="NEW">Nouvelle Arrivage</a>
+					<a href="{{route('ecommerce.newArriv.show',['idmagnewA' => $id_mag])}}" class="label1 rs1" data-label1="NEW">Nouvelle Arrivage</a>
 				</li>
 
 				<li>
@@ -829,15 +828,15 @@
 										@else
 										<input type="hidden" name="product_price" value="{{$produit->prix_old_35}}">
 										@endif
-							<div class="header-cart-buttons flex-w w-full" >
-								<button type="submit" name="achat" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
+						           	<div class="header-cart-buttons flex-w w-full" >
+								<button type="submit" name="action" value="achat" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
 									Achat Directement
 								</button>
 							
 								        
-							        	<button type="submit" name="ajout" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
+							        	<button type="submit"  name="action" value="ajout" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
 									Ajouter au panier
-								</a>
+								</button>
 								</form>
 							</div>
 						</div>
@@ -1078,46 +1077,23 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							<p id="descprod" class="stext-102 cl3 p-t-23" >
 								Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
 							</p>
-							<!-- <div class="col-md-12 col-lg-12 p-b-30 boxprice">
-								<div class="col-4 p-4">
-									<div class="contenance pointer colored-border" id="2012" price="1300">
-									  <h6>35 ML</h6>
-										<h5>1300 DA</h5>
-									</div>
-								</div>
-								<div class="col-4 p-4">
-									<div class="contenance colored-border select-active" id="2013" price="2450">
-									  <h6>50 ML</h6>
-										<h5>2450 DA</h5>
-									</div>
-								</div>
-								<div class="col-4 p-4">
-									<div class="contenance colored-border" id="2014" price="3700">
-									  <h6>100 ML</h6>
-										<h5>3700 DA</h5>
-									</div>
-								</div>
-							</div>-->
 							<div class="container01">
 							<div id="div35">
-								<label class="option_item">
-							     	
-									<input type="checkbox" class="checkbox" name="check35">
+								<label class="option_item" data-val="35">
+									<input type="radio" name="volume" id="35" class="checkbox" >
 									<div class="option_inner selected">
 									<div class="tickmark"></div>
 									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
 									<div class="name">
 										<h6>35 ML</h6>
-										<h5 id="prix35">1200 DA</h5>
+										<h5 id="prix35">1750 DA</h5>
 									</div>
 									</div>
-									
 								</label>
 								</div>
 								<div id="div50">
-								<label class="option_item">
-									
-									<input type="checkbox" class="checkbox" name="check100">
+								<label class="option_item" data-val="50">
+									<input type="radio" name="volume" id="50" class="checkbox" >
 									<div class="option_inner selected">
 									<div class="tickmark"></div>
 									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
@@ -1126,63 +1102,21 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 										<h5 id="prix50">1750 DA</h5>
 									</div>
 									</div>
-									
 								</label>
 								</div>
 								<div id="div100">
-								<label class="option_item">
-								   
-									<input type="checkbox" class="checkbox" name="check100">
+								<label class="option_item" data-val="100">
+									<input type="radio" name="volume" id="100" class="checkbox" >
 									<div class="option_inner selected">
 									<div class="tickmark"></div>
 									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
 									<div class="name">
 										<h6>100 ML</h6>
-										<h5 id="prix">3700 DA</h5>
+										<h5 id="prix100">1750 DA</h5>
 									</div>
 									</div>
-									
 								</label>
-								</div>
-							</div>
-							<!--  
-							<div class="p-t-33">
-								<div class="flex-w flex-r-m p-b-10">
-									<div class="size-203 flex-c-m respon6">
-										Size
-									</div>
-
-									<div class="size-204 respon6-next">
-										<div class="rs1-select2 bor8 bg0">
-											<select class="js-select2" name="time">
-												<option>Choose an option</option>
-												<option>Size 35 ML</option>
-												<option>Size 50 ML</option>
-												<option>Size 100 ML</option>
-											</select>
-											<div class="dropDownSelect2"></div>
-										</div>
-									</div>
-								</div>
-
-								<div class="flex-w flex-r-m p-b-10">
-									<div class="size-203 flex-c-m respon6">
-										Color
-									</div>
-
-									<div class="size-204 respon6-next">
-										<div class="rs1-select2 bor8 bg0">
-											<select class="js-select2" name="time">
-												<option>Choose an option</option>
-												<option>Red</option>
-												<option>Blue</option>
-												<option>White</option>
-												<option>Grey</option>
-											</select>
-											<div class="dropDownSelect2"></div>
-										</div>
-									</div>
-								</div>-->
+							</div></div>
 								<form method="POST" action="{{route('cart.storeQte')}}"> 
 								@csrf
 								<div class="flex-w flex-r-m p-b-10">
@@ -1198,7 +1132,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</div>
 										</div>
-										
+										<input type="hidden" name="volume" value="" id="inputvolume">
 										<input type="hidden" name="obj" value="" id="inputprodobj">
 										<input type="hidden" name="filepath" value="" id="inputprodimage">
 										<input type="hidden" name="imagename" value="" id="imageNameInput">
@@ -1206,11 +1140,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 										<input type="hidden" name="product_id" value="0" id="inputprodid">
 										<input type="hidden" name="product_name" value="0" id="inputprodname">
 										<input type="hidden" name="product_price" value="0" id="inputprodprice">
-										<button type="submit" name="ajout" class="flex-c-m stext-101 cl0 size-1002 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+										<input type="hidden" name="product_price50" value="0" id="inputprodprice50">
+										<input type="hidden" name="product_price100" value="0" id="inputprodprice100">
+										<button type="submit" name="action" value="ajout" class="flex-c-m stext-101 cl0 size-1002 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 											Ajouter au panier
 										</button>
 										
-										<button type="submit" name="achat" class="flex-c-m stext-101 cl0 size-1002 bg3 bor1 hov-btn33 p-lr-15 trans-04 js-addcart-detail">
+										<button type="submit" name="action" value="achat" class="flex-c-m stext-101 cl0 size-1002 bg3 bor1 hov-btn33 p-lr-15 trans-04 js-addcart-detail">
 											Acheter Directement
 										</button>
 										</form>
