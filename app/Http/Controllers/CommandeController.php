@@ -39,10 +39,20 @@ class CommandeController extends Controller
      */
     public function store(Request $req)
     {
+
+        $req->validate([
+            'nomClient' =>'required',
+            'email' => 'required|email:rfc,dns',
+            'numberTele' =>'required|min:10|max:15',
+            'wilaya'=>'required|digits_between:1,58',
+            'adresse' => 'required|min:8',
+            'state' => 'required|min:5',
+            'livraison' => 'required|digits_between:0,1',
+        ]);
         //
         $clientName = $req->nomClient;
         $clientTelephone= $req->numberTele;
-        $clientEmail= $req->emailClient;
+        $clientEmail= $req->email;
         $CMDID = DB::insert('insert into commandes (id_magasin,ClientEmail,ClientName,Clientstate,ClientTelephone,ClientHomeAddress,ClientCommune,EtatCommand,Typelaivr,netapayer,created_at,updated_at)	
         values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [$req['idMag'],$clientEmail,$clientName,$req['wilaya'],$clientTelephone,$req['adresse'], $req['state'],0,$req['livraison'],0,Carbon::now(),Carbon::now()]);
         $netapayer = 0;
