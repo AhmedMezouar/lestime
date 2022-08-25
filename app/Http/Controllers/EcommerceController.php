@@ -52,9 +52,10 @@ class EcommerceController extends Controller
     {
         //
         if ($id > 0 && $id <13) {
-        $produits = Produit::
-        where('id_magasin', '=', $id)
-        ->get();
+            $produits =Produit::select('*')
+            ->whereRaw('(Qte_stock_35+Qte_stock_50+Qte_stock_100) > ?',[0])
+            ->whereRaw('id_magasin = ?',[$id])
+            ->get();
 
         return view('layouts.index',['produits'=> $produits,"id_mag" => $id]);
         }else{

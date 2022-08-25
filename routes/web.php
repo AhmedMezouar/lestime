@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\EcommerceController;
 use App\Http\Controllers\Search;
@@ -63,7 +64,15 @@ Route::get('/contact', function () {
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard.dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::post('/dashboard/storeClient',[ClientController::class,'store'])->middleware(['auth'])->name("dashboard.client.store");
+Route::get('/dashboard/clients',[ClientController::class,'index'])->middleware(['auth'])->name("dashboard.client.index");
+Route::get('/dashboard/client-add',[ClientController::class,'indexNvClient'])->middleware(['auth'])->name("dashboard.client.addClient");
+
+Route::get('/dashboard/commande',[CommandeController::class,'index'])->middleware(['auth'])->name("dashboard.commande.index");
+Route::get('/dashboard/commande/etat={etat}',[CommandeController::class,'filter'])->middleware(['auth'])->name("dashboard.commande.filter");
+
 
 require __DIR__.'/auth.php';

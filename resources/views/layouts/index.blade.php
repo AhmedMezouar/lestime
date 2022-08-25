@@ -52,7 +52,7 @@
 							Help & FAQs
 						</a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<a href="/login" class="flex-c-m trans-04 p-lr-25">
 							My Account
 						</a>
 
@@ -1064,7 +1064,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					<div class="col-md-6 col-lg-5 p-b-30">
 						<div class="p-r-50 p-t-5 p-lr-0-lg">
 							<h4 id="nameofProduct" class="mtext-105 cl2 js-name-detail p-b-14" >
-								Lightweight Bleu Star
+								
 							</h4>
 							<p class="pric">
 								<span class="oldprice" id="oldprice">

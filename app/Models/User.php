@@ -33,6 +33,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $attributes = [
+        'id_magasin' => 0,
+    ];
+
     /**
      * The attributes that should be cast.
      *

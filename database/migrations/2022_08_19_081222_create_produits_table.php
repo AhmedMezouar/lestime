@@ -21,7 +21,7 @@ class CreateProduitsTable extends Migration
             $table->integer('Volum35');
             $table->integer('Volum50');
             $table->integer('Volum100');
-            $table->string('Caractiristique');
+            $table->string('Sex');
             $table->string('ImageFileName1');
             $table->string('ImageFileName2');
             $table->string('ImageFileName3');
