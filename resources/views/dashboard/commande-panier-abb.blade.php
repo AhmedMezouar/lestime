@@ -27,42 +27,42 @@
     content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
   />
 
-  <title>L'ESTIME | Panier abbondonées </title>
+  <title>L'ESTIME | Nouvelle commande </title>
 
   <meta name="description" content="" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image" href="../assets/img/favicon/favicon.png" />
+  <link rel="icon" type="image" href="{{asset('/assets/img/favicon/favicon.png')}}" />
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="{{asset('https://fonts.googleapis.com')}}" />
+  <link rel="preconnect" href="{{asset('https://fonts.gstatic.com')}}" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    href="{{asset('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap')}}"
     rel="stylesheet"
   />
 
   <!-- Icons. Uncomment required icon fonts -->
-  <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+  <link rel="stylesheet" href="{{asset('/assets/vendor/fonts/boxicons.css')}}" />
 
   <!-- Core CSS -->
-  <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
-  <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-  <link rel="stylesheet" href="../assets/css/demo.css" />
+  <link rel="stylesheet" href="{{asset('assets/vendor/css/core.css')}}" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="{{asset('assets/vendor/css/theme-default.css')}}" class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="{{asset('assets/css/demo.css')}}" />
 
   <!-- Vendors CSS -->
-  <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+  <link rel="stylesheet" href="{{asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
 
-  <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
+  <link rel="stylesheet" href="{{asset('assets/vendor/libs/apex-charts/apex-charts.css')}}" />
 
   <!-- Page CSS -->
 
   <!-- Helpers -->
-  <script src="../assets/vendor/js/helpers.js"></script>
+  <script src="{{asset('/assets/vendor/js/helpers.js')}}"></script>
 
   <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
   <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-  <script src="../assets/js/config.js"></script>
+  <script src="{{asset('/assets/js/config.js')}}"></script>
 </head>
 
 <body>
@@ -75,7 +75,7 @@
         <div class="app-brand demo">
           <a href="index.html" class="app-brand-link">
             <span class="app-brand-logo demo">
-              <img src="../assets/img/logoGoldHor.png"  width="55%" height="18%" style="margin-bottom: 20px;">
+              <img src="{{asset('/assets/img/logoGoldHor.png')}}"  width="55%" height="18%" style="margin-bottom: 20px;">
                
                 <defs>
                   <path
@@ -172,67 +172,67 @@
           </li>
 
           <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Commandes</span>
-          </li>
-          <li class="menu-item active open">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-              <i class="menu-icon tf-icons bx bx-dock-top"></i>
-              <div data-i18n="Account Settings">Commandes</div>
-            </a>
-            <ul class="menu-sub">
-              <li class="menu-item">
-                <a href="commande.html" class="menu-link">
-                  <div data-i18n="Account">Tous les commandes</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="commande-new.html" class="menu-link">
-                  <div data-i18n="Notifications">Nouvelle commande</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="commande-attend.html" class="menu-link">
-                  <div data-i18n="Connections">Commande en attend</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="commande-livre.html" class="menu-link">
-                  <div data-i18n="Notifications">Commande Livraison</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="commande-confirme.html" class="menu-link">
-                  <div data-i18n="Notifications">Commande Confirmé</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="commande-annuler.html" class="menu-link">
-                  <div data-i18n="Notifications">Commande Annuler</div>
-                </a>
-              </li>
-              <li class="menu-item active">
-                <a href="commande-panier-abb.html" class="menu-link">
-                  <div data-i18n="Notifications">Panier abondonnées</div>
-                </a>
-              </li>
-            </ul>
-          </li>
+              <span class="menu-header-text">Commandes</span>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div data-i18n="Account Settings">Commandes</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="{{route('dashboard.commande.index')}}" class="menu-link">
+                    <div data-i18n="Account">Tous les commandes</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('dashboard.commande.filter',['etat' => 0])}}" class="menu-link">
+                    <div data-i18n="Notifications">Nouvelle commande</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('dashboard.commande.filter',['etat' => 1])}}" class="menu-link">
+                    <div data-i18n="Connections">Commande en attend</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('dashboard.commande.filter',['etat' => 2])}}" class="menu-link">
+                    <div data-i18n="Notifications">Commande Livraison</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('dashboard.commande.filter',['etat' => 4])}}" class="menu-link">
+                    <div data-i18n="Notifications">Commande Confirmé</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('dashboard.commande.filter',['etat' => 3])}}" class="menu-link">
+                    <div data-i18n="Notifications">Commande Annuler</div>
+                  </a>
+                </li>
+                <li class="menu-item active">
+                  <a href="{{route('dashboard.commande.filter',['etat' => 5])}}" class="menu-link">
+                    <div data-i18n="Notifications">Panier abondonnées</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
           
           <!-- Components -->
           <li class="menu-header small text-uppercase"><span class="menu-header-text">Client</span></li>
           <!-- Cards -->
           <li class="menu-item">
-            <a href="client.html" class="menu-link">
-              <i class="menu-icon tf-icons bx bxs-user-detail"></i>
-              <div data-i18n="Basic">Liste des clients</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="client-add.html" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-user-plus"></i>
-              <div data-i18n="Basic">Nouveau client</div>
-            </a>
-          </li>
+              <a href="{{route('dashboard.client.index')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-user-detail"></i>
+                <div data-i18n="Basic">Liste des clients</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="{{route('dashboard.client.addClient')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-plus"></i>
+                <div data-i18n="Basic">Nouveau client</div>
+              </a>
+            </li>
           <!-- Forms & Tables -->
           <li class="menu-header small text-uppercase"><span class="menu-header-text">Statistique</span></li>
           <!-- Forms -->
@@ -309,7 +309,7 @@
               <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                   <div class="avatar avatar-online">
-                    <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                    <img src="{{asset('/assets/img/avatars/1.png')}}" alt class="w-px-40 h-auto rounded-circle" />
                   </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -318,7 +318,7 @@
                       <div class="d-flex">
                         <div class="flex-shrink-0 me-3">
                           <div class="avatar avatar-online">
-                            <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                            <img src="{{asset('/assets/img/avatars/1.png')}}" alt class="w-px-40 h-auto rounded-circle" />
                           </div>
                         </div>
                         <div class="flex-grow-1">
@@ -375,7 +375,7 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Commande /</span> Panier abondonnées</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Commande /</span>  Panier abondonnées</h4>
 
               <!-- Hoverable Table rows -->
               <div class="card">
@@ -393,99 +393,25 @@
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
+                    @foreach($cmds as $cmd)
                       <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="#"><strong>#05</strong></a></td>
-                        <td> 2022-08-24 10:23:27 </td>
-                        <td> Mezouar Ahmed</td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="#"><strong>#{{$cmd->id}}</strong></a></td>
+                        <td> {{$cmd->created_at}}</td>
+                        <td> {{$cmd->ClientName}}</td>
+                        @if ($cmd->EtatCommand == 0)
                         <td><span class="badge bg-label-primary me-1">Nouveau</span></td>
-
-
-                        <td> 11500.00 DA</td>
-                        
-                        <td>
-                          <div class="btn-group">
-                            <button
-                              type="button"
-                              class="btn btn-warning dropdown-toggle"
-                              data-bs-toggle="dropdown"
-                              aria-expanded="false"
-                            >
-                              Action
-                            </button>
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="javascript:void(0);">Valider la commande </a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Confirme en livraison</a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Annuler en livraison</a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Annuler le Panier</a></li>
-                              
-                            </ul>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="#"><strong>#04</strong></a></td>
-                        <td> 2022-08-24 10:23:27 </td>
-                        <td> Mezouar Ahmed</td>
+                        @elseif ($cmd->EtatCommand == 1)
+                        <td><span class="badge bg-label-info me-1">En livraison</span></td>
+                        @elseif ($cmd->EtatCommand == 2)
                         <td><span class="badge bg-label-success me-1">Livré</span></td>
-
-
-                        <td> 11500.00 DA</td>
-                        
-                        <td>
-                          <div class="btn-group">
-                            <button
-                              type="button"
-                              class="btn btn-warning dropdown-toggle"
-                              data-bs-toggle="dropdown"
-                              aria-expanded="false"
-                            >
-                              Action
-                            </button>
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="javascript:void(0);">Valider la commande </a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Confirme en livraison</a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Annuler en livraison</a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Annuler le Panier</a></li>
-                              
-                            </ul>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="#"><strong>#03</strong></a></td>
-                        <td> 2022-08-24 10:23:27 </td>
-                        <td> Mezouar Ahmed</td>
-                        <td><span class="badge bg-label-info me-1">En livraison</span></td>
-
-
-                        <td> 11500.00 DA</td>
-                        
-                        <td>
-                          <div class="btn-group">
-                            <button
-                              type="button"
-                              class="btn btn-warning dropdown-toggle"
-                              data-bs-toggle="dropdown"
-                              aria-expanded="false"
-                            >
-                              Action
-                            </button>
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="javascript:void(0);">Valider la commande </a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Confirme en livraison</a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Annuler en livraison</a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Annuler le Panier</a></li>
-                              
-                            </ul>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="#"><strong>#02</strong></a></td>
-                        <td> 2022-08-24 10:23:27 </td>
-                        <td> Mezouar Ahmed</td>
+                        @elseif ($cmd->EtatCommand == 3)
                         <td><span class="badge bg-label-warning me-1">Annuler</span></td>
-                        <td> 11500.00 DA</td>
+                        @elseif ($cmd->EtatCommand == 4)
+                        <td><span class="badge bg-label-info me-1">Confirmé</span></td>
+                        @elseif ($cmd->EtatCommand == 5)
+                        <td><span class="badge bg-label-warning me-1">Annuler en panie</span></td>
+                        @endif
+                        <td>{{$cmd->netapayer}}  DA</td>
                         
                         <td>
                           <div class="btn-group">
@@ -498,43 +424,50 @@
                               Action
                             </button>
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="javascript:void(0);">Valider la commande </a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Confirme en livraison</a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Annuler en livraison</a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Annuler le Panier</a></li>
+                              <li>
+                                 <form method="POST" action="{{route('dashboard.commande.changestate')}}">
+                                  @csrf
+                                 <input type="hidden" name="newetat" value="4"/>
+                                 <input type="hidden" name="cetat" value="{{$etat}}"/>
+                                 <input type="hidden" name="idcmd" value="{{$cmd->id}}"/>
+                                 <button type="submit" class="dropdown-item">Valider la commande </button>
+                                 </form>
+                              </li>
+                              <li>
+                                
+                              <form method="POST" action="{{route('dashboard.commande.changestate')}}">
+                              @csrf
+                                 <input type="hidden" name="newetat" value="2"/>
+                                 <input type="hidden" name="cetat" value="{{$etat}}"/>
+                                 <input type="hidden" name="idcmd" value="{{$cmd->id}}"/>
+                                 <button type="submit" class="dropdown-item">Confirme en livraison </button>
+                                 </form>
+                              
+                            </li>
+                              <li>
+                              <form method="POST" action="{{route('dashboard.commande.changestate')}}">
+                              @csrf
+                                 <input type="hidden" name="newetat" value="3"/>
+                                 <input type="hidden" name="cetat" value="{{$etat}}"/>
+                                 <input type="hidden" name="idcmd" value="{{$cmd->id}}"/>
+                                 <button type="submit" class="dropdown-item">Annuler en livraison </button>
+                                 </form>
+                              </li>
+                              <li>
+                              <form method="POST" action="{{route('dashboard.commande.changestate')}}">
+                              @csrf
+                                 <input type="hidden" name="newetat" value="5"/>
+                                 <input type="hidden" name="cetat" value="{{$etat}}"/>
+                                 <input type="hidden" name="idcmd" value="{{$cmd->id}}"/>
+                                 <button type="submit" class="dropdown-item">Annuler le Panier</button>
+                                 </form>
+                             </li>
                               
                             </ul>
                           </div>
                         </td>
                       </tr>
-                      <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="#"><strong>#01</strong></a></td>
-                        <td> 2022-08-24 10:23:27 </td>
-                        <td> Mezouar Ahmed</td>                        
-                        <td><span class="badge bg-label-info me-1">En livraison</span></td>
-
-                        <td> 11500.00 DA</td>
-                        
-                        <td>
-                          <div class="btn-group">
-                            <button
-                              type="button"
-                              class="btn btn-warning dropdown-toggle"
-                              data-bs-toggle="dropdown"
-                              aria-expanded="false"
-                            >
-                              Action
-                            </button>
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="javascript:void(0);">Valider la commande </a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Confirme en livraison</a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Annuler en livraison</a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Annuler le Panier</a></li>
-                              
-                            </ul>
-                          </div>
-                        </td>
-                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -576,24 +509,25 @@
 
     
 
+
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../assets/vendor/libs/popper/popper.js"></script>
-    <script src="../assets/vendor/js/bootstrap.js"></script>
-    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="{{asset('assets/vendor/libs/jquery/jquery.js')}}"></script>
+    <script src="{{asset('assets/vendor/libs/popper/popper.js')}}"></script>
+    <script src="{{asset('assets/vendor/js/bootstrap.js')}}"></script>
+    <script src="{{asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
 
-    <script src="../assets/vendor/js/menu.js"></script>
+    <script src="{{asset('assets/vendor/js/menu.js')}}"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
 
     <!-- Main JS -->
-    <script src="../assets/js/main.js"></script>
+    <script src="{{asset('assets/js/main.js')}}"></script>
 
     <!-- Page JS -->
 
     <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script async defer src="{{asset('https://buttons.github.io/buttons.js')}}"></script>
   </body>
 </html>

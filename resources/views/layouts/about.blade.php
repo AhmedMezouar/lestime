@@ -73,56 +73,51 @@
 					
 					<!-- Logo desktop -->		
 					<a href="/ecommerce" class="logo">
-						<img src="images/icons/logoBlackHor.png" alt="IMG-LOGO">
+						<img src="{{asset('images/icons/logoBlackHor.png')}}" alt="IMG-LOGO">
 					</a>
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="/ecommerce">Acceuil</a>
+								<a href="/">Acceuil</a>
 							</li>
 
 							<li>
-								<a href="/product">Produits</a>
+								<a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Produits</a>
 								<ul class="sub-menu">
-									<li><a href="/product">Parfum Homme</a></li>
-									<li><a href="/product">Parfum Femme</a></li>
-									<li><a href="/product">Accessories</a></li>
-									<li><a href="/product">Autres Produits</a></li>
+									<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Parfum Homme</a></li>
+									<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Parfum Femme</a></li>
+									<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Accessories</a></li>
+									<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Autres Produits</a></li>
 								</ul>
 							</li>
 
 							<li class="label1" data-label1="NEW">
-								<a href="/nouvelle-arrivage">Nouvelle Arrivage</a>
+								<a href="{{route('ecommerce.newArriv.show',['idmagnewA' => $id_mag])}}">Nouvelle Arrivage</a>
 							</li>
 
 							<li>
-								<a href="/actualite-blog">Actualité</a>
+								<a href="{{route('ecommerce.showBlog',['idmag'=>$id_mag])}}">Actualité</a>
 							</li>
 
 							<li class="active-menu">
-								<a href="/about">About</a>
+							<a href="{{route('ecommerce.showAbout',['idmag'=>$id_mag])}}">About</a>
 							</li>
 
 							<li>
-								<a href="/contact">Contact</a>
+								<a href="{{route('ecommerce.showContact',['idmag'=>$id_mag])}}">Contact</a>
 							</li>
 						</ul>
 					</div>	
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-search"></i>
-						</div>
-
+						
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
-						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-							<i class="zmdi zmdi-favorite-outline"></i>
-						</a>
+					
 					</div>
 				</nav>
 			</div>	
@@ -132,22 +127,18 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="/ecommerce"><img src="images/icons/logoBlackHor.png" alt="IMG-LOGO"></a>
+				<a href="/ecommerce"><img src="{{asset('images/icons/logoBlackHor.png')}}" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
 			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
-					<i class="zmdi zmdi-search"></i>
-				</div>
+				
 
 				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
 					<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
-					<i class="zmdi zmdi-favorite-outline"></i>
-				</a>
+				
 			</div>
 
 			<!-- Button show menu -->
@@ -191,36 +182,36 @@
 
 			<ul class="main-menu-m">
 				<li>
-					<a href="/ecommerce">Acceuil</a>
+					<a href="/">Acceuil</a>
 				</li>
 				<li>
-					<a href="/product">Produits</a>
+					<a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Produits</a>
 					<ul class="sub-menu-m">
-						<li><a href="/product">Parfum Homme</a></li>
-						<li><a href="/product">Parfum Femme</a></li>
-						<li><a href="/product">Accessories</a></li>
-						<li><a href="/product">Autres Produits</a></li>
+						<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Parfum Homme</a></li>
+						<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Parfum Femme</a></li>
+						<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Accessories</a></li>
+						<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Autres Produits</a></li>
 					</ul>
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
 					</span>
 				</li>
 
-				<li>
-					<a href="/shoping-cart" class="label1 rs1" data-label1="NEW">Nouvelle Arrivage</a>
-				</li>
+				<li class="label1" data-label1="NEW">
+								<a href="{{route('ecommerce.newArriv.show',['idmagnewA' => $id_mag])}}">Nouvelle Arrivage</a>
+							</li>
 
-				<li>
-					<a href="/actualite-blog">Actualité</a>
-				</li>
+							<li>
+								<a href="{{route('ecommerce.showBlog',['idmag'=>$id_mag])}}">Actualité</a>
+							</li>
 
-				<li>
-					<a href="/about">About</a>
-				</li>
+							<li class="active-menu">
+							<a href="{{route('ecommerce.showAbout',['idmag'=>$id_mag])}}">About</a>
+							</li>
 
-				<li>
-					<a href="/contact">Contact</a>
-				</li>
+							<li>
+								<a href="{{route('ecommerce.showContact',['idmag'=>$id_mag])}}">Contact</a>
+							</li>
 			</ul>
 		</div>
 
@@ -228,7 +219,7 @@
 		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
 			<div class="container-search-header">
 				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-					<img src="images/icons/icon-close2.png" alt="CLOSE">
+					<img src="{{asset('images/icons/icon-close2.png')}}" alt="CLOSE">
 				</button>
 
 				<form class="wrap-search-header flex-w p-l-15">
@@ -260,7 +251,7 @@
 				<ul class="header-cart-wrapitem w-full">
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img src="images/item-cart-01.jpg" alt="IMG">
+							<img src="{{asset('images/item-cart-01.jpg')}}" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
@@ -276,7 +267,7 @@
 
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img src="images/item-cart-02.jpg" alt="IMG">
+							<img src="{{asset('images/item-cart-02.jpg')}}" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
@@ -292,7 +283,7 @@
 
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img src="images/item-cart-03.jpg" alt="IMG">
+							<img src="{{asset('images/item-cart-03.jpg')}}" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
@@ -358,7 +349,7 @@
 				<div class="col-11 col-md-5 col-lg-4 m-lr-auto">
 					<div class="how-bor1 ">
 						<div class="hov-img0">
-							<img src="images/about-01.jpg" alt="IMG">
+							<img src="{{asset('images/about-01.jpg')}}" alt="IMG">
 						</div>
 					</div>
 				</div>
@@ -390,7 +381,7 @@
 				<div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
 					<div class="how-bor2">
 						<div class="hov-img0">
-							<img src="images/about-02.jpg" alt="IMG">
+							<img src="{{asset('images/about-02.jpg')}}" alt="IMG">
 						</div>
 					</div>
 				</div>
@@ -560,7 +551,7 @@
 		<div class="container">
 			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
 				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
-					<img src="images/icons/icon-close.png" alt="CLOSE">
+					<img src="{{asset('images/icons/icon-close.png')}}" alt="CLOSE">
 				</button>
 
 				<div class="row">
@@ -573,7 +564,7 @@
 								<div class="slick3 gallery-lb">
 									<div class="item-slick3" data-thumb="images/product-detail-01.jpg">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
+											<img src="{{asset('images/product-detail-01.jpg')}}" alt="IMG-PRODUCT">
 
 											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
 												<i class="fa fa-expand"></i>
@@ -583,7 +574,7 @@
 
 									<div class="item-slick3" data-thumb="images/product-detail-02.jpg">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
+											<img src="{{asset('images/product-detail-02.jpg')}}" alt="IMG-PRODUCT">
 
 											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
 												<i class="fa fa-expand"></i>
@@ -593,7 +584,7 @@
 
 									<div class="item-slick3" data-thumb="images/product-detail-03.jpg">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
+											<img src="{{asset('images/product-detail-03.jpg')}}" alt="IMG-PRODUCT">
 
 											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
 												<i class="fa fa-expand"></i>
@@ -646,7 +637,7 @@
 									<input type="checkbox" class="checkbox">
 									<div class="option_inner selected">
 									<div class="tickmark"></div>
-									<div class="icon"><img src="images/icons/iconlestime.png" width="30%" height="30%" ></div>
+									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
 									<div class="name">
 										<h6>35 ML</h6>
 										<h5>1200 DA</h5>
@@ -657,7 +648,7 @@
 									<input type="checkbox" class="checkbox">
 									<div class="option_inner selected">
 									<div class="tickmark"></div>
-									<div class="icon"><img src="images/icons/iconlestime.png" width="30%" height="30%" ></div>
+									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
 									<div class="name">
 										<h6>50 ML</h6>
 										<h5>1750 DA</h5>
@@ -668,7 +659,7 @@
 									<input type="checkbox" class="checkbox">
 									<div class="option_inner selected">
 									<div class="tickmark"></div>
-									<div class="icon"><img src="images/icons/iconlestime.png" width="30%" height="30%" ></div>
+									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
 									<div class="name">
 										<h6>100 ML</h6>
 										<h5>3700 DA</h5>
@@ -744,9 +735,7 @@
 							<!--  -->
 							<div class="flex-w flex-m p-l-100 p-t-40 respon7">
 								<div class="flex-m bor9 p-r-10 m-r-11">
-									<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
-										<i class="zmdi zmdi-favorite"></i>
-									</a>
+									
 								</div>
 
 								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">

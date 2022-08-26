@@ -53,11 +53,32 @@ class EcommerceController extends Controller
         //
         if ($id > 0 && $id <13) {
             $produits =Produit::select('*')
+            ->selectRaw('Qte_vt_35+Qte_vt_50+Qte_vt_100 as Totalvt')
             ->whereRaw('(Qte_stock_35+Qte_stock_50+Qte_stock_100) > ?',[0])
             ->whereRaw('id_magasin = ?',[$id])
+            ->orderByRaw('Totalvt DESC')
             ->get();
 
         return view('layouts.index',['produits'=> $produits,"id_mag" => $id]);
+
+        }else{
+            return redirect()->route('P404');
+        }
+    }
+
+    public function showAllProduit($id)
+    {
+        //
+        if ($id > 0 && $id <13) {
+            $produits =Produit::select('*')
+            ->selectRaw('Qte_vt_35+Qte_vt_50+Qte_vt_100 as Totalvt')
+            ->whereRaw('(Qte_stock_35+Qte_stock_50+Qte_stock_100) > ?',[0])
+            ->whereRaw('id_magasin = ?',[$id])
+            ->orderByRaw('Totalvt DESC')
+            ->get();
+
+        return view('layouts.product',['produits'=> $produits,"id_mag" => $id]);
+
         }else{
             return redirect()->route('P404');
         }
@@ -87,6 +108,42 @@ class EcommerceController extends Controller
         ->orderByRaw('TotalQte DESC')
         ->get();
         return view('layouts.new-arrival',['produits'=> $produits,"id_mag" => $idmag]);
+        }else{
+            return redirect()->route('P404');
+        }
+    }
+
+    public function showAbout($idmag)
+    {
+        //
+        if ($idmag > 0 && $idmag <13) {
+ 
+            return view('layouts.about',['id_mag' => $idmag]);
+
+        }else{
+            return redirect()->route('P404');
+        }
+    }
+
+    public function showBlog($idmag)
+    {
+        //
+        if ($idmag > 0 && $idmag <13) {
+ 
+            return view('layouts.blog-page',['id_mag' => $idmag]);
+
+        }else{
+            return redirect()->route('P404');
+        }
+    }
+
+    public function showContact($idmag)
+    {
+        //
+        if ($idmag > 0 && $idmag <13) {
+ 
+            return view('layouts.contact',['id_mag' => $idmag]);
+
         }else{
             return redirect()->route('P404');
         }

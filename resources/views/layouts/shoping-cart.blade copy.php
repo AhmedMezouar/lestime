@@ -66,7 +66,7 @@
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		
-					<a href="/ecommerce" class="logo">
+					<a href="/" class="logo">
 						<img src="images/icons/logoBlackHor.png" alt="IMG-LOGO">
 					</a>
 
@@ -74,11 +74,11 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="/ecommerce">Home</a>
+								<a href="/">Home</a>
 								<ul class="sub-menu">
-									<li><a href="/ecommerce">Homepage 1</a></li>
-									<li><a href="home-02.html">Homepage 2</a></li>
-									<li><a href="home-03.html">Homepage 3</a></li>
+									<li><a href="/">Homepage 1</a></li>
+									<li><a href="/">Homepage 2</a></li>
+									<li><a href="/">Homepage 3</a></li>
 								</ul>
 							</li>
 
@@ -114,9 +114,7 @@
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
-						<a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-							<i class="zmdi zmdi-favorite-outline"></i>
-						</a>
+					
 					</div>
 				</nav>
 			</div>	
@@ -126,7 +124,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="/ecommerce"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+				<a href="/"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -139,9 +137,6 @@
 					<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
-					<i class="zmdi zmdi-favorite-outline"></i>
-				</a>
 			</div>
 
 			<!-- Button show menu -->
@@ -185,9 +180,9 @@
 
 			<ul class="main-menu-m">
 				<li>
-					<a href="/ecommerce">Home</a>
+					<a href="/">Home</a>
 					<ul class="sub-menu-m">
-						<li><a href="/ecommerce">Homepage 1</a></li>
+						<li><a href="/">Homepage 1</a></li>
 						<li><a href="home-02.html">Homepage 2</a></li>
 						<li><a href="home-03.html">Homepage 3</a></li>
 					</ul>

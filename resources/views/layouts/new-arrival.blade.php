@@ -82,12 +82,12 @@
 							</li>
 
 							<li>
-							<a href="{{route('ecommerce.produitdetails.show',['idmag' => $id_mag])}}">Produits</a>
+							<a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Produits</a>
 								<ul class="sub-menu">
-									<li><a href="/product">Parfum Homme</a></li>
-									<li><a href="/product">Parfum Femme</a></li>
-									<li><a href="/product">Accessories</a></li>
-									<li><a href="/product">Autres Produits</a></li>
+									<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Parfum Homme</a></li>
+									<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Parfum Femme</a></li>
+									<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Accessories</a></li>
+									<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Autres Produits</a></li>
 								</ul>
 							</li>
 
@@ -96,32 +96,28 @@
 							</li>
 
 							<li>
-								<a href="/actualite-blog">Actualité</a>
+								<a href="{{route('ecommerce.showBlog',['idmag'=>$id_mag])}}">Actualité</a>
 							</li>
 
 							<li>
-								<a href="/about">About</a>
+							<a href="{{route('ecommerce.showAbout',['idmag'=>$id_mag])}}">About</a>
 							</li>
 
 							<li>
-								<a href="/contact">Contact</a>
+								<a href="{{route('ecommerce.showContact',['idmag'=>$id_mag])}}">Contact</a>
 							</li>
 						</ul>
 					</div>	
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-search"></i>
-						</div>
+						
 
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{sizeof(Cart::content())}}">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
-						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-							<i class="zmdi zmdi-favorite-outline"></i>
-						</a>
+						
 					</div>
 				</nav>
 			</div>	
@@ -136,17 +132,13 @@
 
 			<!-- Icon header -->
 			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
-					<i class="zmdi zmdi-search"></i>
-				</div>
+				
 
 				<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{sizeof(Cart::content())}}">
 							<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
-					<i class="zmdi zmdi-favorite-outline"></i>
-				</a>
+				
 			</div>
 
 			<!-- Button show menu -->
@@ -193,33 +185,33 @@
 					<a href="/ecommerce">Acceuil</a>
 				</li>
 				<li>
-					<a href="/product">Produits</a>
+					<a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Produits</a>
 					<ul class="sub-menu-m">
-						<li><a href="/product">Parfum Homme</a></li>
-						<li><a href="/product">Parfum Femme</a></li>
-						<li><a href="/product">Accessories</a></li>
-						<li><a href="/product">Autres Produits</a></li>
+						<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Parfum Homme</a></li>
+						<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Parfum Femme</a></li>
+						<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Accessories</a></li>
+						<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Autres Produits</a></li>
 					</ul>
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
 					</span>
 				</li>
 
-				<li>
-					<a href="/nouvelle-arrivage" class="label1 rs1" data-label1="NEW">Nouvelle Arrivage</a>
-				</li>
+				<li class="label1" data-label1="NEW">
+								<a href="{{route('ecommerce.newArriv.show',['idmagnewA' => $id_mag])}}">Nouvelle Arrivage</a>
+							</li>
 
-				<li>
-					<a href="/actualite-blog">Actualité</a>
-				</li>
+							<li>
+								<a href="{{route('ecommerce.showBlog',['idmag'=>$id_mag])}}">Actualité</a>
+							</li>
 
-				<li>
-					<a href="/about">About</a>
-				</li>
+							<li>
+							<a href="{{route('ecommerce.showAbout',['idmag'=>$id_mag])}}">About</a>
+							</li>
 
-				<li>
-					<a href="/contact">Contact</a>
-				</li>
+							<li>
+								<a href="{{route('ecommerce.showContact',['idmag'=>$id_mag])}}">Contact</a>
+							</li>
 			</ul>
 		</div>
 
@@ -286,7 +278,7 @@
 					
 				</ul>
 					<div class="header-cart-buttons flex-w w-full">
-						<a href="{{route('cart.index',['id' => $id_mag])}}" class="flex-c-m stext-101 cl0 size-1002 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+						<a href="{{route('cart.index',['id' => $id_mag,'tarif' => 0])}}" class="flex-c-m stext-101 cl0 size-1002 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
 							Finaliser la commande
 						</a>
 					</div>
@@ -316,25 +308,18 @@
 			</div>
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+				<a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}"class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
 						Tous les Produits
-					</button>
+					</a>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
+					<a  href="/ecommerce/magasin/{{$id_mag}}/Femme" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
 						Femme
-					</button>
+					</a>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
+					<a href="/ecommerce/magasin/{{$id_mag}}/Homme" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
 						Homme
-					</button>
+					</a>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						Accessories
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-						Autres produits
-					</button>
 				</div>
 
 				<div class="flex-w flex-c-m m-tb-10">
@@ -353,7 +338,7 @@
 				
 				<!-- Search product -->
 				<div class="dis-none panel-search w-full p-t-10 p-b-15">
-				<form method="POST" action="{{route('produit.search',["id"=>$id_mag])}}">
+				<form method="POST" action="{{route('produit.searchArrival',['id'=>$id_mag])}}">
 					@csrf
 					<div class="bor8 dis-flex p-l-15">
 					

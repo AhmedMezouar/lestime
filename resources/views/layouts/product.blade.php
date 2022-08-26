@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>L'ESTIME :: Produit</title>
+	<title>L'ESTIME :: Acceuil</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-<link rel="icon" type="image/png" href="{{asset('images/icons/favicon.png')}}"/>
+	<link rel="icon" type="image/png" href="{{asset('images/icons/favicon.png')}}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" />
 <!--===============================================================================================-->
@@ -36,10 +36,9 @@
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
-	
 	<!-- Header -->
-	<header class="header-v4">
-		<!-- Header desktop -->
+	<header>
+		<!-- Header desktop   -->
 		<div class="container-menu-desktop">
 			<!-- Topbar -->
 			<div class="top-bar">
@@ -53,7 +52,7 @@
 							Help & FAQs
 						</a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<a href="/login" class="flex-c-m trans-04 p-lr-25">
 							My Account
 						</a>
 
@@ -68,61 +67,56 @@
 				</div>
 			</div>
 
-			<div class="wrap-menu-desktop how-shadow1">
+			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop container">
 					
-					<!-- Logo desktop -->		
-					<a href="/ecommerce" class="logo">
-						<img src="images/icons/logoBlackHor.png" alt="IMG-LOGO">
+					<!-- Logo desktop -->
+					<a href="/" class="logo">
+						<img src="{{asset('images/icons/logoBlackHor.png')}}" alt="IMG-LOGO">
 					</a>
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li>
-								<a href="/ecommerce">Acceuil</a>
+							<li class="active-menu">
+								<a href="/">Acceuil</a>
 							</li>
 
-							<li class="active-menu">
-								<a href="/product">Produits</a>
+							<li>
+							<a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Produits</a>
 								<ul class="sub-menu">
-									<li><a href="/product">Parfum Homme</a></li>
-									<li><a href="/product">Parfum Femme</a></li>
-									<li><a href="/product">Accessories</a></li>
-									<li><a href="/product">Autres Produits</a></li>
+									<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Parfum Homme</a></li>
+									<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Parfum Femme</a></li>
+									<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Accessories</a></li>
+									<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Autres Produits</a></li>
 								</ul>
 							</li>
 
 							<li class="label1" data-label1="NEW">
-								<a href="/shoping-cart">Nouvelle Arrivage</a>
+								<a href="{{route('ecommerce.newArriv.show',['idmagnewA' => $id_mag])}}">Nouvelle Arrivage</a>
 							</li>
 
 							<li>
-								<a href="/actualite-blog">Actualité</a>
+								<a href="{{route('ecommerce.showBlog',['idmag'=>$id_mag])}}">Actualité</a>
 							</li>
 
 							<li>
-								<a href="/about">About</a>
+							<a href="{{route('ecommerce.showAbout',['idmag'=>$id_mag])}}">About</a>
 							</li>
 
 							<li>
-								<a href="/contact">Contact</a>
+								<a href="{{route('ecommerce.showContact',['idmag'=>$id_mag])}}">Contact</a>
 							</li>
 						</ul>
 					</div>	
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-search"></i>
-						</div>
-
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+						
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{sizeof(Cart::content())}}">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
-						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-							<i class="zmdi zmdi-favorite-outline"></i>
-						</a>
+						
 					</div>
 				</nav>
 			</div>	
@@ -132,7 +126,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="/ecommerce"><img src="images/icons/logoBlackHor.png" alt="IMG-LOGO"></a>
+				<a href="/"><img src="{{asset('images/icons/logoBlackHor.png')}}" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -141,13 +135,11 @@
 					<i class="zmdi zmdi-search"></i>
 				</div>
 
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
-					<i class="zmdi zmdi-shopping-cart"></i>
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{sizeof(Cart::content())}}">
+							<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
-					<i class="zmdi zmdi-favorite-outline"></i>
-				</a>
+				
 			</div>
 
 			<!-- Button show menu -->
@@ -191,54 +183,41 @@
 
 			<ul class="main-menu-m">
 				<li>
-					<a href="/ecommerce">Acceuil</a>
-				</li>
+					<a href="/">Acceuil</a>
+				</li class="active-menu">
 				<li>
-					<a href="/product">Produits</a>
+					<a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Produits</a>
 					<ul class="sub-menu-m">
-						<li><a href="/product">Parfum Homme</a></li>
-						<li><a href="/product">Parfum Femme</a></li>
-						<li><a href="/product">Accessories</a></li>
-						<li><a href="/product">Autres Produits</a></li>
+						<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Parfum Homme</a></li>
+						<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Parfum Femme</a></li>
+						<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Accessories</a></li>
+						<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Autres Produits</a></li>
 					</ul>
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
 					</span>
 				</li>
 
-				<li>
-					<a href="/nouvelle-arrivage" class="label1 rs1" data-label1="NEW">Nouvelle Arrivage</a>
-				</li>
+				            <li class="label1" data-label1="NEW">
+								<a href="{{route('ecommerce.newArriv.show',['idmagnewA' => $id_mag])}}">Nouvelle Arrivage</a>
+							</li>
 
-				<li>
-					<a href="/actualite-blog">Actualité</a>
-				</li>
+							<li>
+								<a href="{{route('ecommerce.showBlog',['idmag'=>$id_mag])}}">Actualité</a>
+							</li>
 
-				<li>
-					<a href="/about">About</a>
-				</li>
+							<li>
+							<a href="{{route('ecommerce.showAbout',['idmag'=>$id_mag])}}">About</a>
+							</li>
 
-				<li>
-					<a href="/contact">Contact</a>
-				</li>
+							<li>
+								<a href="{{route('ecommerce.showContact',['idmag'=>$id_mag])}}">Contact</a>
+							</li>
 			</ul>
 		</div>
 
 		<!-- Modal Search -->
-		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-			<div class="container-search-header">
-				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-					<img src="images/icons/icon-close2.png" alt="CLOSE">
-				</button>
-
-				<form class="wrap-search-header flex-w p-l-15">
-					<button class="flex-c-m trans-04">
-						<i class="zmdi zmdi-search"></i>
-					</button>
-					<input class="plh3" type="text" name="search" placeholder="Search...">
-				</form>
-			</div>
-		</div>
+		
 	</header>
 
 	<!-- Cart -->
@@ -258,62 +237,36 @@
 			
 			<div class="header-cart-content flex-w js-pscroll">
 				<ul class="header-cart-wrapitem w-full">
+				@if (Cart::count() > 0)
+				@foreach (Cart::content() as $item)
+					@if ($item->options->id_magasin == $id_mag)
 					<li class="header-cart-item flex-w flex-t m-b-12">
+					
 						<div class="header-cart-item-img">
-							<img src="images/item-cart-01.jpg" alt="IMG">
+							
+						<img src="{{ asset('images/').'/'.$item->options->filepath}}" alt="IMG">
 						</div>
-
+						
 						<div class="header-cart-item-txt p-t-8">
 							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								White Shirt Pleat
+								{{$item->name}}
 							</a>
 
 							<span class="header-cart-item-info">
-								1 x 1900.00 DA
+							{{$item->qty}} x {{$item->price}} 
 							</span>
 						</div>
+						
 					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-02.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Converse All Star
-							</a>
-
-							<span class="header-cart-item-info">
-								2 x 3000.00 DA
- 							</span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-03.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Nixon Porter Leather
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x 1700.00 DA
-							</span>
-						</div>
-					</li>
+					@endif
+					@endforeach
+						@else 
+						     <p class="stext-107 cl7 size-201">panie est vide</p>
+						@endif	
+					
 				</ul>
-				
-				<div class="w-full">
-					<div class="header-cart-total w-full p-tb-40">
-						Total: 9600.00 DA
-					</div>
-
 					<div class="header-cart-buttons flex-w w-full">
-						<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1002 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+						<a href="{{route('cart.index',['id' => $id_mag,'tarif' => 0])}}" class="flex-c-m stext-101 cl0 size-1002 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
 							Finaliser la commande
 						</a>
 					</div>
@@ -322,36 +275,39 @@
 		</div>
 	</div>
 
-		
-
 	
-	<!-- Product -->
-	<div class="bg0 m-t-23 p-b-140">
-		<div class="container">
-			<div class="flex-w flex-sb-m p-b-52">
-				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-						All Products
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						Parfum Homme
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-						Parfum Femme
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						Accessories
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".other">
-						Autres Produits
-					</button>
-
+	<!-- Slider -->
+	<section class="section-slide">
+		<div class="wrap-slick1">
+			<div class="slick1">
+				<div class="flex-w flex-sb-m p-b-52" >
+					
 				</div>
 
+				
+			</div>
+		</div>
+	</section>
+	
+	<!-- Product -->
+	<section class="bg0 p-t-23 p-b-140">
+		<div class="container">
+		
+			<div class="flex-w flex-sb-m p-b-52">
+				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+					<a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}"class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+						Tous les Produits
+					</a>
+
+					<a  href="/ecommerce/magasin/{{$id_mag}}/Femme" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
+						Femme
+					</a>
+
+					<a href="/ecommerce/magasin/{{$id_mag}}/Homme" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
+						Homme
+					</a>
+
+				</div>
 				<div class="flex-w flex-c-m m-tb-10">
 					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
 						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
@@ -368,13 +324,19 @@
 				
 				<!-- Search product -->
 				<div class="dis-none panel-search w-full p-t-10 p-b-15">
+				<form method="POST" action="{{route('produit.search',['id'=>$id_mag])}}">
+					@csrf
 					<div class="bor8 dis-flex p-l-15">
-						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
+					
+					<input type="hidden" name="idMag" value="{{$id_mag}}" >
+						<button type="submit" class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
 							<i class="zmdi zmdi-search"></i>
-						</button>
-
-						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
+					    </button>
+					    <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search" placeholder="Search">
+				   
+						
 					</div>	
+					</form>
 				</div>
 
 				<!-- Filter -->
@@ -385,43 +347,43 @@
 								Filtrage Par Marque
 							</div>
 							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+							<a href="/ecommerce/magasin/{{$id_mag}}" class="filter-link stext-106 trans-04 filter-link-active">
 									Tous les marques
 								</a>
 							</li>
 							<ul>
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="/ecommerce/magasin/{{$id_mag}}/Armani" class="filter-link stext-106 trans-04">
 										Armani
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+								<a href="/ecommerce/magasin/{{$id_mag}}/Aqua Di Geo" class="filter-link stext-106 trans-04">
 										Aqua Di Geo
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="/ecommerce/magasin/{{$id_mag}}/Chanel"  class="filter-link stext-106 trans-04">
 										Chanel
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="/ecommerce/magasin/{{$id_mag}}/Gucci" class="filter-link stext-106 trans-04">
 										Gucci
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="/ecommerce/magasin/{{$id_mag}}/Calvin Klein" class="filter-link stext-106 trans-04">
 										Calvin Klein
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="/ecommerce/magasin/{{$id_mag}}/Dolce & Gabbana" class="filter-link stext-106 trans-04">
 										Dolce & Gabbana
 									</a>
 								</li>
@@ -435,31 +397,31 @@
 
 							<ul>
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+								<a href="/ecommerce/magasin/{{$id_mag}}" class="filter-link stext-106 trans-04 filter-link-active">
 										Tous les Saisons
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="/ecommerce/magasin/{{$id_mag}}/été" class="filter-link stext-106 trans-04">
 										Summer ( été )
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="/ecommerce/magasin/{{$id_mag}}/automne " class="filter-link stext-106 trans-04">
 										Autumn ( l’automne )
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="/ecommerce/magasin/{{$id_mag}}/hiver" class="filter-link stext-106 trans-04">
 										Winter ( L’hiver )
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="/ecommerce/magasin/{{$id_mag}}/Spring" class="filter-link stext-106 trans-04">
 										Spring ( le printemps )
 									</a>
 								</li>
@@ -472,31 +434,31 @@
 
 							<ul>
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+									<a href="/ecommerce/magasin/{{$id_mag}}" class="filter-link stext-106 trans-04 filter-link-active">
 										Tous les Prix
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+								<a href="/ecommerce/magasin/{{$id_mag}}/500/2500" class="filter-link stext-106 trans-04">
 										500 DA - 2500 DA 
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+								<a href="/ecommerce/magasin/{{$id_mag}}/2500/5000" class="filter-link stext-106 trans-04">
 										2500 DA - 5000 DA
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+								     <a href="/ecommerce/magasin/{{$id_mag}}/5000/10000" class="filter-link stext-106 trans-04">
 										5000 DA - 10000 DA
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="/ecommerce/magasin/{{$id_mag}}/10000/20000" class="filter-link stext-106 trans-04">
 										10000 DA - 20000 DA
 									</a>
 								</li>
@@ -576,23 +538,23 @@
 							</div>
 
 							<div class="flex-w p-t-4 m-r--5">
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+								<a href="/ecommerce/magasin/{{$id_mag}}/Fashion" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
 									Fashion
 								</a>
 
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+								<a href="/ecommerce/magasin/{{$id_mag}}/Lifestyle" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
 									Lifestyle
 								</a>
 
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+								<a href="/ecommerce/magasin/{{$id_mag}}/Denim" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
 									Denim
 								</a>
 
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+								<a href="/ecommerce/magasin/{{$id_mag}}/Streetstyle" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
 									Streetstyle
 								</a>
 
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+								<a href="/ecommerce/magasin/{{$id_mag}}/Crafts" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
 									Crafts
 								</a>
 							</div>
@@ -600,538 +562,104 @@
 					</div>
 				</div>
 			</div>
-
 			<div class="row isotope-grid">
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+			@foreach($produits as $produit)
+				<div class="col-sm-6 col-md-4 col-lg-4 p-b-35 isotope-item women">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
-								Afficher le produit
-							</a>
+						<img src="{{ asset('images/').'/'.$produit ->ImageFileName1}}" alt="IMG-PRODUCT">
+						@if ($produit->promo_35 > 0)
+						<a href="#"
+									data-obj = "{{$produit}}" 
+									data-id="{{$produit->id}}" 
+									data-name="{{$produit->nameProd}}" 
+									data-description="{{$produit->Caractiristique}}" 
+									data-prix="{{$produit->prix_new_35}}" 
+									data-prixold="{{$produit->prix_old_35}}"
+									data-name="{{$produit->nameProd}}" 
+									data-promo="{{$produit->promo_35}}"
+									data-mainimage="{{ asset('images/').'/'.$produit ->ImageFileName1}}"
+									data-onlyimage="{{$produit ->ImageFileName1}}"
+									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+									Afficher le produit
+						</a>
+					    @else
+						<a href="#" 
+						data-obj = "{{$produit}}" 
+									data-id="{{$produit->id}}" 
+									data-name="{{$produit->nameProd}}" 
+									data-description="{{$produit->Caractiristique}}" 
+									data-prix="{{$produit->prix_new_35}}" 
+									data-prixold="{{$produit->prix_old_35}}"
+									data-name="{{$produit->nameProd}}" 
+									data-promo="{{$produit->promo_35}}"
+									data-mainimage="{{ asset('images/').'/'.$produit ->ImageFileName1}}"
+									data-onlyimage="{{$produit ->ImageFileName1}}"
+									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+									Afficher le produit
+						</a>
+						@endif
+							
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Esprit Ruffle Shirt
+								{{$produit ->nameProd}}
 								</a>
+								@if($produit ->promo_35 > 0)
 								<p class="pric">
 									<span class="stext-105 cl11 p-r-15-01 oldprice">
-										4200.00 DA 
+										{{$produit ->prix_old_35}} DA
 									</span>
 									<span class="stext-1055 cl3 p-r-15-01 newprice">
-										2900.00 DA
+									    {{$produit ->prix_new_35}} DA
 									</span>
 								</p>
+								@else
+								<p class="pric">
+									<span class="stext-1055 cl3 p-r-15-01 newprice">
+									    {{$produit ->prix_old_35}} DA
+									</span>
+								</p>
+								@endif
 							</div>
-
+							
 							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
+							<form method="POST" action="{{route('cart.store')}}"> 
+							@csrf
+										<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+											<img class="icon-heart1 dis-block trans-04"  src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
+											<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
+										</a>
 							</div>
-							<div class="header-cart-buttons flex-w w-full" >
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
+							<input type="hidden" name="filepath" value="{{$produit ->ImageFileName1}}">
+										<input type="hidden" name="id_magasin" value="{{$id_mag}}" >
+										<input type="hidden" name="qteproduct" value="1" >
+										<input type="hidden" name="product_id" value="{{$produit->id}}">
+										<input type="hidden" name="product_name" value="{{$produit->nameProd}}">
+										@if ($produit->promo_35 > 0)
+										<input type="hidden" name="product_price" value="{{$produit->prix_new_35}}">
+										@else
+										<input type="hidden" name="product_price" value="{{$produit->prix_old_35}}">
+										@endif
+						           	<div class="header-cart-buttons flex-w w-full" >
+								<button type="submit" name="action" value="achat" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
 									Achat Directement
-								</a>
-		
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
+								</button>
+							
+								        
+							        	<button type="submit"  name="action" value="ajout" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
 									Ajouter au panier
-								</a>
+								</button>
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
-								Afficher le produit
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Esprit Ruffle Shirt
-								</a>
-								<p class="pric">
-									<span class="stext-105 cl11 p-r-15-01 oldprice">
-										4200.00 DA 
-									</span>
-									<span class="stext-1055 cl3 p-r-15-01 newprice">
-										2900.00 DA
-									</span>
-								</p>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-							<div class="header-cart-buttons flex-w w-full" >
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
-									Achat Directement
-								</a>
-		
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
-									Ajouter au panier
-								</a>
-							</div>
-						</div>
-					</div>
+				@endforeach
 				</div>
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
-								Afficher le produit
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Esprit Ruffle Shirt
-								</a>
-								<p class="pric">
-									<span class="stext-105 cl11 p-r-15-01 oldprice">
-										4200.00 DA 
-									</span>
-									<span class="stext-1055 cl3 p-r-15-01 newprice">
-										2900.00 DA
-									</span>
-								</p>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-							<div class="header-cart-buttons flex-w w-full" >
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
-									Achat Directement
-								</a>
-		
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
-									Ajouter au panier
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
-								Afficher le produit
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Esprit Ruffle Shirt
-								</a>
-								<p class="pric">
-									<span class="stext-105 cl11 p-r-15-01 oldprice">
-										4200.00 DA 
-									</span>
-									<span class="stext-1055 cl3 p-r-15-01 newprice">
-										2900.00 DA
-									</span>
-								</p>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-							<div class="header-cart-buttons flex-w w-full" >
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
-									Achat Directement
-								</a>
-		
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
-									Ajouter au panier
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
-								Afficher le produit
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Esprit Ruffle Shirt
-								</a>
-								<p class="pric">
-									<span class="stext-105 cl11 p-r-15-01 oldprice">
-										4200.00 DA 
-									</span>
-									<span class="stext-1055 cl3 p-r-15-01 newprice">
-										2900.00 DA
-									</span>
-								</p>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-							<div class="header-cart-buttons flex-w w-full" >
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
-									Achat Directement
-								</a>
-		
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
-									Ajouter au panier
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
-								Afficher le produit
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Esprit Ruffle Shirt
-								</a>
-								<p class="pric">
-									<span class="stext-105 cl11 p-r-15-01 oldprice">
-										4200.00 DA 
-									</span>
-									<span class="stext-1055 cl3 p-r-15-01 newprice">
-										2900.00 DA
-									</span>
-								</p>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-							<div class="header-cart-buttons flex-w w-full" >
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
-									Achat Directement
-								</a>
-		
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
-									Ajouter au panier
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item other">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
-								Afficher le produit
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Esprit Ruffle Shirt
-								</a>
-								<p class="pric">
-									<span class="stext-105 cl11 p-r-15-01 oldprice">
-										4200.00 DA 
-									</span>
-									<span class="stext-1055 cl3 p-r-15-01 newprice">
-										2900.00 DA
-									</span>
-								</p>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-							<div class="header-cart-buttons flex-w w-full" >
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
-									Achat Directement
-								</a>
-		
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
-									Ajouter au panier
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
-								Afficher le produit
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Esprit Ruffle Shirt
-								</a>
-								<p class="pric">
-									<span class="stext-105 cl11 p-r-15-01 oldprice">
-										4200.00 DA 
-									</span>
-									<span class="stext-1055 cl3 p-r-15-01 newprice">
-										2900.00 DA
-									</span>
-								</p>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-							<div class="header-cart-buttons flex-w w-full" >
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
-									Achat Directement
-								</a>
-		
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
-									Ajouter au panier
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
-								Afficher le produit
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Esprit Ruffle Shirt
-								</a>
-								<p class="pric">
-									<span class="stext-105 cl11 p-r-15-01 oldprice">
-										4200.00 DA 
-									</span>
-									<span class="stext-1055 cl3 p-r-15-01 newprice">
-										2900.00 DA
-									</span>
-								</p>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-							<div class="header-cart-buttons flex-w w-full" >
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
-									Achat Directement
-								</a>
-		
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
-									Ajouter au panier
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
-								Afficher le produit
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Esprit Ruffle Shirt
-								</a>
-								<p class="pric">
-									<span class="stext-105 cl11 p-r-15-01 oldprice">
-										4200.00 DA 
-									</span>
-									<span class="stext-1055 cl3 p-r-15-01 newprice">
-										2900.00 DA
-									</span>
-								</p>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-							<div class="header-cart-buttons flex-w w-full" >
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
-									Achat Directement
-								</a>
-		
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
-									Ajouter au panier
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item other">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
-								Afficher le produit
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Esprit Ruffle Shirt
-								</a>
-								<p class="pric">
-									<span class="stext-105 cl11 p-r-15-01 oldprice">
-										4200.00 DA 
-									</span>
-									<span class="stext-1055 cl3 p-r-15-01 newprice">
-										2900.00 DA
-									</span>
-								</p>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-							<div class="header-cart-buttons flex-w w-full" >
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
-									Achat Directement
-								</a>
-		
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
-									Ajouter au panier
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-1006 bg0 bor2 hov-btn33 p-lr-15 trans-04 js-show-modal1">
-								Afficher le produit
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Esprit Ruffle Shirt
-								</a>
-								<p class="pric">
-									<span class="stext-105 cl11 p-r-15-01 oldprice">
-										4200.00 DA 
-									</span>
-									<span class="stext-1055 cl3 p-r-15-01 newprice">
-										2900.00 DA
-									</span>
-								</p>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-							<div class="header-cart-buttons flex-w w-full" >
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
-									Achat Directement
-								</a>
-		
-								<a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
-									Ajouter au panier
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
 			</div>
 
 			<!-- Load more -->
@@ -1297,14 +825,13 @@
 		</span>
 	</div>
 
-	<!-- Modal1 -->
 	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
 		<div class="overlay-modal1 js-hide-modal1"></div>
 
 		<div class="container">
 			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
 				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
-					<img src="images/icons/icon-close.png" alt="CLOSE">
+				<img src="{{asset('images/icons/icon-close.png')}}" alt="CLOSE">
 				</button>
 
 				<div class="row">
@@ -1313,152 +840,74 @@
 							<div class="wrap-slick3 flex-sb flex-w">
 								<div class="wrap-slick3-dots"></div>
 								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
-								<div class="slick3 gallery-lb">
-									<div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+								<div class="item-slick3">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
-
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
+										<img src="{{asset('images/product-detail-01.jpg')}}" alt="IMG-PRODUCT" id="imageprod">
 										</div>
 									</div>
-
-									<div class="item-slick3" data-thumb="images/product-detail-02.jpg">
-										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
-
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
-
-									<div class="item-slick3" data-thumb="images/product-detail-03.jpg">
-										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
-
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 						</div>
 					</div>
 					
 					<div class="col-md-6 col-lg-5 p-b-30">
 						<div class="p-r-50 p-t-5 p-lr-0-lg">
-							<h4 class="mtext-105 cl2 js-name-detail p-b-14">
-								Lightweight Bleu Star
+							<h4 id="nameofProduct" class="mtext-105 cl2 js-name-detail p-b-14" >
+								
 							</h4>
 							<p class="pric">
-								<span class="oldprice">
-									1500.00 DA
+								<span class="oldprice" id="oldprice">
+									
 								</span>
-								<span class="mtext-111 cl2 newprice">
-									1500.00 DA
+								<span class="mtext-111 cl2 newprice" id="newprice">
+									
 								</span>
 							</p>
-							<p class="stext-102 cl3 p-t-23">
+							<p id="descprod" class="stext-102 cl3 p-t-23" >
 								Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
 							</p>
-							<!-- <div class="col-md-12 col-lg-12 p-b-30 boxprice">
-								<div class="col-4 p-4">
-									<div class="contenance pointer colored-border" id="2012" price="1300">
-									  <h6>35 ML</h6>
-										<h5>1300 DA</h5>
-									</div>
-								</div>
-								<div class="col-4 p-4">
-									<div class="contenance colored-border select-active" id="2013" price="2450">
-									  <h6>50 ML</h6>
-										<h5>2450 DA</h5>
-									</div>
-								</div>
-								<div class="col-4 p-4">
-									<div class="contenance colored-border" id="2014" price="3700">
-									  <h6>100 ML</h6>
-										<h5>3700 DA</h5>
-									</div>
-								</div>
-							</div>-->
 							<div class="container01">
-								<label class="option_item">
-									<input type="checkbox" class="checkbox">
+							<div id="div35">
+								<label class="option_item" data-val="35">
+									<input type="radio" name="volume" id="35" class="checkbox" >
 									<div class="option_inner selected">
 									<div class="tickmark"></div>
-									<div class="icon"><img src="images/icons/iconlestime.png" width="30%" height="30%" ></div>
+									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
 									<div class="name">
 										<h6>35 ML</h6>
-										<h5>1200 DA</h5>
+										<h5 id="prix35">1750 DA</h5>
 									</div>
 									</div>
 								</label>
-								<label class="option_item">
-									<input type="checkbox" class="checkbox">
+								</div>
+								<div id="div50">
+								<label class="option_item" data-val="50">
+									<input type="radio" name="volume" id="50" class="checkbox" >
 									<div class="option_inner selected">
 									<div class="tickmark"></div>
-									<div class="icon"><img src="images/icons/iconlestime.png" width="30%" height="30%" ></div>
+									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
 									<div class="name">
 										<h6>50 ML</h6>
-										<h5>1750 DA</h5>
+										<h5 id="prix50">1750 DA</h5>
 									</div>
 									</div>
 								</label>
-								<label class="option_item">
-									<input type="checkbox" class="checkbox">
+								</div>
+								<div id="div100">
+								<label class="option_item" data-val="100">
+									<input type="radio" name="volume" id="100" class="checkbox" >
 									<div class="option_inner selected">
 									<div class="tickmark"></div>
-									<div class="icon"><img src="images/icons/iconlestime.png" width="30%" height="30%" ></div>
+									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
 									<div class="name">
 										<h6>100 ML</h6>
-										<h5>3700 DA</h5>
+										<h5 id="prix100">1750 DA</h5>
 									</div>
 									</div>
 								</label>
-							</div>
-							<!--  
-							<div class="p-t-33">
-								<div class="flex-w flex-r-m p-b-10">
-									<div class="size-203 flex-c-m respon6">
-										Size
-									</div>
-
-									<div class="size-204 respon6-next">
-										<div class="rs1-select2 bor8 bg0">
-											<select class="js-select2" name="time">
-												<option>Choose an option</option>
-												<option>Size 35 ML</option>
-												<option>Size 50 ML</option>
-												<option>Size 100 ML</option>
-											</select>
-											<div class="dropDownSelect2"></div>
-										</div>
-									</div>
-								</div>
-
-								<div class="flex-w flex-r-m p-b-10">
-									<div class="size-203 flex-c-m respon6">
-										Color
-									</div>
-
-									<div class="size-204 respon6-next">
-										<div class="rs1-select2 bor8 bg0">
-											<select class="js-select2" name="time">
-												<option>Choose an option</option>
-												<option>Red</option>
-												<option>Blue</option>
-												<option>White</option>
-												<option>Grey</option>
-											</select>
-											<div class="dropDownSelect2"></div>
-										</div>
-									</div>
-								</div>-->
-
+							</div></div>
+								<form method="POST" action="{{route('cart.storeQte')}}"> 
+								@csrf
 								<div class="flex-w flex-r-m p-b-10">
 									<div class="size-204 flex-w flex-m respon6-next">
 										<div class="wrap-num-product flex-w m-r-20 m-tb-10">
@@ -1466,21 +915,30 @@
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</div>
 
-											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
+											<input class="mtext-104 cl3 txt-center num-product" type="number" name="numproduct" value="1">
 
 											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</div>
 										</div>
-
-										<button class="flex-c-m stext-101 cl0 size-1002 bg3 bor22 hov-btn33 p-lr-15 trans-04 js-addcart-detail">
+										<input type="hidden" name="volume" value="" id="inputvolume">
+										<input type="hidden" name="obj" value="" id="inputprodobj">
+										<input type="hidden" name="filepath" value="" id="inputprodimage">
+										<input type="hidden" name="imagename" value="" id="imageNameInput">
+										<input type="hidden" name="id_magasin" value="{{$id_mag}}" >
+										<input type="hidden" name="product_id" value="0" id="inputprodid">
+										<input type="hidden" name="product_name" value="0" id="inputprodname">
+										<input type="hidden" name="product_price" value="0" id="inputprodprice">
+										<input type="hidden" name="product_price50" value="0" id="inputprodprice50">
+										<input type="hidden" name="product_price100" value="0" id="inputprodprice100">
+										<button type="submit" name="action" value="ajout" class="flex-c-m stext-101 cl0 size-1002 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 											Ajouter au panier
 										</button>
 										
-										<button class="flex-c-m stext-101 cl2 size-1002 bg-none bor2222 hov-btn33 p-lr-15 trans-04 js-addcart-detail">
+										<button type="submit" name="action" value="achat" class="flex-c-m stext-101 cl0 size-1002 bg3 bor1 hov-btn33 p-lr-15 trans-04 js-addcart-detail">
 											Acheter Directement
 										</button>
-										
+										</form>
 									</div>
 								</div>	
 							</div>
@@ -1511,7 +969,6 @@
 			</div>
 		</div>
 	</div>
-
 <!--===============================================================================================-->	
 	<script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
 <!--===============================================================================================-->

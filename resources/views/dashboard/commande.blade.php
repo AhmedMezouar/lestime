@@ -211,7 +211,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="commande-new.html" class="menu-link">
+                  <a href="{{route('dashboard.commande.filter',['etat' => 5])}}" class="menu-link">
                     <div data-i18n="Notifications">Panier abondonnées</div>
                   </a>
                 </li>
@@ -222,17 +222,17 @@
           <li class="menu-header small text-uppercase"><span class="menu-header-text">Client</span></li>
           <!-- Cards -->
           <li class="menu-item">
-            <a href="client.html" class="menu-link">
-              <i class="menu-icon tf-icons bx bxs-user-detail"></i>
-              <div data-i18n="Basic">Liste des clients</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="client-add.html" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-user-plus"></i>
-              <div data-i18n="Basic">Nouveau client</div>
-            </a>
-          </li>
+              <a href="{{route('dashboard.client.index')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-user-detail"></i>
+                <div data-i18n="Basic">Liste des clients</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="{{route('dashboard.client.addClient')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-plus"></i>
+                <div data-i18n="Basic">Nouveau client</div>
+              </a>
+            </li>
           <!-- Forms & Tables -->
           <li class="menu-header small text-uppercase"><span class="menu-header-text">Statistique</span></li>
           <!-- Forms -->
@@ -408,10 +408,13 @@
                         <td><span class="badge bg-label-warning me-1">Annuler</span></td>
                         @elseif ($cmd->EtatCommand == 4)
                         <td><span class="badge bg-label-info me-1">Confirmé</span></td>
+                        @elseif ($cmd->EtatCommand == 5)
+                        <td><span class="badge bg-label-warning me-1">Annuler en panie</span></td>
                         @endif
                         <td>{{$cmd->netapayer}}  DA</td>
                         
                         <td>
+                          
                           <div class="btn-group">
                             <button
                               type="button"
@@ -421,14 +424,50 @@
                             >
                               Action
                             </button>
+                           
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="javascript:void(0);">Valider la commande </a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Confirme en livraison</a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Annuler en livraison</a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Annuler le Panier</a></li>
+                              <li>
+                                 <form method="POST" action="{{route('dashboard.commande.changestate')}}">
+                                  @csrf
+                                 <input type="hidden" name="newetat" value="4"/>
+                                 <input type="hidden" name="cetat" value="{{$etat}}"/>
+                                 <input type="hidden" name="idcmd" value="{{$cmd->id}}"/>
+                                 <button type="submit" class="dropdown-item">Valider la commande </button>
+                                 </form>
+                              </li>
+                              <li>
+                                
+                              <form method="POST" action="{{route('dashboard.commande.changestate')}}">
+                              @csrf
+                                 <input type="hidden" name="newetat" value="2"/>
+                                 <input type="hidden" name="cetat" value="{{$etat}}"/>
+                                 <input type="hidden" name="idcmd" value="{{$cmd->id}}"/>
+                                 <button type="submit" class="dropdown-item">Confirme en livraison </button>
+                                 </form>
+                              
+                            </li>
+                              <li>
+                              <form method="POST" action="{{route('dashboard.commande.changestate')}}">
+                              @csrf
+                                 <input type="hidden" name="newetat" value="3"/>
+                                 <input type="hidden" name="cetat" value="{{$etat}}"/>
+                                 <input type="hidden" name="idcmd" value="{{$cmd->id}}"/>
+                                 <button type="submit" class="dropdown-item">Annuler en livraison </button>
+                                 </form>
+                              </li>
+                              <li>
+                              <form method="POST" action="{{route('dashboard.commande.changestate')}}">
+                              @csrf
+                                 <input type="hidden" name="newetat" value="5"/>
+                                 <input type="hidden" name="cetat" value="{{$etat}}"/>
+                                 <input type="hidden" name="idcmd" value="{{$cmd->id}}"/>
+                                 <button type="submit" class="dropdown-item">Annuler le Panier</button>
+                                 </form>
+                             </li>
                               
                             </ul>
                           </div>
+                          
                         </td>
                       </tr>
                       @endforeach

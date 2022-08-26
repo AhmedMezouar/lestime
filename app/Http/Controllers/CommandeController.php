@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Commande;
+use App\Models\TarfivLaiv;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class CommandeController extends Controller
         //
          $id = Auth::user()->id_magasin;
          $commannds = Commande::select('*')->whereRaw('id_magasin = ?',[$id])->get();
-         return view('dashboard.commande',['cmds' => $commannds]);
+         return view('dashboard.commande',['cmds' => $commannds,'etat' => 0]);
     }
 
     public function filter($etat)
@@ -31,18 +32,42 @@ class CommandeController extends Controller
          $id = Auth::user()->id_magasin;
          $commannds = Commande::select('*')->whereRaw('id_magasin = ? and EtatCommand = ?',[$id,$etat])->get();
          if ($etat == 0) //nev
-              return view('dashboard.commande-new',['cmds' => $commannds]);
+              return view('dashboard.commande-new',['cmds' => $commannds,'etat' => $etat]);
          else if ($etat == 1) //nev
-         return view('dashboard.commande-attend',['cmds' => $commannds]);
+         return view('dashboard.commande-attend',['cmds' => $commannds,'etat' => $etat]);
          else if ($etat == 2) //nev
-         return view('dashboard.commande-livre',['cmds' => $commannds]);
+         return view('dashboard.commande-livre',['cmds' => $commannds,'etat' => $etat]);
          else if ($etat == 3) //nev
-         return view('dashboard.commande-annuler',['cmds' => $commannds]);
+         return view('dashboard.commande-annuler',['cmds' => $commannds,'etat' => $etat]);
          else if ($etat == 4) //nev
-         return view('dashboard.commande-confirme',['cmds' => $commannds]);
-         else return view('dashboard.commande',['cmds' => $commannds]);
+         return view('dashboard.commande-confirme',['cmds' => $commannds,'etat' => $etat]);
+         else if ($etat == 5) //nev
+         return view('dashboard.commande-panier-abb',['cmds' => $commannds,'etat' => $etat]);
+         else return view('dashboard.commande',['cmds' => $commannds,'etat' => $etat]);
     }
 
+    public function getTarif(Request $req) {
+        $up = TarfivLaiv::select('*')
+        ->whereRaw('id = ?',[$req->id])
+        ->first();
+
+        if ($req->type == 1) //desk 
+        {
+            return redirect()->route('cart.index',['id'=>$req->idMag,'tarif' => $up->prix_desk]);
+        }else{
+            return redirect()->route('cart.index',['id'=>$req->idMag,'tarif' => $up->prix_domicille]);
+        }
+
+    }
+    public function changeState(Request $req) {
+        
+        $id = Auth::user()->id_magasin;
+        $up = DB::update('update commandes set EtatCommand = ? where (id_magasin=? and id=?)',[$req->newetat,$id,$req->idcmd]);
+        if ($req->cetat == 0)
+        return redirect()->route('dashboard.commande.index');
+        else  if ($req->cetat > 0)
+        return redirect()->route('dashboard.commande.filter',['etat' => $req->cetat]);
+    }
 
     /**
      * Show the form for creating a new resource.

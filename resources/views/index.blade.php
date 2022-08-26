@@ -93,7 +93,7 @@
 							</li>
 
 							<li class="label1" data-label1="NEW">
-								<a href="{{route('cart.index',['id' => $id_mag])}}">Nouvelle Arrivage</a>
+								<a href="{{route('cart.index',['id' => $id_mag,'tarif' => 0])}}">Nouvelle Arrivage</a>
 							</li>
 
 							<li>
@@ -112,18 +112,13 @@
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-search"></i>
-						</div>
+						
 
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{sizeof(Cart::content())}}">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
-						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-							<i class="zmdi zmdi-favorite-outline"></i>
-						</a>
-					</div>
+						</div>
 				</nav>
 			</div>	
 		</div>
@@ -145,9 +140,7 @@
 							<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
-					<i class="zmdi zmdi-favorite-outline"></i>
-				</a>
+				
 			</div>
 
 			<!-- Button show menu -->
@@ -194,12 +187,12 @@
 					<a href="/ecommerce">Acceuil</a>
 				</li>
 				<li>
-					<a href="/product">Produits</a>
+					<a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Produits</a>
 					<ul class="sub-menu-m">
-						<li><a href="/product">Parfum Homme</a></li>
-						<li><a href="/product">Parfum Femme</a></li>
-						<li><a href="/product">Accessories</a></li>
-						<li><a href="/product">Autres Produits</a></li>
+						<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Parfum Homme</a></li>
+						<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Parfum Femme</a></li>
+						<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Accessories</a></li>
+						<li><a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Autres Produits</a></li>
 					</ul>
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -287,7 +280,7 @@
 					
 				</ul>
 					<div class="header-cart-buttons flex-w w-full">
-						<a href="{{route('cart.index',['id' => $id_mag])}}" class="flex-c-m stext-101 cl0 size-1002 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+						<a href="{{route('cart.index',['id' => $id_mag,'tarif' => 0])}}" class="flex-c-m stext-101 cl0 size-1002 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
 							Finaliser la commande
 						</a>
 					</div>
@@ -1038,25 +1031,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 										</div>
 									</div>
 
-									<div class="item-slick3" data-thumb="{{asset('images/product-detail-02.jpg')}}">
-										<div class="wrap-pic-w pos-relative">
-											<img src="{{asset('images/product-detail-02.jpg')}}" alt="IMG-PRODUCT" id="imageproddetail1">
-
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
-
-									<div class="item-slick3" data-thumb="{{asset('images/product-detail-03.jpg')}}">
-										<div class="wrap-pic-w pos-relative">
-											<img src="{{asset('images/product-detail-03.jpg')}}" alt="IMG-PRODUCT" id="imageproddetail2">
-
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 						</div>

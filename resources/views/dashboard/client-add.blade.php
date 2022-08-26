@@ -172,57 +172,57 @@
           </li>
 
           <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Commandes</span>
-          </li>
-          <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-              <i class="menu-icon tf-icons bx bx-dock-top"></i>
-              <div data-i18n="Account Settings">Commandes</div>
-            </a>
-            <ul class="menu-sub">
-              <li class="menu-item">
-                <a href="commande.html" class="menu-link">
-                  <div data-i18n="Account">Tous les commandes</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="commande-new.html" class="menu-link">
-                  <div data-i18n="Notifications">Nouvelle commande</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="commande-attend.html" class="menu-link">
-                  <div data-i18n="Connections">Commande en attend</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="commande-livre.html" class="menu-link">
-                  <div data-i18n="Notifications">Commande Livraison</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="commande-confirme.html" class="menu-link">
-                  <div data-i18n="Notifications">Commande Confirmé</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="commande-annuler.html" class="menu-link">
-                  <div data-i18n="Notifications">Commande Annuler</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="commande-panier-abb.html" class="menu-link">
-                  <div data-i18n="Notifications">Panier abondonnées</div>
-                </a>
-              </li>
-            </ul>
-          </li>
+              <span class="menu-header-text">Commandes</span>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div data-i18n="Account Settings">Commandes</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item active">
+                  <a href="{{route('dashboard.commande.index')}}" class="menu-link">
+                    <div data-i18n="Account">Tous les commandes</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('dashboard.commande.filter',['etat' => 0])}}" class="menu-link">
+                    <div data-i18n="Notifications">Nouvelle commande</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('dashboard.commande.filter',['etat' => 1])}}" class="menu-link">
+                    <div data-i18n="Connections">Commande en attend</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('dashboard.commande.filter',['etat' => 2])}}" class="menu-link">
+                    <div data-i18n="Notifications">Commande Livraison</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="commande-new.html" class="menu-link">
+                    <div data-i18n="Notifications">Commande Confirmé</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('dashboard.commande.filter',['etat' => 3])}}" class="menu-link">
+                    <div data-i18n="Notifications">Commande Annuler</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('dashboard.commande.filter',['etat' => 5])}}" class="menu-link">
+                    <div data-i18n="Notifications">Panier abondonnées</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
           
           <!-- Components -->
           <li class="menu-header small text-uppercase"><span class="menu-header-text">Client</span></li>
           <!-- Cards -->
           <li class="menu-item">
-          <a href="{{route('dashboard.client.index')}}" class="menu-link">
+              <a href="{{route('dashboard.client.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-detail"></i>
                 <div data-i18n="Basic">Liste des clients</div>
               </a>
@@ -232,7 +232,7 @@
                 <i class="menu-icon tf-icons bx bx-user-plus"></i>
                 <div data-i18n="Basic">Nouveau client</div>
               </a>
-          </li>
+            </li>
           <!-- Forms & Tables -->
           <li class="menu-header small text-uppercase"><span class="menu-header-text">Statistique</span></li>
           <!-- Forms -->

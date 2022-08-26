@@ -17,7 +17,7 @@ class CartController extends Controller
     {
         //
 
-        return view('layouts.shoping-cart',['id_mag' => $id]);
+        return view('layouts.shoping-cart',['id_mag' => $id,'tarif' => 0]);
     }
 
     /**
@@ -47,7 +47,7 @@ class CartController extends Controller
             }else{
                 Cart::add($request->product_id,$request->product_name."(35ML)",$request->qteproduct,$request->product_price,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'volume'=>"35"])->associate('App\Models\Produit');
                 session()->flash('suc','produit ajoutier');
-                return redirect()->route('cart.index',['id' => $request->id_magasin]);
+                return redirect()->route('cart.index',['id' => $request->id_magasin,'tarif' => 0]);
             }    
 
     }
@@ -70,7 +70,7 @@ class CartController extends Controller
         }else{
             Cart::add($request->product_id, $prodnam,$request->numproduct,$priceofprod,['filepath' => $request->imagename,'id_magasin'=>$request->id_magasin,'volume'=>$request->volume])->associate('App\Models\Produit');
             session()->flash('suc','produit ajoutier');
-            return redirect()->route('cart.index',['id' => $request->id_magasin]);
+            return redirect()->route('cart.index',['id' => $request->id_magasin,'tarif' => 0]);
         }
 
     }
@@ -111,13 +111,13 @@ class CartController extends Controller
             $product = Cart::get($rowId);
             if ( $product->qty+1 >0)
             Cart::update($rowId, $product->qty+1);
-             return redirect()->route('cart.index',['id' => $idmagsin]);
+             return redirect()->route('cart.index',['id' => $idmagsin,'tarif' => 0]);
      }
 
      public function Remove($idmagsin,$rowId)
      {
             Cart::remove($rowId);
-            return redirect()->route('cart.index',['id' => $idmagsin]);
+            return redirect()->route('cart.index',['id' => $idmagsin,'tarif' => 0]);
      }
 
 
@@ -127,7 +127,7 @@ class CartController extends Controller
             $product = Cart::get($rowId);
             if ($product->qty-1 > 0)
             Cart::update($rowId, $product->qty-1);
-        return redirect()->route('cart.index',['id' => $idmagsin]);
+        return redirect()->route('cart.index',['id' => $idmagsin,'tarif' => 0]);
      }
     public function update(Request $request)
     {

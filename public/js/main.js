@@ -328,9 +328,9 @@
        
         document.getElementById("inputprodobj").value = obj;
         document.getElementById('imageprod').src =image;
-        document.getElementById('imageproda').src =image;
-        document.getElementById('imageproddetail1').src =image;
-        document.getElementById('imageproddetail2').src =image;
+       // document.getElementById('imageproda').src =image;
+       // document.getElementById('imageproddetail1').src =image;
+        //document.getElementById('imageproddetail2').src =image;
         document.getElementById("inputprodid").value =myProdid;
         document.getElementById("inputprodname").value =myProdName;
         document.getElementById("inputprodimage").value =image;
