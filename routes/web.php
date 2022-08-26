@@ -28,6 +28,7 @@ Route::get('/', function () {
 
 Route::post('/store',[CartController::class,'store'])->name("cart.store");
 Route::post('/storeqte',[CartController::class,'storeQte'])->name("cart.storeQte");
+Route::get('/update/{idm}/{wil}/{type}',[CartController::class,'getTarif'])->name("cart.updatetarif");
 Route::get('/inc/{idm}/{rowId}',[CartController::class,'increaseQte'])->name("cart.inc");
 Route::get('/dec/{idm}/{rowId}',[CartController::class,'DecreaseQte'])->name("cart.dec");
 Route::get('/sup/{idm}/{rowId}',[CartController::class,'Remove'])->name("cart.sup");

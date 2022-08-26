@@ -182,7 +182,7 @@
 
 			<ul class="main-menu-m">
 				<li class="active-menu">
-					<a href="/ecommerce">Acceuil</a>
+					<a href="/">Acceuil</a>
 				</li>
 				<li>
 					<a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Produits</a>

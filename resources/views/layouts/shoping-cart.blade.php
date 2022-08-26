@@ -459,7 +459,8 @@
 									</span>
 
 									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-										<select class="js-select2" name="wilaya">
+										<select id="wilayaid" class="js-select2" name="wilaya" onchange="javascript:handleSelectWil(this)">
+										   
 											<option value="1">Adrar</option>
 											<option value="8">Bechar</option>
 										</select>
@@ -474,20 +475,20 @@
 										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="adresse" placeholder="Adresse de livraison">
 									</div>
 									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-										<select class="js-select2" name="livraison">
+										<select id="livraisonid" class="js-select2" name="livraison" onchange="javascript:handleSelectType(this)">
 											<option value="0">Livraison a Domicile</option>
 											<option value="1">Livraison Stop Desk</option>
 										</select>
 										<div class="dropDownSelect2"></div>
 									</div>
 									<div class="flex-w">
-										<a href="" class="flex-c-m stext-107 cl2 size-1007 bg1 bor13 hov-btn3 p-lr-15 trans-04 pointer">
+										<button type="button" onclick="myFunction()" class="flex-c-m stext-107 cl2 size-1007 bg1 bor13 hov-btn3 p-lr-15 trans-04 pointer">
 											Afficher le prix de livraison
-										</a>
+										</button>
 									</div>
 									<div class="size-209"  style="margin: 10px 0px 0px 10px; ">
 										<span class="stext-110 cl2">
-											0.00 DA
+											{{$tarif}} DA
 										</span>
 									</div>
 										
@@ -534,9 +535,9 @@
 						</div>
 						
 						@endif
-						<input type="hidden" name="idMag" value="{{$id_mag}}" >
+						<input type="hidden" name="idMag" value="{{$id_mag}}" id="inputidmag">
 						<input type="hidden" name="idprod" value="{{$id_mag}}" >
-						<input type="hidden" name="tarifLaiv" value="1500" >
+						<input type="hidden" name="tarifLaiv" value="{{$tarif}}" >
 						<button type="submit" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
 							Passer la Commande
 						</button>
@@ -1014,6 +1015,32 @@
 				ps.update();
 			})
 		});
+		function handleSelectWil(elm)
+ 		 {
+
+			 var e = document.getElementById("livraison");
+			 var id = document.getElementById("inputidmag").value
+   			 console.log("is work "+elm.value);
+
+		   // window.location = "/update/"+id+"/"+elm.value+"/"+e;
+			 
+ 		 }
+		  function handleSelectType(elm)
+ 		 {
+			 var e = document.getElementById("wilaya");
+			 var id = document.getElementById("inputidmag").value
+		//	 window.location = "/update/"+id+"/"+elm.value+"/"+elm.value;
+ 		 }
+		  function myFunction() {
+			
+			 var ew = document.getElementById("wilayaid");
+			 var valueW = ew.options[ew.selectedIndex].value;
+			 var et = document.getElementById("livraisonid");
+			 var valuet = et.options[et.selectedIndex].value;
+			 var id = document.getElementById("inputidmag").value
+	    	 window.location = "/update/"+id+"/"+valueW+"/"+valuet;
+
+		 }
 	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('js/main.js')}}"></script>

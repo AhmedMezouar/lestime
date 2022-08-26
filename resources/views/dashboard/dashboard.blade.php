@@ -163,7 +163,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}" class="menu-link">
+                  <a href="" class="menu-link">
                     <div data-i18n="Without navbar">Tous les produits</div>
                   </a>
                 </li>

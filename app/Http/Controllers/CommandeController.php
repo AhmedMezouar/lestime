@@ -46,19 +46,6 @@ class CommandeController extends Controller
          else return view('dashboard.commande',['cmds' => $commannds,'etat' => $etat]);
     }
 
-    public function getTarif(Request $req) {
-        $up = TarfivLaiv::select('*')
-        ->whereRaw('id = ?',[$req->id])
-        ->first();
-
-        if ($req->type == 1) //desk 
-        {
-            return redirect()->route('cart.index',['id'=>$req->idMag,'tarif' => $up->prix_desk]);
-        }else{
-            return redirect()->route('cart.index',['id'=>$req->idMag,'tarif' => $up->prix_domicille]);
-        }
-
-    }
     public function changeState(Request $req) {
         
         $id = Auth::user()->id_magasin;

@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-        <a href="/ecommerce" class="logo">
+        <a href="/" class="logo">
 						<img src="images/icons/logoBlack.png" alt="IMG-LOGO">
 					</a>
         </x-slot>

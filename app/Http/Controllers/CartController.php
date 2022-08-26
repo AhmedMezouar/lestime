@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TarfivLaiv;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -16,10 +17,12 @@ class CartController extends Controller
     public function index($id)
     {
         //
-
         return view('layouts.shoping-cart',['id_mag' => $id,'tarif' => 0]);
+    
     }
 
+   
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -104,6 +107,22 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+ 
+    public function getTarif($idmagsin,$wil,$type) {
+        $up = TarfivLaiv::select('*')
+        ->whereRaw('id = ?',[$wil])
+        ->first();
+ 
+        if (is_null($up)) {return view('layouts.shoping-cart',['id_mag' => $idmagsin,'tarif' =>0]);}
+        else if ($type == "1") //desk 
+        {
+            return view('layouts.shoping-cart',['id_mag' => $idmagsin,'tarif' => $up->prix_desk]);
+                  }else{
+            return view('layouts.shoping-cart',['id_mag' => $idmagsin,'tarif' => $up->prix_domicille]);
+           
+        }
+
+    }
 
      public function increaseQte($idmagsin,$rowId)
      {
