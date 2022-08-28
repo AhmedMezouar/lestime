@@ -16,17 +16,13 @@ class CreateProduitsTable extends Migration
         Schema::create('produits', function (Blueprint $table) {
             $table->id();
             $table->string('nameProd');
-            $table->string('Mark');
+            $table->string('mark_prod');
             $table->string('id_magasin');
             $table->integer('Volum35');
             $table->integer('Volum50');
             $table->integer('Volum100');
             $table->string('Sex');
             $table->string('ImageFileName1');
-            $table->string('ImageFileName2');
-            $table->string('ImageFileName3');
-            $table->string('ImageFileName4');
-            $table->string('ImageFileName5');
             //35
             $table->integer('Qte_stock_35');
             $table->integer('Qte_vt_35');
