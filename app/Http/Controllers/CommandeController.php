@@ -66,7 +66,7 @@ class CommandeController extends Controller
         
         $id = Auth::user()->id_magasin;
         $up = DB::update('update commandes set EtatCommand = ? where (id_magasin=? and id=?)',[$req->newetat,$id,$req->idcmd]);
-        if ($req->newetat == 4) {
+        if ($req->newetat == 5) {
             //la commande est valider
             $ligns = LignCommande::select('*')
                         ->whereRaw('id_cmd = ?',[$req->idcmd])
