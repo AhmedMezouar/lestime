@@ -16,8 +16,9 @@ class Search extends Controller
         $produits = Produit::select('*')
         ->whereRaw('(id_magasin = ? and (mark_prod like ? or nameProd like ? or Descirption like ?))',[$req->idMag,'%'.$key.'%','%'.$key.'%','%'.$key.'%'])
         ->get();
-
+        if ($produits != null && $produits->count() > 0)
         return view('layouts.product',['produits'=> $produits,'id_mag' => $req->idMag]);
+        else return redirect()->route('ecommerce.produit.show',['id' => $id_mag]);
     }
 
     function produit_search2(Request $req)

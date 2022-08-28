@@ -171,16 +171,19 @@ class CommandeController extends Controller
 
     public function store(Request $req)
     {
-       
+        //dd($req);
+        try {
         $req->validate([
             'nomClient' =>'required',
             'email' => 'required|email:rfc,dns',
             'numberTele' =>'required|min:10|max:15',
-            'wilaya'=>'required|digits_between:1,58',
             'adresse' => 'required|min:8',
             'state' => 'required|min:5',
-            'livraison' => 'required|digits_between:0,1',
         ]);
+             } catch (\Exception $e) { // For PHP 5
+        // handle $e
+                  return redirect()->route('cart.index',['id'=>$req->idmag])->withErrors(['Vérifier que vous remplir tous les champs']);
+              }
         //
         $clientName = $req->nomClient;
         $clientTelephone= $req->numberTele;

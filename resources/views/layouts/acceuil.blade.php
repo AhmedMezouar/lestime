@@ -455,6 +455,7 @@
 									data-name="{{$produit->nameProd}}" 
 									data-description="{{$produit->Caractiristique}}" 
 									data-prix="{{$produit->prix_new_35}}" 
+						
 									data-prixold="{{$produit->prix_old_35}}"
 									data-name="{{$produit->nameProd}}" 
 									data-promo="{{$produit->promo_35}}"
@@ -471,6 +472,7 @@
 									data-description="{{$produit->Caractiristique}}" 
 									data-prix="{{$produit->prix_new_35}}" 
 									data-prixold="{{$produit->prix_old_35}}"
+									
 									data-name="{{$produit->nameProd}}" 
 									data-promo="{{$produit->promo_35}}"
 									data-mainimage="{{asset("/storage/$produit->ImageFileName1")}}"

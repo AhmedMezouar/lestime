@@ -223,14 +223,33 @@
     /*==================================================================
     [ +/- num product ]*/
     $('.btn-num-product-down').on('click', function(){
+        var size = document.querySelector('input[name="volume"]:checked').value;
+        console.log('size ' ,size);
         var numProduct = Number($(this).next().val());
-        if(numProduct > 0) $(this).next().val(numProduct - 1);
+        if(numProduct > 1) $(this).next().val(numProduct - 1);
         //document.getElementById('qteinput').value =  Number($(this).next().val());
     });
 
     $('.btn-num-product-up').on('click', function(){
-        var numProduct = Number($(this).prev().val());
-        if(numProduct > 0) $(this).prev().val(numProduct + 1);
+        var size = document.querySelector('input[name="volume"]:checked').value;
+        console.log(parseInt(size));
+        if (size == 35) {
+            var qte35 = document.getElementById("inputqte_35").value;
+            var numProduct = document.getElementById("qtecart").value;
+            console.log(parseInt(numProduct));
+            if(parseInt(numProduct) > 0 && parseInt(numProduct) < parseInt(qte35)) $(this).prev().val(parseInt(numProduct) + 1);
+        }else if (size == 50) {
+            var qte50 = document.getElementById("inputqte_50").value;
+            console.log(parseInt(qte50));
+            var numProduct = document.getElementById("qtecart").value;
+            if(parseInt(numProduct) > 0 && parseInt(numProduct) <  parseInt(qte50)) $(this).prev().val(parseInt(numProduct) + 1);
+        }else if (size == 100) {
+            var qte100 = document.getElementById("inputqte_100").value;
+          var numProduct = document.getElementById("qtecart").value;
+            if(parseInt(numProduct) > 0 && parseInt(numProduct) <  parseInt(qte100)) $(this).prev().val(parseInt(numProduct) + 1);
+        }
+       // var numProduct = Number($(this).prev().val());
+       // if(numProduct > 0) $(this).prev().val(numProduct + 1);
         //document.getElementById('qteinput').value =  Number($(this).prev().val());
     });
 
@@ -287,7 +306,8 @@
         var myProdprice =  $(this).data('prix');
         var myProddesc =  $(this).data('description');
         var promo =  $(this).data('promo');
-        var image =  $(this).data('mainimage');   
+        var image =  $(this).data('mainimage'); 
+        console.log('image : ',image);  
         var imageName = $(this).data('onlyimage');   
         console.log(image);  
         $("#nameofProduct").html(myProdName);
@@ -297,7 +317,7 @@
         $("#oldprice").html(myProdpriceold + " DA");
         $("#newprice").html(myProdprice + " DA");
         $("#prix35").html(obj.prix_new_35 + " DA");
-        $("#Qte35").html(obj.Qte_stock_35+ "Qte");
+        document.getElementById("inputqte_35").value = obj.Qte_stock_35;
         }else{
             $("#newprice").html(myProdprice + " DA");
         }
@@ -305,7 +325,7 @@
         if ( obj.promo_50 > 0) {
           $("#prix50").html(obj.prix_new_50 + " DA");
           document.getElementById("inputprodprice50").value =obj.prix_new_50;
-          $("#Qte50").html(obj.Qte_stock_50+ " Qte");
+          document.getElementById("inputqte_50").value = obj.Qte_stock_50;
         }else{
             $("#prix50").html(obj.prix_old_50 + " DA");  
             document.getElementById("inputprodprice50").value =obj.prix_old_50;
@@ -318,7 +338,7 @@
         if (obj.promo_100 > 0) {
             $("#prix100").html(obj.prix_new_100 + " DA");
             document.getElementById("inputprodprice100").value =obj.prix_new_100;
-            $("#Qte100").html(obj.Qte_stock_100+ " Qte");
+            document.getElementById("inputqte_100").value = obj.Qte_stock_100;
           }else{
               $("#prix100").html(obj.prix_old_100 + " DA");  
               document.getElementById("inputprodprice100").value =obj.prix_old_100;

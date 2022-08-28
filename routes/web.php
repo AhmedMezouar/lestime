@@ -31,10 +31,12 @@ Route::get('/', function () {
 
 Route::post('/store',[CartController::class,'store'])->name("cart.store");
 Route::post('/storeqte',[CartController::class,'storeQte'])->name("cart.storeQte");
-Route::get('/update/{idm}/{wil}/{type}',[CartController::class,'getTarif'])->name("cart.updatetarif");
+
+
 Route::get('/inc/{idm}/{rowId}',[CartController::class,'increaseQte'])->name("cart.inc");
 Route::get('/dec/{idm}/{rowId}',[CartController::class,'DecreaseQte'])->name("cart.dec");
 Route::get('/sup/{idm}/{rowId}',[CartController::class,'Remove'])->name("cart.sup");
+
 Route::post('/ecommerce/magasin/{idmag}',[CartController::class,'update'])->name("cart.update");
 
 Route::get('/ecommerce/magasin/{id}/product',[EcommerceController::class,'showAllProduit'])->name("ecommerce.produit.show");
@@ -45,11 +47,14 @@ Route::get('/ecommerce/magasin/{id}/product/{idProd}',[EcommerceController::clas
 
 Route::get('/ecommerce/magasin/{idmag}/produit-detail',[EcommerceController::class,'showDetails'])->name("ecommerce.produitdetails.show");
 Route::get('/ecommerce/magasin/{idmagnewA}/new-arrival',[EcommerceController::class,'showNewAr'])->name("ecommerce.newArriv.show");
-Route::post('/ecommerce/magasin/search/{id}',[Search::class,'produit_search'])->name("produit.search");
+Route::post('/ecommerce/magasin/search/{id}',[Search::class,'produitshoping-cart_search'])->name("produit.search");
 Route::post('/ecommerce/magasin/searchArr/{id}',[Search::class,'produit_search2'])->name("produit.searchArrival");
 
+
+Route::post('/ecommerce/magasin/{id}/shoping-cart-store',[CommandeController::class,'store'])->name("cmd.store");
+Route::post('/ecommerce/magasin/{id}/shoping-cart-view',[CartController::class,'getTarif'])->name("cart.updatetarif");
 Route::get('/ecommerce/magasin/{id}/shoping-cart',[CartController::class,'index'])->name("cart.index");
-Route::post('/ecommerce/magasin/{id}/shoping-cart',[CommandeController::class,'store'])->name("cmd.store");
+
 Route::get('/ecommerce/magasin/{id}/{filtermode}',[Search::class,'produit_filter'])->name("produit.filter");
 Route::get('/ecommerce/magasin/{id}/{min}/{max}',[Search::class,'produit_prix'])->name("produit.filterprix");
 Route::get('/ecommerce/magasin/{id}',[EcommerceController::class,'show'])->name("ecommerce.show");

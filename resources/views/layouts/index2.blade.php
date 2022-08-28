@@ -111,12 +111,13 @@
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
-						
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+							<i class="zmdi zmdi-search"></i>
+						</div>
+
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{sizeof(Cart::content())}}">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
-
-						
 					</div>
 				</nav>
 			</div>	
@@ -139,9 +140,6 @@
 							<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
-					<i class="zmdi zmdi-favorite-outline"></i>
-				</a>
 			</div>
 
 			<!-- Button show menu -->
@@ -219,7 +217,22 @@
 		</div>
 
 		<!-- Modal Search -->
-		
+		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+			<div class="container-search-header">
+				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+					<img src="{{asset('images/icons/icon-close2.png')}}" alt="CLOSE">
+				</button>
+
+				<form method="POST" action="{{route('produit.search',['id'=>$id_mag])}}" class="wrap-search-header flex-w p-l-15">
+					@csrf
+					<input type="hidden" name="idMag" value="{{$id_mag}}" >
+					<button type="submit" class="flex-c-m trans-04">
+						<i class="zmdi zmdi-search"></i>
+					</button>
+					<input class="plh3" type="text" name="search" placeholder="Recherche...">
+				</form>
+			</div>
+		</div>
 	</header>
 
 	<!-- Cart -->
@@ -479,13 +492,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							<div class="container01">
 							<div id="div35">
 								<label class="option_item" data-val="35">
-									<input type="radio" name="volume" id="35" class="checkbox" >
+									<input type="radio" name="volume" id="35" class="checkbox" value="35" checked onchange="changeVolum()">
 									<div class="option_inner selected">
 									<div class="tickmark"></div>
 									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
 									<div class="name">
 										<h6>35 ML</h6>
-										<h6 id="Qte35">50 Qte</h6>
 										<h5 id="prix35">1750 DA</h5>
 									</div>
 									</div>
@@ -493,13 +505,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								</div>
 								<div id="div50">
 								<label class="option_item" data-val="50">
-									<input type="radio" name="volume" id="50" class="checkbox" >
+									<input type="radio" name="volume" id="50" class="checkbox" value="50" onchange="changeVolum()">
 									<div class="option_inner selected">
 									<div class="tickmark"></div>
 									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
 									<div class="name">
 										<h6>50 ML</h6>
-										<h6 id="Qte50">50 Qte</h6>
+										
 										<h5 id="prix50">1750 DA</h5>
 									</div>
 									</div>
@@ -507,13 +519,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								</div>
 								<div id="div100">
 								<label class="option_item" data-val="100">
-									<input type="radio" name="volume" id="100" class="checkbox" >
+									<input type="radio" name="volume" id="100" class="checkbox" value="100" onchange="changeVolum()">
 									<div class="option_inner selected">
 									<div class="tickmark"></div>
 									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
 									<div class="name">
 										<h6>100 ML</h6>
-										<h6 id="Qte100">50 Qte</h6>
 										<h5 id="prix100">1750 DA</h5>
 									</div>
 									</div>
@@ -528,12 +539,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</div>
 
-											<input class="mtext-104 cl3 txt-center num-product" type="number" name="numproduct" value="1">
+											<input class="mtext-104 cl3 txt-center num-product" type="number" id="qtecart" name="numproduct" value="1">
 
 											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</div>
 										</div>
+										<input type="hidden" name="qtestock_35" value="" id="inputqte_35">
+										<input type="hidden" name="qtestock_50" value="" id="inputqte_50">
+										<input type="hidden" name="qtestock_100" value="" id="inputqte_100">
 										<input type="hidden" name="volume" value="" id="inputvolume">
 										<input type="hidden" name="obj" value="" id="inputprodobj">
 										<input type="hidden" name="filepath" value="" id="inputprodimage">
@@ -681,6 +695,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				ps.update();
 			})
 		});
+		function changeVolum() {
+			document.getElementById("qtecart").value = 1;
+		}
 	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('js/main.js')}}"></script>
