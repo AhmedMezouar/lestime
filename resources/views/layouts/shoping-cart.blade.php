@@ -263,7 +263,7 @@
 					
 						<div class="header-cart-item-img">
 							
-						<img src="{{ asset('images/').'/'.$item->options->filepath}}" alt="IMG">
+						<img src="{{$item->options->filepath}}" alt="IMG">
 						</div>
 						
 						<div class="header-cart-item-txt p-t-8">
@@ -301,6 +301,7 @@
 
 	
 		<div class="container">
+		
 		@if ($errors->any()) 
 		  @foreach ($errors->all() as $error)
 		  <div class="alert alert-danger" >
@@ -308,10 +309,15 @@
 		  </div>
 		  @endforeach
 		@endif
+		
 			<div class="row">
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+				
 					<div class="m-l-25 m-r--38 m-lr-0-xl">
 						<div class="wrap-table-shopping-cart">
+						<div class="alert alert-warning" role="alert">
+  							Doit calculer le tarif de Liviraison avent remplir le formulaire
+							</div>
 							<table class="table-shopping-cart">
 								<tr class="table_head">
 									<th class="column-1">Produit</th>
@@ -327,7 +333,7 @@
 								<tr class="table_row">
 									<td class="column-1">
 										<div class="how-itemcart1">
-											<img src="{{ asset('images/').'/'.$item->options->filepath}}" alt="IMG">
+											<img src="{{$item->options->filepath}}" alt="IMG">
 										</div>
 									</td>
 									<td class="column-2">{{$item->name}}</td>
@@ -538,9 +544,11 @@
 						<input type="hidden" name="idMag" value="{{$id_mag}}" id="inputidmag">
 						<input type="hidden" name="idprod" value="{{$id_mag}}" >
 						<input type="hidden" name="tarifLaiv" value="{{$tarif}}" >
+						@if ($tarif > 0)
 						<button type="submit" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
 							Passer la Commande
 						</button>
+						@endif
 					</div>
 				</div>
 			</div>

@@ -245,8 +245,7 @@
 					<li class="header-cart-item flex-w flex-t m-b-12">
 					
 						<div class="header-cart-item-img">
-							
-						<img src="{{ asset('images/').'/'.$item->options->filepath}}" alt="IMG">
+						<img src="{{$item->options->filepath}}" alt="IMG">
 						</div>
 						
 						<div class="header-cart-item-txt p-t-8">
@@ -726,7 +725,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-						<img src="{{ asset('images/').'/'.$produit ->ImageFileName1}}" alt="IMG-PRODUCT">
+						<img src="{{asset("/storage/$produit->ImageFileName1")}}" alt="IMG-PRODUCT">
 						@if ($produit->promo_35 > 0)
 						<a href="#"
 									data-obj = "{{$produit}}" 
@@ -737,7 +736,7 @@
 									data-prixold="{{$produit->prix_old_35}}"
 									data-name="{{$produit->nameProd}}" 
 									data-promo="{{$produit->promo_35}}"
-									data-mainimage="{{ asset('images/').'/'.$produit ->ImageFileName1}}"
+									data-mainimage="{{asset("/storage/$produit->ImageFileName1")}}"
 									data-onlyimage="{{$produit ->ImageFileName1}}"
 									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Afficher le produit
@@ -752,7 +751,7 @@
 									data-prixold="{{$produit->prix_old_35}}"
 									data-name="{{$produit->nameProd}}" 
 									data-promo="{{$produit->promo_35}}"
-									data-mainimage="{{ asset('images/').'/'.$produit ->ImageFileName1}}"
+									data-mainimage="{{asset("/storage/$produit->ImageFileName1")}}"
 									data-onlyimage="{{$produit ->ImageFileName1}}"
 									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Afficher le produit
@@ -792,7 +791,7 @@
 											<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
 										</a>
 							</div>
-							<input type="hidden" name="filepath" value="{{$produit ->ImageFileName1}}">
+										<input type="hidden" name="filepath" value="{{asset("/storage/$produit->ImageFileName1")}}">
 										<input type="hidden" name="id_magasin" value="{{$id_mag}}" >
 										<input type="hidden" name="qteproduct" value="1" >
 										<input type="hidden" name="product_id" value="{{$produit->id}}">
@@ -1034,6 +1033,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
 									<div class="name">
 										<h6>35 ML</h6>
+										<h6 id="Qte35">50 Qte</h6>
 										<h5 id="prix35">1750 DA</h5>
 									</div>
 									</div>
@@ -1047,6 +1047,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
 									<div class="name">
 										<h6>50 ML</h6>
+										<h6 id="Qte50">50 Qte</h6>
 										<h5 id="prix50">1750 DA</h5>
 									</div>
 									</div>
@@ -1060,6 +1061,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									<div class="icon"><img src="{{asset('images/icons/iconlestime.png')}}" width="30%" height="30%" ></div>
 									<div class="name">
 										<h6>100 ML</h6>
+										<h6 id="Qte100">50 Qte</h6>
 										<h5 id="prix100">1750 DA</h5>
 									</div>
 									</div>

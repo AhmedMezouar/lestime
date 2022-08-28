@@ -59,7 +59,7 @@ class EcommerceController extends Controller
             ->orderByRaw('Totalvt DESC')
             ->get();
 
-        return view('layouts.index',['produits'=> $produits,"id_mag" => $id]);
+        return view('layouts.acceuil',['produits'=> $produits,"id_mag" => $id]);
 
         }else{
             return redirect()->route('P404');
@@ -101,10 +101,12 @@ class EcommerceController extends Controller
     public function showNewAr($idmag)
     {
         //
+
         if ($idmag > 0 && $idmag <13) {
        // $produits = DB::select('select * from produits');
         $produits =Produit::select('*')
         ->selectRaw('Qte_stock_35+Qte_stock_50+Qte_stock_100 as TotalQte')
+        ->whereRaw('id_magasin = ?',[$idmag])
         ->orderByRaw('TotalQte DESC')
         ->get();
         return view('layouts.new-arrival',['produits'=> $produits,"id_mag" => $idmag]);

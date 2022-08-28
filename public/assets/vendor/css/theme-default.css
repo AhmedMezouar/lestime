@@ -216,8 +216,6 @@ button.list-group-item-primary.active {
 }
 .btn-primary {
   color: #fff;
-  background-color: #d9a600;
-  background-color: #d9a600;
   background-color: #ffc711;
   border-color: #ffc711;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(105, 108, 255, 0.4);
@@ -227,6 +225,17 @@ button.list-group-item-primary.active {
   background-color: #d9a600;
   border-color: #d9a600;
   transform: translateY(-1px);
+}
+.btn-primary2 {
+  color: #333;
+  border: 2px solid #ffc711;
+  border-color: #ffc711;
+  border-radius: none;
+}
+.btn-primary2:hover {
+  color: #fff;
+  background-color: #d9a600;
+  border-color: #d9a600;
 }
 .btn-check:focus + .btn-primary, .btn-primary:focus, .btn-primary.focus {
   color: #fff;

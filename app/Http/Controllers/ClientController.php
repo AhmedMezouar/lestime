@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -50,8 +51,6 @@ class ClientController extends Controller
 
     public function store(Request $req)
     {
-
-        dd($this->toname(intVal($req->wilaya)));
         $req->validate([
             'clientName' =>'required',
             'clientEmail' => 'required|email:rfc,dns',
@@ -62,8 +61,8 @@ class ClientController extends Controller
         ]);
 
         //
-        $cm = DB::insert('insert into clients(nom,telephone,email,address,wilaya,nbrachat)
-        values (?, ?, ?, ?, ?, ?)',[$req->clientName,$req->clientTelephone,$req->clientEmail,$req->adresse,$req->wilaya,$req->nbr]);
+        $cm = DB::insert('insert into clients(nom,telephone,email,address,wilaya,nbrachat,created_at)
+        values (?, ?, ?, ?, ?, ?, ?)',[$req->clientName,$req->clientTelephone,$req->clientEmail,$req->adresse,$req->wilaya,$req->nbr,Carbon::now()]);
         return redirect()->route('dashboard.client.index');
         
     }

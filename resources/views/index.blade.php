@@ -258,7 +258,7 @@
 					
 						<div class="header-cart-item-img">
 							
-						<img src="{{ asset('images/').'/'.$item->options->filepath}}" alt="IMG">
+						<img src="{{asset("/storage/$item->options->filepath")}}" alt="IMG">
 						</div>
 						
 						<div class="header-cart-item-txt p-t-8">
@@ -746,7 +746,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-						<img src="{{ asset('images/').'/'.$produit ->ImageFileName1}}" alt="IMG-PRODUCT">
+						<img src="{{asset("/storage/$produit->ImageFileName1")}}" alt="IMG-PRODUCT">
 						@if ($produit->promo_35 > 0)
 						<a href="#"
 									data-obj = "{{$produit}}" 
@@ -757,7 +757,7 @@
 									data-prixold="{{$produit->prix_old_35}}"
 									data-name="{{$produit->nameProd}}" 
 									data-promo="{{$produit->promo_35}}"
-									data-mainimage="{{ asset('images/').'/'.$produit ->ImageFileName1}}"
+									data-mainimage="{{asset("/storage/$produit->ImageFileName1")}}"
 									data-onlyimage="{{$produit ->ImageFileName1}}"
 									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Afficher le produit
@@ -772,7 +772,7 @@
 									data-prixold="{{$produit->prix_old_35}}"
 									data-name="{{$produit->nameProd}}" 
 									data-promo="{{$produit->promo_35}}"
-									data-mainimage="{{ asset('images/').'/'.$produit ->ImageFileName1}}"
+									data-mainimage="{{asset("/storage/$produit->ImageFileName1")}}"
 									data-onlyimage="{{$produit ->ImageFileName1}}"
 									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Afficher le produit
