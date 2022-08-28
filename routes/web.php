@@ -82,6 +82,7 @@ Route::get('/dashboard/index', function () {
 
 
 Route::get('/dashboard',[DashBoardVente::class,'index'])->middleware(['auth'])->name("dashboard");
+
 Route::post('/dashboard/storeClient',[ClientController::class,'store'])->middleware(['auth'])->name("dashboard.client.store");
 Route::get('/dashboard/clients',[ClientController::class,'index'])->middleware(['auth'])->name("dashboard.client.index");
 Route::get('/dashboard/client-add',[ClientController::class,'indexNvClient'])->middleware(['auth'])->name("dashboard.client.addClient");
@@ -92,7 +93,7 @@ Route::get('/dashboard/commande/detai={idcmd}',[CommandeController::class,'index
 Route::post('/dashboard/commande/changestate',[CommandeController::class,'changeState'])->middleware(['auth'])->name("dashboard.commande.changestate");
 Route::post('/dashboard/commande',[SearchDashboard::class,'cmd_search'])->middleware(['auth'])->name("dashboard.commande.cmd_search");
 Route::get('/dashboard/commande',[CommandeController::class,'index'])->middleware(['auth'])->name("dashboard.commande.index");
-
+Route::post('/dashboard/product/add',[ProduitController::class,'store'])->middleware(['auth'])->name("dashboard.product.storeDb");
 
 
 
