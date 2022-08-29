@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Magasin;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,14 +21,18 @@ class ClientController extends Controller
         //
         //$id = Auth::user()->id_magasin;
         $clients = Client::all();
-        return view('dashboard.client',['clients' => $clients]);
+        $idMag = Auth::user()->id_magasin;
+        $nomMag = Magasin::select('*')->whereRaw('id=?',[$idMag])->first()->lib_magasin;
+        return view('dashboard.client',['clients' => $clients,'nomMag' => $nomMag]);
     }
 
     public function indexNvClient()
     {
         //
         //$id = Auth::user()->id_magasin;
-        return view('dashboard.client-add');
+        $idMag = Auth::user()->id_magasin;
+        $nomMag = Magasin::select('*')->whereRaw('id=?',[$idMag])->first()->lib_magasin;
+        return view('dashboard.client-add',['nomMag' => $nomMag]);
     }
 
     /**

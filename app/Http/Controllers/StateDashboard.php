@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Commande;
+use App\Models\Magasin;
 use App\Models\Produit;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class StateDashboard extends Controller
         $datemois = Carbon::now()->subDays(30)->format('d/m/Y');
         $idMag = Auth::user()->id_magasin;
 
-
+        $nomMag = Magasin::select('*')->whereRaw('id=?',[$idMag])->first()->lib_magasin;
         $montatToday = Commande::selectRaw('Sum(netapayer) as tot')
         ->whereRaw('date(created_at)=CURDATE() and EtatCommand = 5')
         ->first()->tot;
@@ -91,7 +92,8 @@ class StateDashboard extends Controller
             'datesemain' => $datesemain,
             'datemois' =>$datemois,
             'table' => $table,
-            'searchVal' => null
+            'searchVal' => null,
+            'nomMag' =>$nomMag
         ]);
     }
 
@@ -100,9 +102,11 @@ class StateDashboard extends Controller
         //
         $idMag = Auth::user()->id_magasin;
         $produits = Produit::select('*')->whereRaw('id_magasin = ?',[$idMag])->get();
+        $nomMag = Magasin::select('*')->whereRaw('id=?',[$idMag])->first()->lib_magasin;
         return view('dashboard.statistique-product',[
             'produits' => $produits,
-            'searchVal' => null
+            'searchVal' => null,
+            'nomMag' =>$nomMag
         ]);
     }
 

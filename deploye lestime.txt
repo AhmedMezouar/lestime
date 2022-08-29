@@ -1,0 +1,38 @@
+#composer create-project -–prefer-dist laravel/laravel lestime
+#cd lestime
+
+#composer require livewire/livewire
+
+#composer require laravel/breeze --dev
+#php artisan breeze:install
+#npm install
+#npm run dev
+
+create the database name and char as utf8mb4_general_ci
+
+change in .env databaseName and password and user
+
+copy resource file of your project to the resource destination
+
+copy public files of your project to the public destination
+
+copy app files of your project to the app destination
+
+copy route files of your project to the route destination
+
+#composer require hardevine/shoppingcart
+
+modifier app->providers
+[Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class]
+
+
+modifier app-aliases
+'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+
+#php artisan vendor:publish 
+and chose 0 for all
+
+delete public/storage and run 
+
+
+#php artisan storage:link

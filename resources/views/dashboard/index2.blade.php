@@ -72,7 +72,7 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="/" class="app-brand-link">
               <span class="app-brand-logo demo">
                 <img src="{{asset('/assets/img/logoGoldHor.png')}}"  width="55%" height="18%" style="margin-bottom: 20px;">
                  
@@ -297,8 +297,8 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">L'ESTIME M'Sila</span>
-                            <small class="text-muted">Administration</small>
+                            <span class="fw-semibold d-block">{{$nomMag}}</span>
+                            <small class="text-muted">Vendeur de {{$nomMag}}</small>
                           </div>
                         </div>
                       </a>
@@ -313,7 +313,7 @@
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="/dashboard/statistique/produit">
                         <span class="d-flex align-items-center align-middle">
                           <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
                           <span class="flex-grow-1 align-middle">Inventaire</span>
@@ -325,10 +325,13 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
+                      <form method="POST" action="{{route('logout')}}">
+                        @csrf
+                      <button type="submit" class="dropdown-item" href="auth-login-basic.html">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Déconnexion</span>
-                      </a>
+                      </button>
+                      </form>
                     </li>
                   </ul>
                 </li>

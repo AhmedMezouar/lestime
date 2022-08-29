@@ -18,6 +18,11 @@ class RegisteredUserController extends Controller
      *
      * @return \Illuminate\View\View
      */
+    public function index404()
+    {
+        return redirect()->route('P404');
+    }
+
     public function create()
     {
         return view('auth.register');

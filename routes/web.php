@@ -75,10 +75,6 @@ Route::get('/product', function () {
 
 
 
-Route::get('/dashboard/index', function () {
-    return view('dashboard.index');
-})->middleware(['auth'])->name('dashboard.index');
-
 
 
 Route::get('/dashboard',[DashBoardVente::class,'index'])->middleware(['auth'])->name("dashboard");

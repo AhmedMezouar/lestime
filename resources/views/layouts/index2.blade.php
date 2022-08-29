@@ -71,7 +71,7 @@
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->
-					<a href="/" class="logo">
+					<a href="/ecommerce/magasin/{{$id_mag}}" class="logo">
 						<img src="{{asset('images/icons/logoBlackHor.png')}}" alt="IMG-LOGO">
 					</a>
 					<!-- Menu desktop -->
@@ -127,7 +127,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="/"><img src="{{asset('images/icons/logoBlackHor.png')}}" alt="IMG-LOGO"></a>
+				<a href="/ecommerce/magasin/{{$id_mag}}"><img src="{{asset('images/icons/logoBlackHor.png')}}" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->

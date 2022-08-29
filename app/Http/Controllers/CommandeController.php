@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Commande;
 use App\Models\LignCommande;
+use App\Models\Magasin;
 use App\Models\TarfivLaiv;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -36,8 +37,9 @@ class CommandeController extends Controller
         //
         $up = DB::update('update commandes set EtatCommand = 1 where EtatCommand = 0 and date(created_at) <= DATE_SUB(CURDATE(), INTERVAL 2 DAY)');
          $id = Auth::user()->id_magasin;
+         $nomMag = Magasin::select('*')->whereRaw('id=?',[$id])->first()->lib_magasin;
          $commannds = Commande::select('*')->whereRaw('id_magasin = ?',[$id])->get();
-         return view('dashboard.commande',['cmds' => $commannds,'etat' => 0,'searchVal' => null]);
+         return view('dashboard.commande',['cmds' => $commannds,'etat' => 0,'searchVal' => null,'nomMag' => $nomMag]);
     }
 
     public function filter($etat)
@@ -46,20 +48,21 @@ class CommandeController extends Controller
         $up = DB::update('update commandes set EtatCommand = 1 where EtatCommand = 0 and date(created_at) <= DATE_SUB(CURDATE(), INTERVAL 2 DAY)');
        
          $id = Auth::user()->id_magasin;
+         $nomMag = Magasin::select('*')->whereRaw('id=?',[$id])->first()->lib_magasin;
          $commannds = Commande::select('*')->whereRaw('id_magasin = ? and EtatCommand = ?',[$id,$etat])->get();
          if ($etat == 0) //nev
-              return view('dashboard.commande-new',['cmds' => $commannds,'etat' => $etat,'searchVal' => null]);
+              return view('dashboard.commande-new',['cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
          else if ($etat == 1) //nev
-         return view('dashboard.commande-attend',['cmds' => $commannds,'etat' => $etat,'searchVal' => null]);
+         return view('dashboard.commande-attend',['cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
          else if ($etat == 2) //nev
-         return view('dashboard.commande-livre',['cmds' => $commannds,'etat' => $etat,'searchVal' => null]);
+         return view('dashboard.commande-livre',['cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
          else if ($etat == 4) //nev
-         return view('dashboard.commande-annuler',['cmds' => $commannds,'etat' => $etat,'searchVal' => null]);
+         return view('dashboard.commande-annuler',['cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
          else if ($etat == 5) //nev
-         return view('dashboard.commande-confirme',['cmds' => $commannds,'etat' => $etat,'searchVal' => null]);
+         return view('dashboard.commande-confirme',['cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
          else if ($etat == 6) //nev
-         return view('dashboard.commande-panier-abb',['cmds' => $commannds,'etat' => $etat,'searchVal' => null]);
-         else return view('dashboard.commande',['cmds' => $commannds,'etat' => $etat,'searchVal' => null]);
+         return view('dashboard.commande-panier-abb',['cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
+         else return view('dashboard.commande',['cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
     }
 
     public function changeState(Request $req) {
