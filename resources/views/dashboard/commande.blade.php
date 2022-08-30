@@ -56,6 +56,8 @@
                         <th>Order</th>
                         <th>Date</th>
                         <th>Client</th>
+                        <th>N°Tél</th>
+                        <th>Email</th>
                         <th>Status</th>
                         <th>Total</th>
                         
@@ -67,6 +69,8 @@
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="{{route('dashboard.commande.indexdetai',['idcmd' => $cmd->id])}}"><strong>#{{$cmd->id}}</strong></a></td>
                         <td> {{$cmd->created_at}}</td>
                         <td> {{$cmd->ClientName}}</td>
+                        <td> {{$cmd->ClientTelephone}}</td>
+                        <td> {{$cmd->ClientEmail}}</td>
                         @if ($cmd->EtatCommand == 0)
                         <td><span class="badge bg-label-primary me-1">Nouveau</span></td>
                         @elseif ($cmd->EtatCommand == 1)

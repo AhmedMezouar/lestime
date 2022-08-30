@@ -71,14 +71,14 @@
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->
-					<a href="/ecommerce/magasin/{{$id_mag}}" class="logo">
+					<a href="{{route('ecommerce.show',['id' => $id_mag])}}" class="logo">
 						<img src="{{asset('images/icons/logoBlackHor.png')}}" alt="IMG-LOGO">
 					</a>
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li class="active-menu">
-								<a href="/">Acceuil</a>
+								<a href="{{route('ecommerce.show',['id' => $id_mag])}}">Acceuil</a>
 							</li>
 
 							<li>
@@ -127,7 +127,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="/ecommerce/magasin/{{$id_mag}}"><img src="{{asset('images/icons/logoBlackHor.png')}}" alt="IMG-LOGO"></a>
+				<a href="{{route('ecommerce.show',['id' => $id_mag])}}"><img src="{{asset('images/icons/logoBlackHor.png')}}" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -183,7 +183,7 @@
 
 			<ul class="main-menu-m">
 				<li class="active-menu">
-					<a href="/">Acceuil</a>
+					<a href="{{route('ecommerce.show',['id' => $id_mag])}}">Acceuil</a>
 				</li>
 				<li>
 					<a href="{{route('ecommerce.produit.show',['id' => $id_mag])}}">Produits</a>
@@ -529,7 +529,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									</div>
 									</div>
 								</label>
-							</div></div>
+							</div>
+						</div>
 								<form method="POST" action="{{route('cart.storeQte')}}"> 
 								@csrf
 								<div class="flex-w flex-r-m p-b-10">
@@ -550,14 +551,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 										<input type="hidden" name="qtestock_100" value="" id="inputqte_100">
 										<input type="hidden" name="volume" value="" id="inputvolume">
 										<input type="hidden" name="obj" value="" id="inputprodobj">
+										<input type="hidden" name="objacc" value="" id="inputprodobjacc">
 										<input type="hidden" name="filepath" value="" id="inputprodimage">
 										<input type="hidden" name="imagename" value="" id="imageNameInput">
 										<input type="hidden" name="id_magasin" value="{{$id_mag}}" >
 										<input type="hidden" name="product_id" value="0" id="inputprodid">
 										<input type="hidden" name="product_name" value="0" id="inputprodname">
 										<input type="hidden" name="product_price" value="0" id="inputprodprice">
+										<input type="hidden" name="product_type" value="0" id="inputproduct_type">
 										<input type="hidden" name="product_price50" value="0" id="inputprodprice50">
 										<input type="hidden" name="product_price100" value="0" id="inputprodprice100">
+										<input type="hidden" name="acc_qte_stock" value="0" id="inputacc_qte_stock">
 										<button type="submit" name="action" value="ajout" class="flex-c-m stext-101 cl0 size-1002 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 											Ajouter au panier
 										</button>

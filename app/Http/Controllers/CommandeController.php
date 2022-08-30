@@ -8,6 +8,7 @@ use App\Models\LignCommande;
 use App\Models\Magasin;
 use App\Models\TarfivLaiv;
 use Carbon\Carbon;
+use Exception;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,8 +30,11 @@ class CommandeController extends Controller
          $cmd = Commande::select('*')->whereRaw('id_magasin = ? and id= ?',[$id,$idcmd])->first();
          $cmds =DB::table('*')
          ->fromRaw('lign_commandes lcmd,produits pd')
-         ->whereRaw('lcmd.id_prod = pd.id and lcmd.id_cmd = ?',[$idcmd])->get();
-         return view('dashboard.commande-detail',['cmd' => $cmd,'cmds' => $cmds]);
+         ->whereRaw('lcmd.id_prod = pd.id and lcmd.vol_prod > 0 and lcmd.id_cmd = ?',[$idcmd])->get();
+         $cmdsacc =DB::table('*')
+         ->fromRaw('lign_commandes lcmd,accessoires pd')
+         ->whereRaw('lcmd.id_prod = pd.id and lcmd.vol_prod = 0 and  lcmd.id_cmd = ?',[$idcmd])->get();
+         return view('dashboard.commande-detail',['id_mag' => $id,'cmd' => $cmd,'cmds' => $cmds,'cmdacc' => $cmdsacc ]);
     }
     public function index()
     {
@@ -39,7 +43,8 @@ class CommandeController extends Controller
          $id = Auth::user()->id_magasin;
          $nomMag = Magasin::select('*')->whereRaw('id=?',[$id])->first()->lib_magasin;
          $commannds = Commande::select('*')->whereRaw('id_magasin = ?',[$id])->get();
-         return view('dashboard.commande',['cmds' => $commannds,'etat' => 0,'searchVal' => null,'nomMag' => $nomMag]);
+
+         return view('dashboard.commande',['id_mag' => $id,'cmds' => $commannds,'etat' => 0,'searchVal' => null,'nomMag' => $nomMag]);
     }
 
     public function filter($etat)
@@ -50,18 +55,19 @@ class CommandeController extends Controller
          $id = Auth::user()->id_magasin;
          $nomMag = Magasin::select('*')->whereRaw('id=?',[$id])->first()->lib_magasin;
          $commannds = Commande::select('*')->whereRaw('id_magasin = ? and EtatCommand = ?',[$id,$etat])->get();
+         $newcommannds = Commande::select('*')->whereRaw('id_magasin = ? and EtatCommand = ?',[$id,$etat])->orderByRaw('id DESC')->get();
          if ($etat == 0) //nev
-              return view('dashboard.commande-new',['cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
+              return view('dashboard.commande-new',['id_mag' => Auth::user()->id_magasin,'cmds' => $newcommannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
          else if ($etat == 1) //nev
-         return view('dashboard.commande-attend',['cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
+         return view('dashboard.commande-attend',['id_mag' => Auth::user()->id_magasin,'cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
          else if ($etat == 2) //nev
-         return view('dashboard.commande-livre',['cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
+         return view('dashboard.commande-livre',['id_mag' => Auth::user()->id_magasin,'cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
          else if ($etat == 4) //nev
-         return view('dashboard.commande-annuler',['cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
+         return view('dashboard.commande-annuler',['id_mag' => Auth::user()->id_magasin,'cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
          else if ($etat == 5) //nev
-         return view('dashboard.commande-confirme',['cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
+         return view('dashboard.commande-confirme',['id_mag' => Auth::user()->id_magasin,'cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
          else if ($etat == 6) //nev
-         return view('dashboard.commande-panier-abb',['cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
+         return view('dashboard.commande-panier-abb',['id_mag' => Auth::user()->id_magasin,'cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
          else return view('dashboard.commande',['cmds' => $commannds,'etat' => $etat,'searchVal' => null,'nomMag' => $nomMag]);
     }
 
@@ -74,6 +80,7 @@ class CommandeController extends Controller
             $ligns = LignCommande::select('*')
                         ->whereRaw('id_cmd = ?',[$req->idcmd])
                         ->get();
+            
             foreach ($ligns as $lign) {
                 if ($lign->vol_prod == 35) {
                     $up2 = DB::update('update produits set Qte_stock_35 = Qte_stock_35 - ?,Qte_vt_35 = Qte_vt_35 + ? where id = ?',[$lign->qte_ht,$lign->qte_ht,$lign->id_prod]);
@@ -81,6 +88,9 @@ class CommandeController extends Controller
                     $up2 = DB::update('update produits set Qte_stock_50 = Qte_stock_50 - ?,Qte_vt_50 = Qte_vt_50 + ? where id = ?',[$lign->qte_ht,$lign->qte_ht,$lign->id_prod]);
                 }else if ($lign->vol_prod == 100) {
                     $up2 = DB::update('update produits set Qte_stock_100 = Qte_stock_100 - ?,Qte_vt_100 = Qte_vt_100 + ? where id = ?',[$lign->qte_ht,$lign->qte_ht,$lign->id_prod]);
+                }else {
+
+                    $up2 = DB::update('update accessoires set Qte_stock = Qte_stock - ?,Qte_vt = Qte_vt + ? where id = ?',[$lign->qte_ht,$lign->qte_ht,$lign->id_prod]);
                 }
             }
         }
@@ -175,19 +185,22 @@ class CommandeController extends Controller
     public function store(Request $req)
     {
         //dd($req);
+        //dd($req);
         try {
         $req->validate([
             'nomClient' =>'required',
-            'email' => 'required|email:rfc,dns',
+            'email' => 'required',
             'numberTele' =>'required|min:10|max:15',
             'adresse' => 'required|min:8',
             'state' => 'required|min:5',
         ]);
-             } catch (\Exception $e) { // For PHP 5
+             } catch (Exception $e) { // For PHP 5
         // handle $e
                   return redirect()->route('cart.index',['id'=>$req->idmag])->withErrors(['Vérifier que vous remplir tous les champs']);
               }
         //
+
+
         $clientName = $req->nomClient;
         $clientTelephone= $req->numberTele;
         $clientEmail= $req->email;
@@ -198,6 +211,7 @@ class CommandeController extends Controller
         $clientcmd = Client::select('*')
         ->whereRaw('telephone = ?',[$clientTelephone])
         ->first();
+        
         if (is_null($clientcmd)) {
         $cm = DB::insert('insert into clients(nom,telephone,email,address,wilaya,nbrachat,created_at)
         values (?, ?, ?, ?, ?, ?, ?)',[$clientName,$clientTelephone,$clientEmail,$req->adresse,$this->toname(intVal($req->wilaya)),1,Carbon::now()]);

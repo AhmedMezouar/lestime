@@ -47,7 +47,7 @@ Route::get('/ecommerce/magasin/{id}/product/{idProd}',[EcommerceController::clas
 
 Route::get('/ecommerce/magasin/{idmag}/produit-detail',[EcommerceController::class,'showDetails'])->name("ecommerce.produitdetails.show");
 Route::get('/ecommerce/magasin/{idmagnewA}/new-arrival',[EcommerceController::class,'showNewAr'])->name("ecommerce.newArriv.show");
-Route::post('/ecommerce/magasin/search/{id}',[Search::class,'produitshoping-cart_search'])->name("produit.search");
+Route::post('/ecommerce/magasin/search/{id}',[Search::class,'produit_search'])->name("produit.search");
 Route::post('/ecommerce/magasin/searchArr/{id}',[Search::class,'produit_search2'])->name("produit.searchArrival");
 
 
@@ -88,10 +88,11 @@ Route::get('/dashboard/commande/etat={etat}',[CommandeController::class,'filter'
 Route::get('/dashboard/commande/detai={idcmd}',[CommandeController::class,'indexdetai'])->middleware(['auth'])->name("dashboard.commande.indexdetai");
 Route::post('/dashboard/commande/changestate',[CommandeController::class,'changeState'])->middleware(['auth'])->name("dashboard.commande.changestate");
 Route::post('/dashboard/commande',[SearchDashboard::class,'cmd_search'])->middleware(['auth'])->name("dashboard.commande.cmd_search");
+Route::post('/dashboard/clients',[SearchDashboard::class,'client_search'])->middleware(['auth'])->name("dashboard.commande.client_search");
 Route::get('/dashboard/commande',[CommandeController::class,'index'])->middleware(['auth'])->name("dashboard.commande.index");
 Route::post('/dashboard/product/add',[ProduitController::class,'store'])->middleware(['auth'])->name("dashboard.product.storeDb");
-
-
+Route::post('/dashboard/product/add-other',[ProduitController::class,'storeOther'])->middleware(['auth'])->name("dashboard.product.storeDbOther");
+Route::post('/dashboard/product/add-pack',[ProduitController::class,'storepack'])->middleware(['auth'])->name("dashboard.product.storeDbpack");
 
 Route::post('/dashboard/product',[ProduitController::class,'store'])->middleware(['auth'])->name("dashboard.product.storeDb");
 Route::get('/dashboard/product',[ProduitController::class,'indexDashboard'])->middleware(['auth'])->name("dashboard.product.index");
@@ -104,8 +105,13 @@ Route::post('/dashboard/statistique/produit',[SearchDashboard::class,'stateprodu
 Route::get('/dashboard/statistique/produit',[StateDashboard::class,'indexproduit'])->middleware(['auth'])->name("dashboard.state.produit");
 
 Route::post('/dashboard/product/edit/updateprod',[ProduitController::class,'updateprod'])->middleware(['auth'])->name("dashboard.product.updateprod");
+Route::post('/dashboard/accessoire/edit/updateprodacc',[ProduitController::class,'updateprodacc'])->middleware(['auth'])->name("dashboard.product.updateprodacc");
 Route::post('/dashboard/product/edit/applypromo',[ProduitController::class,'applypromo'])->middleware(['auth'])->name("dashboard.product.applypromo");
+Route::post('/dashboard/accessoire/edit/applypromo',[ProduitController::class,'applypromoacc'])->middleware(['auth'])->name("dashboard.product.applypromoacc");
 Route::get('/dashboard/product/add',[ProduitController::class,'storeindex'])->middleware(['auth'])->name("dashboard.product.store");
+Route::get('/dashboard/product/add-other',[ProduitController::class,'storeindexother'])->middleware(['auth'])->name("dashboard.product.storeother");
+Route::get('/dashboard/product/add-pack',[ProduitController::class,'storeindexpack'])->middleware(['auth'])->name("dashboard.product.storepack");
 Route::get('/dashboard/product/edit/{idprod}/size={size}',[ProduitController::class,'editindex'])->middleware(['auth'])->name("dashboard.product.edit");
+Route::get('/dashboard/accessoire/edit/{idacc}',[ProduitController::class,'editindexacc'])->middleware(['auth'])->name("dashboard.product.editacc");
 
 require __DIR__.'/auth.php';

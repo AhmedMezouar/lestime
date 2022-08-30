@@ -9,10 +9,10 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>Amado - Furniture Ecommerce Template | Home</title>
+    <title>L'ESTIME</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="img/core-img/favicon.png">
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="css/core-style.css">
@@ -96,7 +96,7 @@
                         <div class="hover-content">
                             <div class="line"></div>
                             <p>Magasin de L'ESTIME N° 01</p>
-                            <h4>L'ESTIME Alger Plage</h4>
+                            <h4>L'ESTIME M'Sila</h4>
                         </div>
                     </a>
                 </div>
@@ -109,7 +109,7 @@
                         <div class="hover-content">
                             <div class="line"></div>
                             <p>Magasin de L'ESTIME N° 02</p>
-                            <h4>L'ESTIME Dali Ibrahim</h4>
+                            <h4>L'ESTIME Alger Plage</h4>
                         </div>
                     </a>
                 </div>
@@ -122,117 +122,44 @@
                         <div class="hover-content">
                             <div class="line"></div>
                             <p>Magasin de L'ESTIME N° 03</p>
-                            <h4>L'ESTIME Alger Plage</h4>
+                            <h4>L'ESTIME Bousaada</h4>
                         </div>
                     </a>
                 </div>
 
                 <!-- Single Catagory -->
+                
                 <div class="single-products-catagory clearfix">
                 <a href="{{route('ecommerce.show',['id' => 4])}}">
-                        <img src="img/bg-img/4.jpg" alt="">
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                            <p>Magasin de L'ESTIME N° 04</p>
-                            <h4>L'ESTIME Alger Plage</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Catagory -->
-                <div class="single-products-catagory clearfix">
-                <a href="{{route('ecommerce.show',['id' => 5])}}">
-                        <img src="img/bg-img/5.jpg" alt="">
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                            <p>Magasin de L'ESTIME N° 05</p>
-                            <h4>L'ESTIME Alger Plage</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Catagory -->
-                <div class="single-products-catagory clearfix">
-                <a href="{{route('ecommerce.show',['id' => 6])}}">
-                        <img src="img/bg-img/6.jpg" alt="">
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                            <p>Magasin de L'ESTIME N° 06</p>
-                            <h4>L'ESTIME Alger Plage</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Catagory -->
-                <div class="single-products-catagory clearfix">
-                <a href="{{route('ecommerce.show',['id' => 7])}}">
-                        <img src="img/bg-img/7.jpg" alt="">
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                            <p>Magasin de L'ESTIME N° 07</p>
-                            <h4>L'ESTIME Alger Plage</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Catagory -->
-                <div class="single-products-catagory clearfix">
-                <a href="{{route('ecommerce.show',['id' => 8])}}">
-                        <img src="img/bg-img/8.jpg" alt="">
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                            <p>Magasin de L'ESTIME N° 08</p>
-                            <h4>L'ESTIME Alger Plage</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="single-products-catagory clearfix">
-                <a href="{{route('ecommerce.show',['id' => 9])}}">
-                        <img src="img/bg-img/8.jpg" alt="">
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                            <p>Magasin de L'ESTIME N° 09</p>
-                            <h4>L'ESTIME Alger Plage</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="single-products-catagory clearfix">
-                <a href="{{route('ecommerce.show',['id' => 10])}}">
                         <img src="img/bg-img/10.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>Magasin de L'ESTIME N° 10</p>
-                            <h4>L'ESTIME Alger Plage</h4>
+                            <p>Magasin de L'ESTIME N° 04</p>
+                            <h4>L'ESTIME Djelfa</h4>
                         </div>
                     </a>
                 </div>
                 <div class="single-products-catagory clearfix">
-                <a href="{{route('ecommerce.show',['id' => 11])}}">
+                <a href="{{route('ecommerce.show',['id' => 5])}}">
                         <img src="img/bg-img/11.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>Magasin de L'ESTIME N° 11</p>
-                            <h4>L'ESTIME Alger Plage</h4>
+                            <p>Magasin de L'ESTIME N° 05</p>
+                            <h4>L'ESTIME Daliy Ibrahim</h4>
                         </div>
                     </a>
                 </div>
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                <a href="{{route('ecommerce.show',['id' => 12])}}">
+                <a href="{{route('ecommerce.show',['id' => 6])}}">
                         <img src="img/bg-img/12.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>Magasin de L'ESTIME N° 12</p>
-                            <h4>L'ESTIME Alger Plage</h4>
+                            <p>Magasin de L'ESTIME N° 06</p>
+                            <h4>L'ESTIME Oran</h4>
                         </div>
                     </a>
                 </div>

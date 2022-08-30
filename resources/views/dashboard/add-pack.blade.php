@@ -70,7 +70,7 @@
                       />
                       <p class="card-text old-price">{{$produit->prix_old_35}} DA</p>
                       <p class="card-text new-price">{{$produit->prix_new_35}} DA</p>
-                      <a href="{{route('dashboard.product.edit',['idprod' => $produit->id,'size'=> 35])}}" class="card-link">Modifier le produit</a>
+                      <a href="{{route('dashboard.product.edit',['idprod' => $produit->id,'size'=> 35])}}" class="card-link">Ajouter aux pack</a>
                     </div>
                   </div>
                 </div>
@@ -89,7 +89,7 @@
                       />
                       <p class="card-text old-price">{{$produit->prix_old_50}} DA</p>
                       <p class="card-text new-price">{{$produit->prix_new_50}} DA</p>
-                      <a href="{{route('dashboard.product.edit',['idprod' => $produit->id,'size'=> 50])}}" class="card-link">Modifier le produit</a>
+                      <a href="{{route('dashboard.product.edit',['idprod' => $produit->id,'size'=> 50])}}" class="card-link">Ajouter aux pack</a>
                     </div>
                   </div>
                 </div>
@@ -108,7 +108,7 @@
                       />
                       <p class="card-text old-price">{{$produit->prix_old_100}} DA</p>
                       <p class="card-text new-price">{{$produit->prix_new_100}} DA</p>
-                      <a href="{{route('dashboard.product.edit',['idprod' => $produit->id,'size'=> 100])}}" class="card-link">Modifier le produit</a>
+                      <a href="{{route('dashboard.product.edit',['idprod' => $produit->id,'size'=> 100])}}" class="card-link">Ajouter aux pack</a>
                     </div>
                   </div>
                   </div>
@@ -128,14 +128,8 @@
                         src="{{asset("/storage/$acc->image")}}"
                         alt="Card image cap"
                       />
-                       @if($acc->promo > 0)
-                      <p class="card-text old-price">{{$acc->prix_old}} DA DA</p>
-                      <p class="card-text new-price">{{$acc->prix_new}} DA DA</p>
-                      @else 
-                      <p class="card-text old-price">{{$acc->prix_old}} DA DA</p>
-                      <p class="card-text new-price">{{$acc->prix_old}} DA DA</p>
-                      @endif
-                      <a href="{{route('dashboard.product.editacc',['idacc' => $acc->id])}}" class="card-link">Modifier le accessoire</a>
+                      <p class="card-text new-price">{{$acc->prix_vt}} DA</p>
+                      <a href="{{route('dashboard.product.edit',['idprod' => $produit->id,'size'=> 100])}}" class="card-link">Ajouter aux pack</a>
                     </div>
                   </div>
                 </div>

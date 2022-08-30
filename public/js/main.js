@@ -223,15 +223,24 @@
     /*==================================================================
     [ +/- num product ]*/
     $('.btn-num-product-down').on('click', function(){
+        var type = document.getElementById("inputproduct_type").value;
+        if (type == 1) {
         var size = document.querySelector('input[name="volume"]:checked').value;
         console.log('size ' ,size);
         var numProduct = Number($(this).next().val());
         if(numProduct > 1) $(this).next().val(numProduct - 1);
         //document.getElementById('qteinput').value =  Number($(this).next().val());
+        }else {
+            var numProduct = Number($(this).next().val());
+            if(numProduct > 1) $(this).next().val(numProduct - 1);
+        }
     });
 
     $('.btn-num-product-up').on('click', function(){
-        var size = document.querySelector('input[name="volume"]:checked').value;
+        
+        var type = document.getElementById("inputproduct_type").value;
+        if (type == 1) {
+            var size = document.querySelector('input[name="volume"]:checked').value;
         console.log(parseInt(size));
         if (size == 35) {
             var qte35 = document.getElementById("inputqte_35").value;
@@ -251,6 +260,13 @@
        // var numProduct = Number($(this).prev().val());
        // if(numProduct > 0) $(this).prev().val(numProduct + 1);
         //document.getElementById('qteinput').value =  Number($(this).prev().val());
+    }else {
+        console.log('accessoire');
+        var qte = document.getElementById("inputacc_qte_stock").value;
+        var numProduct = document.getElementById("qtecart").value;
+        if(parseInt(numProduct) > 0 && parseInt(numProduct) < parseInt(qte)) $(this).prev().val(parseInt(numProduct) + 1);
+
+    }
     });
 
     /*==================================================================
@@ -299,28 +315,41 @@
     [ Show modal1 ]*/
     $('.js-show-modal1').on('click',function(e){
         e.preventDefault();
-        let obj = $(this).data('obj');
-        var myProdid =  $(this).data('id');
-        var myProdName =  $(this).data('name');
-        var myProdpriceold =  $(this).data('prixold');
-        var myProdprice =  $(this).data('prix');
-        var myProddesc =  $(this).data('description');
-        var promo =  $(this).data('promo');
-        var image =  $(this).data('mainimage'); 
+        var type =  $(this).data('type');
+        if (type == 1) {
+            document.getElementById("div35").style.display = "block";
+            document.getElementById("div50").style.display = "block";
+            document.getElementById("div100").style.display = "block";
+            e.preventDefault();
+            let obj = $(this).data('obj');
+            var myProdid =  $(this).data('id');
+            var myProdName =  $(this).data('name');
+            var myProdpriceold =  $(this).data('prixold');
+            var myProdprice =  $(this).data('prix');
+            var myProddesc =  $(this).data('description');
+            var promo =  $(this).data('promo');
+            var image =  $(this).data('mainimage'); 
+            document.getElementById("inputproduct_type").value = type;
+            console.log('parfum');  
         console.log('image : ',image);  
         var imageName = $(this).data('onlyimage');   
         console.log(image);  
         $("#nameofProduct").html(myProdName);
         $("#descprod").html(myProddesc);
-
+       
+        console.log(promo);
         if (promo >0 ) {
+        
+                
         $("#oldprice").html(myProdpriceold + " DA");
         $("#newprice").html(myProdprice + " DA");
         $("#prix35").html(obj.prix_new_35 + " DA");
         document.getElementById("inputqte_35").value = obj.Qte_stock_35;
         }else{
             $("#newprice").html(myProdprice + " DA");
+            $("#div35").display = "none";
         }
+        console.log(obj.Volum50);
         if (obj.Volum50 > 0) {
         if ( obj.promo_50 > 0) {
           $("#prix50").html(obj.prix_new_50 + " DA");
@@ -332,8 +361,10 @@
             $("#Qte50").html(obj.Qte_stock_50+ " Qte");
         }}
         else{
-            $("#div50").html("");
+            $("#div50").display = "none";
+           // $("#div50").html("");
         }
+
         if (obj.Volum100 > 0) {
         if (obj.promo_100 > 0) {
             $("#prix100").html(obj.prix_new_100 + " DA");
@@ -345,7 +376,8 @@
               $("#Qte100").html(obj.Qte_stock_100+ " Qte");
           }}
           else{
-            $("#div100").html("");
+            $("#div100").display = "none";
+           // $("#div100").html("");
           }
 
         var div = document.querySelector('#divdetails1');
@@ -363,6 +395,50 @@
         document.getElementById("imageNameInput").value =imageName;
        
         $('.js-modal1').addClass('show-modal1');
+
+        }else {
+            e.preventDefault();
+            let obj = $(this).data('obj');
+            var myProdid =  $(this).data('id');
+            var myProdName =  $(this).data('name');
+            var myProdpriceold =  $(this).data('prixold');
+            var myProdprice =  $(this).data('prix');
+            var myProddesc =  $(this).data('description');
+            var promo =  $(this).data('promo');
+         
+            var image =  $(this).data('mainimage'); 
+            document.getElementById("inputproduct_type").value = type;
+            console.log('accessoire');  
+            var imageName = $(this).data('onlyimage');   
+            console.log(image);  
+            $("#nameofProduct").html(myProdName);
+            $("#descprod").html(myProddesc);
+            if (promo >0 ) {
+                $("#oldprice").html(obj.prix_old + " DA");
+                $("#newprice").html(obj.prix_new + " DA");
+            }else   $("#newprice").html(obj.prix_old + " DA");
+            var div = document.querySelector('#divdetails1');
+    
+           
+            document.getElementById("inputprodobjacc").value = obj;
+            document.getElementById("inputacc_qte_stock").value = obj.Qte_stock;
+            document.getElementById('imageprod').src =image;
+           // document.getElementById('imageproda').src =image;
+           // document.getElementById('imageproddetail1').src =image;
+            //document.getElementById('imageproddetail2').src =image;
+            document.getElementById("inputprodid").value =myProdid;
+            document.getElementById("inputprodname").value =myProdName;
+            document.getElementById("inputprodimage").value =image;
+            document.getElementById("inputprodprice").value =myProdprice;
+            document.getElementById("imageNameInput").value =imageName;
+
+            document.getElementById("div35").style.display = "none";
+            document.getElementById("div50").style.display = "none";
+            document.getElementById("div100").style.display = "none";
+
+            $('.js-modal1').addClass('show-modal1');
+        }
+
     });
 
     $('.js-hide-modal1').on('click',function(){

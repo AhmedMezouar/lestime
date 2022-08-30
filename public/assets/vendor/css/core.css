@@ -2105,8 +2105,7 @@ progress {
   color: #fff;
   border-color: #394859;
 }
-
-.table-responsive {
+.table-responsive2 {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }

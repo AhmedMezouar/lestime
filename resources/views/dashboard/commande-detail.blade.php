@@ -8,10 +8,8 @@
                 <div class="col-md-6 col-lg-3 mb-3">
                   <h5 class="card-header">Détails de la commande</h5>
                 </div>
-                <div class="col-md-6 col-lg-2 mb-3">
-                </div>
                 @if ($cmd->EtatCommand != 5)
-                <div class="col-md-3 col-lg-7 mb-3" style="margin-top: 15px; float: right;">
+                <div class="col-md-6 col-lg-9 mb-9 but-div">
                 <form method="POST" action="{{route('dashboard.commande.changestate')}}">
                                   @csrf
                                  <input type="hidden" name="newetat" value="6"/>
@@ -38,28 +36,36 @@
                                  <input type="hidden" name="newetat" value="2"/>
                                  <input type="hidden" name="cetat" value="{{$cmd->EtatCommand}}"/>
                                  <input type="hidden" name="idcmd" value="{{$cmd->id}}"/>
-                                 <button type="submit" class="btn btn-primary2">Confirmer en livraison</button>
+                                 <button type="submit" class="btn btn-primary2" style="background-color: #ffc711;">Confirmer en livraison</button>
                    </form>
                 </div>
                 @else <div></div>
                 @endif
                 
               </div>
-              <div class="table-responsive text-nowrap">
+              <div class="table-responsive table-responsive2 text-nowrap">
                 <table class="table table-hover" style="font-size: 20px;">
                   <thead>
                     <tr>
                       <th>Order</th>
                       <th>Nom de client</th>
+                      <th>N°Tél</th>
+                      <th>E-mail</th>
                       <th>Date</th>
                       <th>Statut</th>
                       <th>Total de panier</th>
+                      
+                      <th>Type de Livraison</th>
+                      <th>Wilaya de Livraison</th>
+                      <th>Adresse de Livraison</th>
                     </tr>
                   </thead>
                   <tbody class="table-border-bottom-0">
                     <tr>
                     <td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="{{route('dashboard.commande.indexdetai',['idcmd' => $cmd->id])}}"><strong>#{{$cmd->id}}</strong></a></td>
-                      <td> {{$cmd->ClientName}}</td>
+                    <td> {{$cmd->ClientName}}</td>
+                        <td> {{$cmd->ClientTelephone}}</td>
+                        <td> {{$cmd->ClientEmail}}</td>
                       <td> {{$cmd->created_at}}</td>
                       @if ($cmd->EtatCommand == 0)
                         <td><span class="badge bg-label-primary me-1">Nouveau</span></td>
@@ -77,10 +83,15 @@
                         <td><span class="badge bg-label-warning me-1">Annuler en panie</span></td>
                         @endif
                         <td>{{$cmd->netapayer}}  DA</td>
+                        
+                      <td> Livraison à domicile</td>
+                      <td> Alger</td>
+                      <td> El hamiz - Rue STNP 26 -</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
+              
             </div>
             <!--/ Hoverable Table rows -->
               <!-- Hoverable Table rows -->
@@ -92,6 +103,7 @@
                       <tr>
                         <th> </th>
                         <th>Nom de produit</th>
+                        <th>Marque de produit</th>
                         <th>Size de produit</th>
                         <th>Prix</th>
                         <th>Quantité</th>
@@ -103,16 +115,32 @@
                       <tr>
                         <td><img src="{{asset("/storage/$cmd->ImageFileName1")}}" class="pic-product"></td>
                         <td>{{$cmd->nameProd}}</td>
-                        <td>{{$cmd->vol_prod}}</td>
+                        <td>{{$cmd->mark_prod}}</td>
+                        <td>{{$cmd->vol_prod}} ML</td>
                         @if ($cmd->vol_prod == 35)
-                        <td> {{$cmd->prix_new_35}}</td>
+                        <td> {{$cmd->prix_new_35}} DA</td>
                         @elseif ($cmd->vol_prod == 50)
-                        <td> {{$cmd->prix_new_50}}</td>
+                        <td> {{$cmd->prix_new_50}} DA</td>
                         @elseif ($cmd->vol_prod == 100)
-                        <td> {{$cmd->prix_new_100}}</td>
+                        <td> {{$cmd->prix_new_100}} DA</td>
                         @endif
                         <td>{{$cmd->qte_ht}} </td>
                         <td> {{$cmd->Total}} DA</td>
+                      </tr>
+                      @endforeach
+                      @foreach($cmdacc as $cmdacc)
+                      <tr>
+                        <td><img src="{{asset("/storage/$cmdacc->image")}}" class="pic-product"></td>
+                        <td>{{ $cmdacc->nameProd}}</td>
+                        <td>{{ $cmdacc->mark_prod}}</td>
+                        <td>-- </td>
+                        @if ($cmdacc->promo > 0)
+                        <td> {{ $cmdacc->prix_new}} DA</td>
+                        @else 
+                        <td> {{ $cmdacc->prix_old}} DA</td>
+                        @endif
+                        <td>{{ $cmdacc->qte_ht}} </td>
+                        <td> {{ $cmdacc->Total}} DA</td>
                       </tr>
                       @endforeach
                     </tbody>
@@ -126,6 +154,14 @@
                   width: 90px !important;
                   height: 90px !important;
                   border-radius: 15px;
+                }
+                .but-div {
+                  margin-top: 10px;
+                }
+                .but-div form{
+                  display: inline;
+                  float: right;
+                  margin: 10px;
                 }
               </style>
 

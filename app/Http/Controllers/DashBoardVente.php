@@ -28,7 +28,9 @@ class DashBoardVente extends Controller
         $nbrproduitenstock = Produit::select('*')
         ->whereRaw('(id_magasin = ? and (Qte_stock_35+Qte_stock_50+Qte_stock_100) > ?)',[$idMag,0])
         ->get()->count();
-        $commannds = Commande::select('*')->whereRaw('id_magasin = ?',[$idMag])->get();
+        $commannds = Commande::select('*')->whereRaw('id_magasin = ?',[$idMag])
+        ->orderByRaw('id DESC')
+        ->get();
         $montatToday = Commande::selectRaw('Sum(netapayer) as tot')
         ->whereRaw('date(created_at)=CURDATE() and EtatCommand = 5')
         ->first()->tot;
@@ -71,6 +73,7 @@ class DashBoardVente extends Controller
         $clients = Client::all();
         return view('dashboard.maindashboard',[
             'nbrclient' => $nbrclient,
+            'id_mag' => $idMag,
             'commandattend' => $commandattend,
             'commandlaivr' => $commandlaivr,
             'nbrproduitenstock' => $nbrproduitenstock,

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accessoire;
 use App\Models\Produit;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class ProduitController extends Controller
         ->whereRaw('id_magasin = ?',[$id])
         ->get();
 
-        return view('dashboard.liste-product',['produits' => $produits]);
+        return view('dashboard.liste-product',['id_mag' => Auth::user()->id_magasin,'produits' => $produits]);
     }
 
     public function indexDashboard()
@@ -35,14 +36,50 @@ class ProduitController extends Controller
         $produits =Produit::select('*')
         ->whereRaw('id_magasin = ?',[$id])
         ->get();
+        $accessoire =Accessoire::select('*')
+        ->whereRaw('id_magasin = ?',[$id])
+        ->get();
+        return view('dashboard.liste-product',['id_mag' => Auth::user()->id_magasin,'produits' => $produits,'accessoire' => $accessoire,'searchVal' => null]);
+    }
 
-        return view('dashboard.liste-product',['produits' => $produits,'searchVal' => null]);
+    public function storeindexother()
+    {
+        //
+        
+        return view('dashboard.add-autres-product',['id_mag' => Auth::user()->id_magasin]);
+    }
+
+    public function storeindexpack()
+    {
+        //
+        $id = Auth::user()->id_magasin;
+        $produits =Produit::select('*')
+        ->whereRaw('id_magasin = ?',[$id])
+        ->get();
+        $accessoire =Accessoire::select('*')
+        ->whereRaw('id_magasin = ?',[$id])
+        ->get();
+        return view('dashboard.add-pack',['id_mag' => Auth::user()->id_magasin,'produits' => $produits,'accessoire' => $accessoire,'searchVal' => null]);
     }
 
     public function storeindex()
     {
         //
-        return view('dashboard.addproduct');
+        return view('dashboard.addproduct',['id_mag' => Auth::user()->id_magasin]);
+    }
+
+    public function editindexacc($idacc)
+    {
+        
+        //
+        $idmag  = Auth::user()->id_magasin;
+        $accessoire = Accessoire::select('*')->whereRaw('id_magasin = ? and id = ?',[$idmag,intVal($idacc)])->first();
+        if (is_null($accessoire)) {}
+        else {
+            $prcent =($accessoire->prix_old-$accessoire->prix_new)/($accessoire->prix_old-$accessoire->prix_ht);
+            $prcent =  $prcent *100;
+            return view('dashboard.update-acc',['id_mag' => Auth::user()->id_magasin,'acc' => $accessoire,'prcent'=>number_format((float)$prcent, 2, '.', '')]);
+        }
     }
 
 
@@ -62,7 +99,7 @@ class ProduitController extends Controller
             $prcent =   ($produit->prix_old_100-$produit->prix_new_100)/($produit->prix_old_100-$produit->prix_ht_100);
 
             $prcent =  $prcent *100;
-            return view('dashboard.update-product',['produit' => $produit,'size'=>$size,'prcent'=>number_format((float)$prcent, 2, '.', '')]);
+            return view('dashboard.update-product',['id_mag' => Auth::user()->id_magasin,'produit' => $produit,'size'=>$size,'prcent'=>number_format((float)$prcent, 2, '.', '')]);
         }
     }
 
@@ -150,6 +187,30 @@ class ProduitController extends Controller
         }
 
 
+    public function updateprodacc(Request $req)
+    {
+      
+        //image probléme
+        $idMag = Auth::user()->id_magasin;
+
+            if ($req->image == null) {
+            $up = DB::update('update accessoires set id_magasin = ?,  nameProd = ?,  description = ?,  sex = ?,  mark_prod = ?,  prix_ht = ?, prix_old = ?, Qte_stock = ?,updated_at = ? where  (id_magasin = ? and id=?)'
+            ,[$idMag,$req->nameProd,$req->descr,$req->sex,$req->markProd,$req->prixhtProd,$req->prixvtProd,$req->qtestockProd,Carbon::now(),$idMag,$req->idprod]);
+
+             }else{
+                if ($req->hasFile('image') && $req->file('image')!= null){
+                    $filepath = Storage::disk('public')->put('DB', $req->file('image'));
+                }else 
+                    $filepath = null;
+                    $up = DB::update('update accessoires set image = ?,id_magasin = ?,  nameProd = ?,  description = ?,  sex = ?,  mark_prod = ?,  prix_ht = ?, prix_old = ?, Qte_stock = ?,updated_at = ? where  (id_magasin = ? and id=?)'
+                    ,[$filepath,$idMag,$req->nameProd,$req->descr,$req->sex,$req->markProd,$req->prixhtProd,$req->prixvtProd,$req->qtestockProd,Carbon::now(),$idMag,$req->idprod]);
+                
+             }
+        
+        return redirect()->route('dashboard.product.editacc',['idacc' => $req->idprod]);
+}
+
+
     public function applypromo(Request $req)
     {
         $idMag = Auth::user()->id_magasin;
@@ -171,6 +232,15 @@ class ProduitController extends Controller
             return redirect()->route('dashboard.product.edit',['idprod' => $req->idprod,'size' => $req->size]);
         }
 
+    public function applypromoacc(Request $req)
+    {
+        $idMag = Auth::user()->id_magasin;
+
+            $up = DB::update('update accessoires set promo =  ?,prix_new=? where (id_magasin = ? and id=?)'
+            ,[1,$req->inputnvprix_val_h,$idMag,$req->idprod]
+            );
+            return redirect()->route('dashboard.product.editacc',['idacc' => $req->idprod]);
+   }
     public function store(Request $req)
     {
         
@@ -203,6 +273,39 @@ class ProduitController extends Controller
         $ins = DB::insert('insert into produits (nameProd, mark_prod, id_magasin, Volum35, Volum50, Volum100, Sex, ImageFileName1, Qte_stock_35, Qte_vt_35, prix_ht_35, promo_35, prix_old_35, prix_new_35, Qte_stock_50, Qte_vt_50, prix_ht_50, promo_50, prix_old_50, prix_new_50, Qte_stock_100, Qte_vt_100, prix_ht_100, promo_100, prix_old_100, prix_new_100, Descirption, created_at, updated_at) values 
         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
         [$req->nameProd,$req->markprod,$idMag,$vol35,$vol50,$vol100,$req->sex,$filepath,$req->qte_stock_35,0,$req->prix_ht_35,0,$req->prix_vt_35,$req->prix_vt_35,$req->qte_stock_50,0,$req->prix_ht_50,0,$req->prix_vt_50,$req->prix_vt_50,$req->qte_stock_100,0,$req->prix_ht_100,0,$req->prix_vt_100,$req->prix_vt_100,$desc,Carbon::now(),Carbon::now()]);
+       
+        return redirect()->route('dashboard');
+    }
+
+    public function storeOther(Request $req)
+    {
+        $idMag = Auth::user()->id_magasin;
+        //ajoutier un produit
+        $req->validate([
+            'nameProd' =>'required|unique:produits|min:5',
+            'markprod' =>'required|min:5',
+            'sex' => 'required',
+            'image'=> 'required|image',
+            'prix_ht' => 'required',
+            'prix_vt' => 'required',
+            'qte_stock' => 'required',
+        ]);
+
+        if ($req->hasFile('image') && $req->file('image')!= null){
+            $filepath = Storage::disk('public')->put('DB', $req->file('image'));
+        }else 
+            $filepath = null;
+        
+
+        $desc = "";
+        if (is_null($req->descr)) 
+        $desc = "accessoire des ".$req->sex;
+        else  $desc = $req->descr;
+
+
+        $ins = DB::insert('insert into accessoires (nameProd, mark_prod, id_magasin,sex,image, Qte_stock,prix_ht,prix_old,description,created_at, updated_at) values 
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        [$req->nameProd,$req->markprod,$idMag,$req->sex,$filepath,$req->qte_stock,$req->prix_ht,$req->prix_vt,$desc,Carbon::now(),Carbon::now()]);
        
         return redirect()->route('dashboard');
     }

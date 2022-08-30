@@ -72,7 +72,8 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="/" class="app-brand-link">
+        
+            <a  href="{{route('ecommerce.show',['id' => $id_mag])}}" class="app-brand-link">
               <span class="app-brand-logo demo">
                 <img src="{{asset('/assets/img/logoGoldHor.png')}}"  width="55%" height="18%" style="margin-bottom: 20px;">
                  
@@ -154,7 +155,17 @@
               <ul class="menu-sub">
                 <li class="menu-item">
                   <a href="{{route('dashboard.product.store')}}" class="menu-link">
-                    <div data-i18n="Without menu">Ajouter produit</div>
+                    <div data-i18n="Without menu">Ajouter Parfum</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('dashboard.product.storeother')}}" class="menu-link">
+                    <div data-i18n="Without menu">Ajouter autres produit</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('dashboard.product.storepack')}}" class="menu-link">
+                    <div data-i18n="Without menu">Ajouter un pack</div>
                   </a>
                 </li>
                 <li class="menu-item">
@@ -249,7 +260,7 @@
             <li class="menu-header small text-uppercase"><span class="menu-header-text">La boutique</span></li>
             <li class="menu-item">
               <a
-                href="{{route('index')}}"
+                href="{{route('ecommerce.show',['id' => $id_mag])}}"
                 target="_blank"
                 class="menu-link"
               >
@@ -297,8 +308,8 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">{{$nomMag}}</span>
-                            <small class="text-muted">Vendeur de {{$nomMag}}</small>
+                            <span class="fw-semibold d-block">L'ESTIME M'Sila</span>
+                            <small class="text-muted">Administration</small>
                           </div>
                         </div>
                       </a>
@@ -313,7 +324,7 @@
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="/dashboard/statistique/produit">
+                      <a class="dropdown-item" href="#">
                         <span class="d-flex align-items-center align-middle">
                           <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
                           <span class="flex-grow-1 align-middle">Inventaire</span>
@@ -325,13 +336,10 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <form method="POST" action="{{route('logout')}}">
-                        @csrf
-                      <button type="submit" class="dropdown-item" href="auth-login-basic.html">
+                      <a class="dropdown-item" href="auth-login-basic.html">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Déconnexion</span>
-                      </button>
-                      </form>
+                      </a>
                     </li>
                   </ul>
                 </li>

@@ -23,7 +23,7 @@ class ClientController extends Controller
         $clients = Client::all();
         $idMag = Auth::user()->id_magasin;
         $nomMag = Magasin::select('*')->whereRaw('id=?',[$idMag])->first()->lib_magasin;
-        return view('dashboard.client',['clients' => $clients,'nomMag' => $nomMag]);
+        return view('dashboard.client',['id_mag' => $idMag,'clients' => $clients,'nomMag' => $nomMag,'searchVal' => null]);
     }
 
     public function indexNvClient()
@@ -32,7 +32,7 @@ class ClientController extends Controller
         //$id = Auth::user()->id_magasin;
         $idMag = Auth::user()->id_magasin;
         $nomMag = Magasin::select('*')->whereRaw('id=?',[$idMag])->first()->lib_magasin;
-        return view('dashboard.client-add',['nomMag' => $nomMag]);
+        return view('dashboard.client-add',['id_mag' => $idMag,'nomMag' => $nomMag]);
     }
 
     /**

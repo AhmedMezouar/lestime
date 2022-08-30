@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accessoire;
 use App\Models\Produit;
 use App\Models\TarfivLaiv;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -41,20 +42,35 @@ class CartController extends Controller
     public function store(Request $request)
     {
         //
+        if ($request->product_type ==  1) {
         $qte35 = Produit::select('*')
             ->whereRaw('id= ?',$request->product_id)
             ->first()->Qte_stock_35;
         if ($request->input('action') == "ajout") {
             
-            Cart::add($request->product_id,$request->product_name."(35ML)",$request->qteproduct,$request->product_price,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'volume'=>"35",'Qte_stock' =>$qte35])->associate('App\Models\Produit');
+            Cart::add($request->product_id,$request->product_name."(35ML)",$request->qteproduct,$request->product_price,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'type' => $request->product_type,'volume'=>"35",'Qte_stock' =>$qte35])->associate('App\Models\Produit');
             session()->flash('suc','produit ajoutier');
             return redirect()->route('ecommerce.show',['id' => $request->id_magasin]);
             }else{
-                Cart::add($request->product_id,$request->product_name."(35ML)",$request->qteproduct,$request->product_price,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'volume'=>"35",'Qte_stock' =>$qte35])->associate('App\Models\Produit');
+                Cart::add($request->product_id,$request->product_name."(35ML)",$request->qteproduct,$request->product_price,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'type' => $request->product_type,'volume'=>"35",'Qte_stock' =>$qte35])->associate('App\Models\Produit');
                 session()->flash('suc','produit ajoutier');
                 return redirect()->route('cart.index',['id' => $request->id_magasin,'tarif' => 0]);
             }    
-
+        }else {
+            $qte = Accessoire::select('*')
+            ->whereRaw('id= ?',$request->product_id)
+            ->first()->Qte_stock;
+        if ($request->input('action') == "ajout") {
+            
+            Cart::add($request->product_id,$request->product_name,$request->qteproduct,$request->product_price,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'type' => $request->product_type,'volume'=>0,'Qte_stock' =>$qte])->associate('App\Models\Produit');
+            session()->flash('suc','produit ajoutier');
+            return redirect()->route('ecommerce.show',['id' => $request->id_magasin]);
+            }else{
+                Cart::add($request->product_id,$request->product_name,$request->qteproduct,$request->product_price,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'type' => $request->product_type,'volume'=>0,'Qte_stock' =>$qte])->associate('App\Models\Produit');
+                session()->flash('suc','produit ajoutier');
+                return redirect()->route('cart.index',['id' => $request->id_magasin,'tarif' => 0]);
+            }     
+        }
     }
 
    
@@ -62,6 +78,7 @@ class CartController extends Controller
     {
         
         //
+        if ($request->product_type ==  1) {
         $prodnam = $request->product_name.'('.$request->volume.'ML)';
         if ($request->volume == "50") { 
                 $priceofprod = $request->product_price50;
@@ -70,11 +87,11 @@ class CartController extends Controller
                 ->first()->Qte_stock_50;
 
                 if ($request->input('action') == "ajout") {
-                    Cart::add($request->product_id, $prodnam,$request->numproduct,$priceofprod,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'volume'=>$request->volume,'Qte_stock' =>$qte50])->associate('App\Models\Produit');
+                    Cart::add($request->product_id, $prodnam,$request->numproduct,$priceofprod,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'type' => $request->product_type,'volume'=>$request->volume,'Qte_stock' =>$qte50])->associate('App\Models\Produit');
                     session()->flash('suc','produit ajoutier');
                     return redirect()->route('ecommerce.show',['id' => $request->id_magasin]);
                     }else{
-                        Cart::add($request->product_id, $prodnam,$request->numproduct,$priceofprod,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'volume'=>$request->volume,'Qte_stock' =>$qte50])->associate('App\Models\Produit');
+                        Cart::add($request->product_id, $prodnam,$request->numproduct,$priceofprod,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'type' => $request->product_type,'volume'=>$request->volume,'Qte_stock' =>$qte50])->associate('App\Models\Produit');
                         session()->flash('suc','produit ajoutier');
                         return redirect()->route('cart.index',['id' => $request->id_magasin,'tarif' => 0]);
                     }
@@ -87,11 +104,11 @@ class CartController extends Controller
                 ->first()->Qte_stock_100;
 
                 if ($request->input('action') == "ajout") {
-                    Cart::add($request->product_id, $prodnam,$request->numproduct,$priceofprod,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'volume'=>$request->volume,'Qte_stock' =>$qte100])->associate('App\Models\Produit');
+                    Cart::add($request->product_id, $prodnam,$request->numproduct,$priceofprod,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'type' => $request->product_type,'volume'=>$request->volume,'Qte_stock' =>$qte100])->associate('App\Models\Produit');
                     session()->flash('suc','produit ajoutier');
                     return redirect()->route('ecommerce.show',['id' => $request->id_magasin]);
                     }else{
-                        Cart::add($request->product_id, $prodnam,$request->numproduct,$priceofprod,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'volume'=>$request->volume,'Qte_stock' =>$qte100])->associate('App\Models\Produit');
+                        Cart::add($request->product_id, $prodnam,$request->numproduct,$priceofprod,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'type' => $request->product_type,'volume'=>$request->volume,'Qte_stock' =>$qte100])->associate('App\Models\Produit');
                         session()->flash('suc','produit ajoutier');
                         return redirect()->route('cart.index',['id' => $request->id_magasin,'tarif' => 0]);
                     }
@@ -102,15 +119,33 @@ class CartController extends Controller
             ->first()->Qte_stock_35;
 
             if ($request->input('action') == "ajout") {
-                Cart::add($request->product_id, $prodnam,$request->numproduct,$priceofprod,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'volume'=>35,'Qte_stock' =>$qte35])->associate('App\Models\Produit');
+                Cart::add($request->product_id, $prodnam,$request->numproduct,$priceofprod,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'type' => $request->product_type,'volume'=>35,'Qte_stock' =>$qte35])->associate('App\Models\Produit');
                 session()->flash('suc','produit ajoutier');
                 return redirect()->route('ecommerce.show',['id' => $request->id_magasin]);
                 }else{
-                    Cart::add($request->product_id, $prodnam,$request->numproduct,$priceofprod,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'volume'=>35,'Qte_stock' =>$qte35])->associate('App\Models\Produit');
+                    Cart::add($request->product_id, $prodnam,$request->numproduct,$priceofprod,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'type' => $request->product_type,'volume'=>35,'Qte_stock' =>$qte35])->associate('App\Models\Produit');
                     session()->flash('suc','produit ajoutier');
                     return redirect()->route('cart.index',['id' => $request->id_magasin,'tarif' => 0]);
                 }
     }
+} else {
+    $prodnam = $request->product_name;
+            $priceofprod = $request->product_price;
+            $qte50 = Accessoire::select('*')
+            ->whereRaw('id= ?',$request->product_id)
+            ->first()->Qte_stock;
+
+            if ($request->input('action') == "ajout") {
+                Cart::add($request->product_id, $prodnam,$request->numproduct,$priceofprod,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'type' => $request->product_type,'volume'=>0,'Qte_stock' =>$qte50])->associate('App\Models\Produit');
+                session()->flash('suc','produit ajoutier');
+                return redirect()->route('ecommerce.show',['id' => $request->id_magasin]);
+                }else{
+                    Cart::add($request->product_id, $prodnam,$request->numproduct,$priceofprod,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'type' => $request->product_type,'volume'=>0,'Qte_stock' =>$qte50])->associate('App\Models\Produit');
+                    session()->flash('suc','produit ajoutier');
+                    return redirect()->route('cart.index',['id' => $request->id_magasin,'tarif' => 0]);
+                }
+
+}
 }
     /**
      * Display the specified resource.
@@ -176,7 +211,7 @@ class CartController extends Controller
             $product = Cart::get($rowId);
             if ($product->qty > 0 && $product->qty < $product->options->Qte_stock )
               Cart::update($rowId, $product->qty+1);
-             return redirect()->route('cart.index',['id' => $idmagsin,'tarif' => 0]);
+             return redirect()->route('cart.index',['id' => $idmagsin,'tarif' => 0]);            
      }
 
      public function Remove($idmagsin,$rowId)

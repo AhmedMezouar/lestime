@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accessoire;
 use App\Models\Produit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -59,7 +60,11 @@ class EcommerceController extends Controller
             ->orderByRaw('Totalvt DESC')
             ->get();
 
-        return view('layouts.acceuil',['produits'=> $produits,"id_mag" => $id]);
+              $accessoires =Accessoire::select('*')
+             ->whereRaw('Qte_stock > 0')
+             ->whereRaw('id_magasin = ?',[$id])
+             ->get();
+        return view('layouts.acceuil',['produits'=> $produits,'accessoires'=> $accessoires,"id_mag" => $id]);
 
         }else{
             return redirect()->route('P404');
@@ -77,7 +82,11 @@ class EcommerceController extends Controller
             ->orderByRaw('Totalvt DESC')
             ->get();
 
-        return view('layouts.product',['produits'=> $produits,"id_mag" => $id]);
+            $accessoires =Accessoire::select('*')
+            ->whereRaw('Qte_stock > 0')
+            ->whereRaw('id_magasin = ?',[$id])
+            ->get();
+        return view('layouts.product',['produits'=> $produits,'accessoires'=> $accessoires,"id_mag" => $id]);
 
         }else{
             return redirect()->route('P404');
@@ -109,7 +118,12 @@ class EcommerceController extends Controller
         ->whereRaw('id_magasin = ?',[$idmag])
         ->orderByRaw('TotalQte DESC')
         ->get();
-        return view('layouts.new-arrival',['produits'=> $produits,"id_mag" => $idmag]);
+        $accessoires =Accessoire::select('*')
+        ->whereRaw('Qte_stock > 0')
+        ->whereRaw('id_magasin = ?',[$idmag])
+        ->orderByRaw('Qte_stock DESC')
+        ->get();
+        return view('layouts.new-arrival',['produits'=> $produits,'accessoires'=> $accessoires,"id_mag" => $idmag]);
         }else{
             return redirect()->route('P404');
         }

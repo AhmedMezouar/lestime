@@ -301,6 +301,7 @@
 									data-name="{{$produit->nameProd}}" 
 									data-description="{{$produit->Caractiristique}}" 
 									data-prix="{{$produit->prix_new_35}}" 
+									data-type="1"
 									data-prixold="{{$produit->prix_old_35}}"
 									data-name="{{$produit->nameProd}}" 
 									data-promo="{{$produit->promo_35}}"
@@ -317,6 +318,7 @@
 									data-description="{{$produit->Caractiristique}}" 
 									data-prix="{{$produit->prix_new_35}}" 
 									data-prixold="{{$produit->prix_old_35}}"
+									data-type="1"
 									data-name="{{$produit->nameProd}}" 
 									data-promo="{{$produit->promo_35}}"
 									data-mainimage="{{asset("/storage/$produit->ImageFileName1")}}"
@@ -330,7 +332,19 @@
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/product-detail" class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+								<a href="#" 
+								data-obj = "{{$produit}}" 
+									data-id="{{$produit->id}}" 
+									data-name="{{$produit->nameProd}}" 
+									data-description="{{$produit->Caractiristique}}" 
+									data-prix="{{$produit->prix_new_35}}" 
+									data-type="1"
+									data-prixold="{{$produit->prix_old_35}}"
+									data-name="{{$produit->nameProd}}" 
+									data-promo="{{$produit->promo_35}}"
+									data-mainimage="{{asset("/storage/$produit->ImageFileName1")}}"
+									data-onlyimage="{{$produit ->ImageFileName1}}"
+								class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6 js-show-modal1">
 								{{$produit ->nameProd}}
 								</a>
 								@if($produit ->promo_35 > 0)
@@ -359,16 +373,105 @@
 											<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
 										</a>
 							</div>
-							<input type="hidden" name="filepath" value="{{$produit ->ImageFileName1}}">
+										<input type="hidden" name="filepath" value="{{asset("/storage/$produit->ImageFileName1")}}">
 										<input type="hidden" name="id_magasin" value="{{$id_mag}}" >
 										<input type="hidden" name="qteproduct" value="1" >
 										<input type="hidden" name="product_id" value="{{$produit->id}}">
 										<input type="hidden" name="product_name" value="{{$produit->nameProd}}">
+										<input type="hidden" name="product_type" value="1">
 										@if ($produit->promo_35 > 0)
 										<input type="hidden" name="product_price" value="{{$produit->prix_new_35}}">
 										@else
 										<input type="hidden" name="product_price" value="{{$produit->prix_old_35}}">
 										@endif
+						           	<div class="header-cart-buttons flex-w w-full" >
+								<button type="submit" name="action" value="achat" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
+									Achat Directement
+								</button>
+							
+								        
+							        	<button type="submit"  name="action" value="ajout" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
+									Ajouter au panier
+								</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				@endforeach
+				@foreach($accessoires as $acc)
+				<div class="col-sm-6 col-md-4 col-lg-4 p-b-35 isotope-item women">
+					<!-- Block2 -->
+					<div class="block2">
+						<div class="block2-pic hov-img0">
+						<img src="{{asset("/storage/$acc->image")}}" alt="IMG-PRODUCT">
+					
+						<a href="#"
+									data-obj = "{{$acc}}" 
+									data-id="{{$acc->id}}" 
+									data-name="{{$acc->nameProd}}" 
+									data-description="{{$acc->description}}" 
+									data-prix="{{$acc->prix_vt}}" 
+									data-prixold="{{$acc->prix_vt}}" 
+									data-name="{{$acc->nameProd}}" 
+									data-promo="{{$acc->promo}}"
+									data-type="2"
+									data-mainimage="{{asset("/storage/$acc->image")}}"
+									data-onlyimage="{{$acc ->image}}"
+									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+									Afficher le accessoire
+						</a>
+						</div>
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">
+								<a href="/product-detail" 
+								data-obj = "{{$acc}}" 
+									data-id="{{$acc->id}}" 
+									data-name="{{$acc->nameProd}}" 
+									data-description="{{$acc->description}}" 
+									data-prix="{{$acc->prix_vt}}" 
+									data-prixold="{{$acc->prix_vt}}" 
+									data-name="{{$acc->nameProd}}" 
+									data-promo="{{$acc->promo}}"
+									data-type="2"
+									data-mainimage="{{asset("/storage/$acc->image")}}"
+									data-onlyimage="{{$acc ->image}}"
+								class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6 js-show-modal1">
+								{{$acc ->nameProd}}
+								</a>
+								@if($acc ->promo > 0)
+								<p class="pric">
+									<span class="stext-105 cl11 p-r-15-01 oldprice">
+										{{$acc ->prix_old}} DA
+									</span>
+									<span class="stext-1055 cl3 p-r-15-01 newprice">
+									    {{$acc ->prix_new}} DA
+									</span>
+								</p>
+								@else
+								<p class="pric">
+									<span class="stext-1055 cl3 p-r-15-01 newprice">
+									    {{$acc ->prix_old}} DA
+									</span>
+								</p>
+								@endif
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+							<form method="POST" action="{{route('cart.store')}}"> 
+							@csrf
+							</div>
+										<input type="hidden" name="filepath" value="{{asset("/storage/$acc->image")}}">
+										<input type="hidden" name="id_magasin" value="{{$id_mag}}" >
+										<input type="hidden" name="qteproduct" value="1" >
+										<input type="hidden" name="product_promo" value="{{$acc->promo}}" >
+										<input type="hidden" name="product_id" value="{{$acc->id}}">
+										<input type="hidden" name="product_name" value="{{$acc->nameProd}}">
+										@if ($acc->promo > 0)
+										<input type="hidden" name="product_price" value="{{$acc->prix_new}}">
+										@else
+										<input type="hidden" name="product_price" value="{{$acc->prix_old}}">
+										@endif
+										<input type="hidden" name="product_type" value="2">
 						           	<div class="header-cart-buttons flex-w w-full" >
 								<button type="submit" name="action" value="achat" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
 									Achat Directement

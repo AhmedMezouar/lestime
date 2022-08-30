@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accessoire;
 use App\Models\Commande;
 use App\Models\Magasin;
 use App\Models\Produit;
@@ -81,6 +82,7 @@ class StateDashboard extends Controller
         ->get();
         
         return view('dashboard.statistique',[
+            'id_mag' => Auth::user()->id_magasin,
             'montatToday' => $montatToday,
             'indicemontanttoday' =>number_format((float)$indicemontanttoday, 2, '.', ''),
             'montatsemain' => $montatsemain,
@@ -102,9 +104,12 @@ class StateDashboard extends Controller
         //
         $idMag = Auth::user()->id_magasin;
         $produits = Produit::select('*')->whereRaw('id_magasin = ?',[$idMag])->get();
+        $accessoire = Accessoire::select('*')->whereRaw('id_magasin = ?',[$idMag])->get();
         $nomMag = Magasin::select('*')->whereRaw('id=?',[$idMag])->first()->lib_magasin;
         return view('dashboard.statistique-product',[
+            'id_mag' => Auth::user()->id_magasin,
             'produits' => $produits,
+            'accessoire' =>$accessoire,
             'searchVal' => null,
             'nomMag' =>$nomMag
         ]);

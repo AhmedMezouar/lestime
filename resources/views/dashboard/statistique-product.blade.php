@@ -116,6 +116,22 @@
                       </tr>
                       @endif
                       @endforeach
+                      @foreach($accessoire as $acc)
+                      <tr>
+                      <td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="#"><strong>#{{$acc->id}}</strong></a></td>
+                        <td>{{$acc->nameProd}}</td>
+                        <td> {{$acc->mark_prod}}</td>
+                        <td> -- </td>
+                        <td> {{$acc->prix_ht}}</td>
+                        @if ($acc->promo > 0)
+                        <td> {{$acc->prix_new}}</td>
+                        @else
+                        <td> {{$acc->prix_old}}</td>
+                        @endif
+                        <td> {{$acc->Qte_stock}}</td>
+                        <td> {{$acc->Qte_vt}}</td>
+                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accessoire;
+use App\Models\Client;
 use App\Models\Commande;
 use App\Models\Produit;
 use Carbon\Carbon;
@@ -57,9 +59,14 @@ class SearchDashboard extends Controller
         $idMag = Auth::user()->id_magasin;
         $key = $req->search;
         $produits = Produit::select('*')->whereRaw('(id_magasin = ? and (mark_prod like ? or nameProd like ? or Descirption like ?))',[$idMag,'%'.$key.'%','%'.$key.'%','%'.$key.'%'])->get();
+        $accessoire = Accessoire::select('*')
+        ->whereRaw('(id_magasin = ? and (mark_prod like ? or nameProd like ? or description like ?))',[$idMag,'%'.$key.'%','%'.$key.'%','%'.$key.'%'])
+        ->get();
         return view('dashboard.statistique-product',[
             'produits' => $produits,
-            'searchVal' => null
+            'accessoire' => $accessoire,
+            'searchVal' => $key,
+            'id_mag' => Auth::user()->id_magasin,
         ]);
     }
     function stateclient_search(Request $req) {
@@ -126,6 +133,7 @@ class SearchDashboard extends Controller
         ->get();
         
         return view('dashboard.statistique',[
+            'id_mag' => Auth::user()->id_magasin,
             'montatToday' => $montatToday,
             'indicemontanttoday' =>number_format((float)$indicemontanttoday, 2, '.', ''),
             'montatsemain' => $montatsemain,
@@ -156,8 +164,16 @@ class SearchDashboard extends Controller
         $produits = Produit::select('*')
         ->whereRaw('(id_magasin = ? and (mark_prod like ? or nameProd like ? or Descirption like ?))',[$idMag,'%'.$key.'%','%'.$key.'%','%'.$key.'%'])
         ->get();
-         if ( $produits != null &&  $produits->count() > 0) {
-            return view('dashboard.liste-product',['searchVal' => $key,'produits' => $produits]);
+  
+        $accessoire = Accessoire::select('*')
+        ->whereRaw('(id_magasin = ? and (mark_prod like ? or nameProd like ? or description like ?))',[$idMag,'%'.$key.'%','%'.$key.'%','%'.$key.'%'])
+        ->get();
+         if ( $produits != null &&  $produits->count() > 0 && $accessoire != null &&  $accessoire->count() > 0 ) {
+            return view('dashboard.liste-product',['id_mag' => Auth::user()->id_magasin,'searchVal' => $key,'produits' => $produits,'accessoire' => $accessoire]);
+         }else  if ( $produits != null &&  $produits->count() > 0 && ($accessoire == null ||  $accessoire->count() == 0)) {
+            return view('dashboard.liste-product',['id_mag' => Auth::user()->id_magasin,'searchVal' => $key,'produits' => $produits,'accessoire' => []]);
+         }else  if ( ($produits == null ||  $produits->count() == 0) && ($accessoire != null &&  $accessoire->count() > 0)) {
+            return view('dashboard.liste-product',['id_mag' => Auth::user()->id_magasin,'searchVal' => $key,'produits' => [],'accessoire' => $accessoire]);
          }
          else {
             return redirect()->back()->withErrors(['aucune recherche trouvé']);
@@ -181,7 +197,31 @@ class SearchDashboard extends Controller
             $idMag,'%'.$key.'%','%'.$key.'%','%'.$key.'%','%'.$key.'%','%'.$key.'%','%'.$key.'%'])
         ->get();
          if ( $cmds != null &&  $cmds->count() > 0) {
-            return view('dashboard.commande',['searchVal' => $key,'cmds' => $cmds]);
+            return view('dashboard.commande',['id_mag' => Auth::user()->id_magasin,'searchVal' => $key,'cmds' => $cmds]);
+         }
+         else {
+            return redirect()->back()->withErrors(['aucune recherche trouvé']);
+         }
+        }
+    }
+
+    public function client_search(Request $req) {
+        if ($req->search == null) {
+            return redirect()->back();
+        }
+        $req->validate([
+            'search' =>  'required'
+        ]);
+
+        if ($req->search != null) {
+        $idMag = Auth::user()->id_magasin;
+        $key = $req->search;
+        $clients = Client::select('*')
+        ->whereRaw('nom like ? or telephone like ? or 	email like ?  or wilaya like ? or address like ?',[
+            '%'.$key.'%','%'.$key.'%','%'.$key.'%','%'.$key.'%','%'.$key.'%','%'.$key.'%'])
+        ->get();
+         if ( $clients != null &&  $clients->count() > 0) {
+            return view('dashboard.client',['id_mag' => Auth::user()->id_magasin,'searchVal' => $key,'clients' => $clients]);
          }
          else {
             return redirect()->back()->withErrors(['aucune recherche trouvé']);
