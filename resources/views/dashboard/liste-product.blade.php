@@ -140,6 +140,21 @@
                   </div>
                 </div>
                 @endforeach
+                @foreach($packs as $pack)
+                <div class="col-md-6 col-lg-2 mb-3">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <h5 class="card-title">{{$pack->name_pack}}</h5>
+                      <img
+                        class="img-fluid d-flex mx-auto my-4"
+                        src="{{asset("/storage/$pack->image")}}"
+                        alt="Card image cap"
+                      />
+                      <p class="card-text new-price">{{$pack->prix_vt}} DA</p>
+                    </div>
+                  </div>
+                </div>
+                @endforeach
                 </div>
               <!-- Examples -->
 @endsection

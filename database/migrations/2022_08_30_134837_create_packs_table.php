@@ -19,6 +19,7 @@ class CreatePacksTable extends Migration
             $table->string('name_pack');
             $table->string('prix_vt');
             $table->string('prix_ht');
+            $table->string('description');
             $table->string('image');
         });
     }

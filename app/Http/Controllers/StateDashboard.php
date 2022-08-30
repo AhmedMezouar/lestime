@@ -23,6 +23,7 @@ class StateDashboard extends Controller
             //hna dir return net3 lapage neet3
             //return view('dashboard.)
      }
+     
     public function indexclient()
     {
         //

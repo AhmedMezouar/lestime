@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Commande;
 use App\Models\LignCommande;
+use App\Models\LignPack;
 use App\Models\Magasin;
+use App\Models\Pack;
 use App\Models\TarfivLaiv;
 use Carbon\Carbon;
 use Exception;
@@ -30,11 +32,15 @@ class CommandeController extends Controller
          $cmd = Commande::select('*')->whereRaw('id_magasin = ? and id= ?',[$id,$idcmd])->first();
          $cmds =DB::table('*')
          ->fromRaw('lign_commandes lcmd,produits pd')
-         ->whereRaw('lcmd.id_prod = pd.id and lcmd.vol_prod > 0 and lcmd.id_cmd = ?',[$idcmd])->get();
+         ->whereRaw('lcmd.id_prod = pd.id and lcmd.vol_prod > 0 and lcmd.vol_prod < 500 and lcmd.id_cmd = ?',[$idcmd])->get();
          $cmdsacc =DB::table('*')
          ->fromRaw('lign_commandes lcmd,accessoires pd')
          ->whereRaw('lcmd.id_prod = pd.id and lcmd.vol_prod = 0 and  lcmd.id_cmd = ?',[$idcmd])->get();
-         return view('dashboard.commande-detail',['id_mag' => $id,'cmd' => $cmd,'cmds' => $cmds,'cmdacc' => $cmdsacc ]);
+         $cmdpacks=DB::table('*')
+         ->fromRaw('lign_commandes lcmd,packs pd')
+         ->whereRaw('lcmd.id_prod = pd.id and lcmd.vol_prod = 999 and lcmd.id_cmd = ?',[$idcmd])->get();
+
+         return view('dashboard.commande-detail',['id_mag' => $id,'cmdpacks'=>$cmdpacks,'cmd' => $cmd,'cmds' => $cmds,'cmdacc' => $cmdsacc ]);
     }
     public function index()
     {
@@ -88,9 +94,26 @@ class CommandeController extends Controller
                     $up2 = DB::update('update produits set Qte_stock_50 = Qte_stock_50 - ?,Qte_vt_50 = Qte_vt_50 + ? where id = ?',[$lign->qte_ht,$lign->qte_ht,$lign->id_prod]);
                 }else if ($lign->vol_prod == 100) {
                     $up2 = DB::update('update produits set Qte_stock_100 = Qte_stock_100 - ?,Qte_vt_100 = Qte_vt_100 + ? where id = ?',[$lign->qte_ht,$lign->qte_ht,$lign->id_prod]);
-                }else {
+                }else  if ($lign->vol_prod == 0){
 
                     $up2 = DB::update('update accessoires set Qte_stock = Qte_stock - ?,Qte_vt = Qte_vt + ? where id = ?',[$lign->qte_ht,$lign->qte_ht,$lign->id_prod]);
+                }else{
+                    $lignspack = LignPack::select('*')
+                    ->whereRaw('id_pack = ?',[$lign->id_prod])
+                    ->get();
+                    foreach ($lignspack as $lignpack)
+                    {
+                        if ($lignpack->type == 1) {
+                            if ($lignpack->size == 35)
+                             $up2 = DB::update('update produits set Qte_stock_35 = Qte_stock_35 - ?,Qte_vt_35 = Qte_vt_35 + ? where id = ?',[$lignpack->Qte,$lignpack->Qte,$lignpack->id_prod]);
+                            else if ($lignpack->size == 50) 
+                            $up2 = DB::update('update produits set Qte_stock_50 = Qte_stock_50 - ?,Qte_vt_50 = Qte_vt_50 + ? where id = ?',[$lignpack->Qte,$lignpack->Qte,$lignpack->id_prod]);
+                            else if ($lignpack->size == 100) 
+                            $up2 = DB::update('update produits set Qte_stock_100 = Qte_stock_100 - ?,Qte_vt_100 = Qte_vt_100 + ? where id = ?',[$lignpack->Qte,$lignpack->Qte,$lignpack->id_prod]);
+                        }else{
+                            $up2 = DB::update('update accessoires set Qte_stock = Qte_stock - ?,Qte_vt = Qte_vt + ? where id = ?',[$lignpack->Qte,$lignpack->Qte,$lignpack->id_prod]);
+                        }
+                    }
                 }
             }
         }

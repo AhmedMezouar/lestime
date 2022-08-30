@@ -316,7 +316,44 @@
     $('.js-show-modal1').on('click',function(e){
         e.preventDefault();
         var type =  $(this).data('type');
-        if (type == 1) {
+        if (type == 3) {  
+            document.getElementById("qtechanger").style.display = "none";
+            let obj = $(this).data('obj');
+            var myProdid =  $(this).data('id');
+            var myProdName =  $(this).data('name');
+            var myProdpriceold =  $(this).data('prixold');
+            var myProdprice =  $(this).data('prix');
+            var image =  $(this).data('mainimage'); 
+            var image =  $(this).data('mainimage'); 
+
+            document.getElementById("inputproduct_type").value = type;
+            console.log('pack');  
+            var imageName = $(this).data('onlyimage');   
+            console.log(image);  
+            $("#nameofProduct").html(myProdName);
+                $("#newprice").html(obj.prix_vt + " DA");
+            var div = document.querySelector('#divdetails1');
+    
+            $("#descprod").html(""+obj.description);
+            document.getElementById("inputprodobjacc").value = obj;
+            document.getElementById('imageprod').src =image;
+           // document.getElementById('imageproda').src =image;
+           // document.getElementById('imageproddetail1').src =image;
+            //document.getElementById('imageproddetail2').src =image;
+            document.getElementById("inputprodid").value =myProdid;
+            document.getElementById("inputprodname").value =myProdName;
+            document.getElementById("inputprodimage").value =image;
+            document.getElementById("inputprodprice").value =obj.prix_vt;
+            document.getElementById("imageNameInput").value =obj.image;
+
+            document.getElementById("div35").style.display = "none";
+            document.getElementById("div50").style.display = "none";
+            document.getElementById("div100").style.display = "none";
+
+            $('.js-modal1').addClass('show-modal1');
+        }
+        else if (type == 1) {
+            document.getElementById("qtechanger").style.display = "block";
             document.getElementById("div35").style.display = "block";
             document.getElementById("div50").style.display = "block";
             document.getElementById("div100").style.display = "block";

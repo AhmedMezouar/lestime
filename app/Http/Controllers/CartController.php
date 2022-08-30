@@ -56,7 +56,8 @@ class CartController extends Controller
                 session()->flash('suc','produit ajoutier');
                 return redirect()->route('cart.index',['id' => $request->id_magasin,'tarif' => 0]);
             }    
-        }else {
+        }else if ($request->product_type ==  2) {
+    
             $qte = Accessoire::select('*')
             ->whereRaw('id= ?',$request->product_id)
             ->first()->Qte_stock;
@@ -70,6 +71,19 @@ class CartController extends Controller
                 session()->flash('suc','produit ajoutier');
                 return redirect()->route('cart.index',['id' => $request->id_magasin,'tarif' => 0]);
             }     
+        }else {
+
+        if ($request->input('action') == "ajout") {
+            
+            Cart::add($request->product_id,$request->product_name,$request->qteproduct,$request->product_price,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'type' => $request->product_type,'volume'=>999,'Qte_stock' =>0])->associate('App\Models\Produit');
+            session()->flash('suc','produit ajoutier');
+            return redirect()->route('ecommerce.show',['id' => $request->id_magasin]);
+            }else{
+                Cart::add($request->product_id,$request->product_name,$request->qteproduct,$request->product_price,['filepath' => $request->filepath,'id_magasin'=>$request->id_magasin,'type' => $request->product_type,'volume'=>999,'Qte_stock' =>0])->associate('App\Models\Produit');
+                session()->flash('suc','produit ajoutier');
+                return redirect()->route('cart.index',['id' => $request->id_magasin,'tarif' => 0]);
+            } 
+
         }
     }
 

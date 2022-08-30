@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Accessoire;
+use App\Models\Pack;
 use App\Models\Produit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -64,7 +65,12 @@ class EcommerceController extends Controller
              ->whereRaw('Qte_stock > 0')
              ->whereRaw('id_magasin = ?',[$id])
              ->get();
-        return view('layouts.acceuil',['produits'=> $produits,'accessoires'=> $accessoires,"id_mag" => $id]);
+             
+             $packs = Pack::select('*')
+             ->whereRaw('id_magasin = ?',[$id])
+             ->get();
+             
+        return view('layouts.acceuil',['packs' => $packs,'produits'=> $produits,'accessoires'=> $accessoires,"id_mag" => $id]);
 
         }else{
             return redirect()->route('P404');

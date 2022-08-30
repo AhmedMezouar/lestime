@@ -128,19 +128,30 @@
                         <td> {{$cmd->Total}} DA</td>
                       </tr>
                       @endforeach
-                      @foreach($cmdacc as $cmdacc)
+                      @foreach($cmdacc as $cmdac)
                       <tr>
-                        <td><img src="{{asset("/storage/$cmdacc->image")}}" class="pic-product"></td>
-                        <td>{{ $cmdacc->nameProd}}</td>
-                        <td>{{ $cmdacc->mark_prod}}</td>
+                        <td><img src="{{asset("/storage/$cmdac->image")}}" class="pic-product"></td>
+                        <td>{{ $cmdac->nameProd}}</td>
+                        <td>{{ $cmdac->mark_prod}}</td>
                         <td>-- </td>
-                        @if ($cmdacc->promo > 0)
-                        <td> {{ $cmdacc->prix_new}} DA</td>
+                        @if ($cmdac->promo > 0)
+                        <td> {{ $cmdac->prix_new}} DA</td>
                         @else 
-                        <td> {{ $cmdacc->prix_old}} DA</td>
+                        <td> {{ $cmdac->prix_old}} DA</td>
                         @endif
-                        <td>{{ $cmdacc->qte_ht}} </td>
-                        <td> {{ $cmdacc->Total}} DA</td>
+                        <td>{{ $cmdac->qte_ht}} </td>
+                        <td> {{ $cmdac->Total}} DA</td>
+                      </tr>
+                      @endforeach
+                      @foreach($cmdpacks as $cmdpk)
+                      <tr>
+                        <td><img src="{{asset("/storage/$cmdpk->image")}}" class="pic-product"></td>
+                        <td>{{ $cmdpk->name_pack}}</td>
+                        <td>-- </td>
+                        <td>-- </td>
+                        <td> {{ $cmdpk->prix_vt}} DA</td>
+                        <td>{{ $cmdpk->qte_ht}} </td>
+                        <td> {{ $cmdpk->Total}} DA</td>
                       </tr>
                       @endforeach
                     </tbody>

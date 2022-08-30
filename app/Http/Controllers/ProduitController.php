@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Accessoire;
+use App\Models\Pack;
 use App\Models\Produit;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -39,7 +40,11 @@ class ProduitController extends Controller
         $accessoire =Accessoire::select('*')
         ->whereRaw('id_magasin = ?',[$id])
         ->get();
-        return view('dashboard.liste-product',['id_mag' => Auth::user()->id_magasin,'produits' => $produits,'accessoire' => $accessoire,'searchVal' => null]);
+        $packs = Pack::select('*')
+        ->whereRaw('id_magasin = ?',[$id])
+        ->get();
+
+        return view('dashboard.liste-product',['id_mag' => Auth::user()->id_magasin,'produits' => $produits,'packs' => $packs,'accessoire' => $accessoire,'searchVal' => null]);
     }
 
     public function storeindexother()
