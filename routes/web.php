@@ -77,7 +77,6 @@ Route::get('/product', function () {
 
 
 
-Route::get('/dashboard',[DashBoardVente::class,'index'])->middleware(['auth'])->name("dashboard");
 
 Route::post('/dashboard/storeClient',[ClientController::class,'store'])->middleware(['auth'])->name("dashboard.client.store");
 Route::get('/dashboard/clients',[ClientController::class,'index'])->middleware(['auth'])->name("dashboard.client.index");
@@ -103,6 +102,7 @@ Route::post('/dashboard/statistique/client',[SearchDashboard::class,'stateclient
 Route::get('/dashboard/statistique/client',[StateDashboard::class,'indexclient'])->middleware(['auth'])->name("dashboard.state.client");
 Route::post('/dashboard/statistique/produit',[SearchDashboard::class,'stateproduit_search'])->middleware(['auth'])->name("dashboard.state.stateproduit_search");
 Route::get('/dashboard/statistique/produit',[StateDashboard::class,'indexproduit'])->middleware(['auth'])->name("dashboard.state.produit");
+Route::get('/dashboard/statistique/Dpense',[StateDashboard::class,'indexDpense'])->middleware(['auth'])->name("dashboard.state.Dpense");
 
 Route::post('/dashboard/product/edit/updateprod',[ProduitController::class,'updateprod'])->middleware(['auth'])->name("dashboard.product.updateprod");
 Route::post('/dashboard/accessoire/edit/updateprodacc',[ProduitController::class,'updateprodacc'])->middleware(['auth'])->name("dashboard.product.updateprodacc");

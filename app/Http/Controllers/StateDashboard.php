@@ -18,6 +18,11 @@ class StateDashboard extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function indexDpense()
+     {
+            //hna dir return net3 lapage neet3
+            //return view('dashboard.)
+     }
     public function indexclient()
     {
         //
