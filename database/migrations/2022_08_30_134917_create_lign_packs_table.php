@@ -15,7 +15,8 @@ class CreateLignPacksTable extends Migration
     {
         Schema::create('lign_packs', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('id_prod');
+            $table->integer('Qte');
         });
     }
 
