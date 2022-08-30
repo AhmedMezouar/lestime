@@ -47,12 +47,20 @@
 @section('Content')
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Statistique /</span> Statistique des produits</h4>
-
+              @if (Cart::instance('pack')->count() > 0)
+              <div class="container-xxl flex-grow-1 container-p-y">
+				      @foreach (Cart::instance('pack')->content() as $item)
+              <div class="container-xxl flex-grow-1 container-p-y">
+              <h4>
+              {{$item ->name}}
+              </h4>
+              </div>
+              @endforeach
+              </div>
+              @endif
               <!-- Hoverable Table rows -->
-              <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
-              @csrf
               <div class="card">
-                <h5 class="card-header">Listes des commandes</h5>
+                <h5 class="card-header">Listes des produit</h5>
                 <div class="table-responsive text-nowrap">
                   <table class="table table-hover">
                     <thead>
@@ -86,11 +94,21 @@
                         <td>{{$produit->Qte_vt_35}}</td>
                         <td>
                         <div class="form-check">
-                        <input class="form-check-input" type="checkbox"  value="{{$produit->id.' 35'}}" id="flexCheckDefault" onchange='this.form.submit();'>
-                        <label class="form-check-label" for="flexCheckDefault">
-                           ajoutier aux pack
-                           </label>
+                        <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
+                        @csrf
+                          <input type="hidden" value="{{$produit->id}}" name="id_prod">
+                          <input type="hidden" value="{{$produit->nameProd}}" name="name">
+                          <input type="hidden" value="35" name="size">
+                          <input type="hidden" value="1" name="type">
+                          <button
+                              type="submit"
+                              class="btn btn-warning"
+                              aria-expanded="false"
+                            >
+                              Ajouter
+                            </button>
                         </div>
+                        </form>
                         </td>
                       </tr>
                       @endif
@@ -110,12 +128,23 @@
                         <td class="qnt-stock">{{$produit->Qte_stock_50}}</td>
                         <td>{{$produit->Qte_vt_50}}</td>
                         <td>
+                        <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
+                        @csrf
                         <div class="form-check">
-                        <input class="form-check-input" type="checkbox"  value="{{$produit->id.' 50'}} id="flexCheckDefault" onchange='handleChange(this);'>
-                        <label class="form-check-label" for="flexCheckDefault">
-                           ajoutier aux pack
-                           </label>
+                        <input type="hidden" value="{{$produit->id}}" name="id_prod">
+                        <input type="hidden" value="{{$produit->nameProd}}" name="name">
+                          <input type="hidden" value="50" name="size">
+                          <input type="hidden" value="1" name="type">
+                          <button
+                              type="submit"
+                              class="btn btn-warning"
+                            
+                              aria-expanded="false"
+                            >
+                              Ajouter
+                            </button>
                         </div>
+                        </form>
                         </td>
                       </tr>
                       @endif
@@ -135,12 +164,23 @@
                         <td class="qnt-stock">{{$produit->Qte_stock_100}}</td>
                         <td>{{$produit->Qte_vt_100}}</td>
                         <td>
+                        <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
+                        @csrf
                         <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="{{$produit->id.' 100'}}" id="flexCheckDefault" onchange='handleChange(this);'>
-                        <label class="form-check-label" for="flexCheckDefault">
-                           ajoutier aux pack
-                           </label>
+                          <input type="hidden" value="{{$produit->id}}" name="id_prod">
+                          <input type="hidden" value="{{$produit->nameProd}}" name="name">
+                          <input type="hidden" value="100" name="size">
+                          <input type="hidden" value="1" name="type">
+                          <button
+                              type="submit"
+                              class="btn btn-warning"
+                            
+                              aria-expanded="false"
+                            >
+                              Ajouter
+                            </button>
                         </div>
+                        </form>
                         </td>
                       </tr>
                       @endif
@@ -160,12 +200,23 @@
                         <td> {{$acc->Qte_stock}}</td>
                         <td> {{$acc->Qte_vt}}</td>
                         <td>
+                        <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
+                        @csrf
                         <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onchange='handleChange(this);'>
-                        <label class="form-check-label" for="flexCheckDefault">
-                           ajoutier aux pack
-                           </label>
+                          <input type="hidden" value="{{$acc->id}}" name="id_prod">
+                          <input type="hidden" value="{{$acc->nameProd}}" name="name">
+                          <input type="hidden" value="0" name="size">
+                          <input type="hidden" value="2" name="type">
+                          <button
+                              type="submit"
+                              class="btn btn-warning"
+                            
+                              aria-expanded="false"
+                            >
+                              Ajouter
+                            </button>
                         </div>
+                        </form>
                         </td>
                       </tr>
                       @endforeach
@@ -173,7 +224,6 @@
                   </table>
                 </div>
               </div>
-              </form>
               <!--/ Hoverable Table rows -->
               <hr class="my-5" />
 @endsection

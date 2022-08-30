@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Accessoire;
 use App\Models\Client;
 use App\Models\Commande;
+use App\Models\LignPack;
 use App\Models\Produit;
 use Carbon\Carbon;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Console\Command;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,10 +42,22 @@ class SearchDashboard extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function addtopack(Request $request)
     {
         //
-        dd($request);
+         $id_prod =$request->id_prod;
+       
+         $size =$request->size;
+         $type =$request->type;
+         if ($type == 1) {
+            $id_prod =$id_prod.$request->type.$request->size;
+         Cart::instance('pack')->add($id_prod,$request->name."(". $size." ML)",1,0,['size' => $request->size]);
+         }else if ($type == 2) {
+         Cart::instance('pack')->add($id_prod,$request->name,1,0,['size' => 999]);
+        }
+         return redirect()->route('dashboard.product.storepack');
+
     }
 
 
