@@ -4,9 +4,10 @@
  @if ($searchVal == null)
  <div class="navbar-nav align-items-center">
               
-                  <form method="POST" action="{{route('dashboard.product.search')}}">
+                  <form method="POST" action="{{route('dashboard.state.stateproduit_search2')}}">
                   @csrf
                   <div class="nav-item d-flex align-items-center">
+                    <input type="hidden" name="type_search" value="2"/>
                   <button type="submit" class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
                   <i class="bx bx-search fs-4 lh-0"></i>
                   </button>
@@ -23,8 +24,9 @@
               <!-- /Search -->
 @else 
 <div class="navbar-nav align-items-center">                
-                  <form method="POST" action="{{route('dashboard.product.search')}}">
+                  <form method="POST" action="{{route('dashboard.state.stateproduit_search2')}}">
                   @csrf
+                  <input type="hidden" name="type_search" value="2"/>
                   <div class="nav-item d-flex align-items-center">
                   <button type="submit" class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
                   <i class="bx bx-search fs-4 lh-0"></i>
@@ -43,97 +45,135 @@
 @endif
 @endsection
 @section('Content')
-
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Produit /</span> Liste des produits</h4>
-              @if ($errors->any()) 
-		  @foreach ($errors->all() as $error)
-		  <div class="alert alert-danger" >
-			{{$error}}
-		  </div>
-		  @endforeach
-		@endif
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Statistique /</span> Statistique des produits</h4>
 
-              <!-- Examples -->
-              <div class="row mb-5">
-                @foreach ($produits as $produit)
-                @if ($produit->Volum35 > 0)
-                <div class="col-md-6 col-lg-2 mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h5 class="card-title">{{$produit->nameProd}} (35ML)</h5>
-                      <h6 class="card-subtitle text-muted">Marque: {{$produit->mark_prod}}</h6>
-                      <img
-                        class="img-fluid d-flex mx-auto my-4"
-                        src="{{asset("/storage/$produit->ImageFileName1")}}"
-                        alt="Card image cap"
-                      />
-                      <p class="card-text old-price">{{$produit->prix_old_35}} DA</p>
-                      <p class="card-text new-price">{{$produit->prix_new_35}} DA</p>
-                      <a href="{{route('dashboard.product.edit',['idprod' => $produit->id,'size'=> 35])}}" class="card-link">Ajouter aux pack</a>
-                    </div>
-                  </div>
-                </div>
- 
-              @endif
-              @if ($produit->Volum50 > 0)
-              <div class="col-md-6 col-lg-2 mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h5 class="card-title">{{$produit->nameProd}} (50ML)</h5>
-                      <h6 class="card-subtitle text-muted">Marque: {{$produit->mark_prod}}</h6>
-                      <img
-                        class="img-fluid d-flex mx-auto my-4"
-                        src="{{asset("/storage/$produit->ImageFileName1")}}"
-                        alt="Card image cap"
-                      />
-                      <p class="card-text old-price">{{$produit->prix_old_50}} DA</p>
-                      <p class="card-text new-price">{{$produit->prix_new_50}} DA</p>
-                      <a href="{{route('dashboard.product.edit',['idprod' => $produit->id,'size'=> 50])}}" class="card-link">Ajouter aux pack</a>
-                    </div>
-                  </div>
-                </div>
+              <!-- Hoverable Table rows -->
+              <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
+              @csrf
+              <div class="card">
+                <h5 class="card-header">Listes des commandes</h5>
+                <div class="table-responsive text-nowrap">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Nom de produit</th>
+                        <th>Marque</th>
+                        <th>size</th>
+                        <th>Prix d'achat</th>
+                        <th>Prix de vente</th>
+                        <th>Quantité en stock</th>
+                        <th>Quantité vendu </th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                      @foreach($produits as $produit)
+                      @if ($produit->Volum35 > 0)
+                      <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="#"><strong>#{{$produit->id}}</strong></a></td>
+                        <td>{{$produit->nameProd}}</td>
+                        <td> {{$produit->mark_prod}}</td>
+                        <td> 35 ML</td>
+                        <td> {{$produit->prix_ht_35}}</td>
+                        @if ($produit->promo_35 > 0)
+                        <td> {{$produit->prix_new_35}}</td>
+                        @else 
+                        <td> {{$produit->prix_old_35}}</td>
+                        @endif
+                        <td class="qnt-stock">{{$produit->Qte_stock_35}}</td>
+                        <td>{{$produit->Qte_vt_35}}</td>
+                        <td>
+                        <div class="form-check">
+                        <input class="form-check-input" type="checkbox"  value="{{$produit->id.' 35'}}" id="flexCheckDefault" onchange='this.form.submit();'>
+                        <label class="form-check-label" for="flexCheckDefault">
+                           ajoutier aux pack
+                           </label>
+                        </div>
+                        </td>
+                      </tr>
+                      @endif
 
-              @endif
-              @if ($produit->Volum100 > 0)
-              <div class="col-md-6 col-lg-2 mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h5 class="card-title">{{$produit->nameProd}} (100ML)</h5>
-                      <h6 class="card-subtitle text-muted">Marque: {{$produit->mark_prod}}</h6>
-                      <img
-                        class="img-fluid d-flex mx-auto my-4"
-                        src="{{asset("/storage/$produit->ImageFileName1")}}"
-                        alt="Card image cap"
-                      />
-                      <p class="card-text old-price">{{$produit->prix_old_100}} DA</p>
-                      <p class="card-text new-price">{{$produit->prix_new_100}} DA</p>
-                      <a href="{{route('dashboard.product.edit',['idprod' => $produit->id,'size'=> 100])}}" class="card-link">Ajouter aux pack</a>
-                    </div>
-                  </div>
-                  </div>
+                      @if ($produit->Volum50 > 0 )
+                      <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="#"><strong>#{{$produit->id}}</strong></a></td>
+                        <td>{{$produit->nameProd}}</td>
+                        <td> {{$produit->mark_prod}}</td>
+                        <td> 50 ML</td>
+                        <td> {{$produit->prix_ht_50}}</td>
+                        @if ($produit->promo_50 > 0)
+                        <td> {{$produit->prix_new_50}}</td>
+                        @else 
+                        <td> {{$produit->prix_old_50}}</td>
+                        @endif
+                        <td class="qnt-stock">{{$produit->Qte_stock_50}}</td>
+                        <td>{{$produit->Qte_vt_50}}</td>
+                        <td>
+                        <div class="form-check">
+                        <input class="form-check-input" type="checkbox"  value="{{$produit->id.' 50'}} id="flexCheckDefault" onchange='handleChange(this);'>
+                        <label class="form-check-label" for="flexCheckDefault">
+                           ajoutier aux pack
+                           </label>
+                        </div>
+                        </td>
+                      </tr>
+                      @endif
 
-              @endif
-              
-              <!-- Examples -->
-              @endforeach
-              @foreach($accessoire as $acc)
-              <div class="col-md-6 col-lg-2 mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h5 class="card-title">{{$acc->nameProd}}</h5>
-                      <h6 class="card-subtitle text-muted">Marque: {{$acc->mark_prod}}</h6>
-                      <img
-                        class="img-fluid d-flex mx-auto my-4"
-                        src="{{asset("/storage/$acc->image")}}"
-                        alt="Card image cap"
-                      />
-                      <p class="card-text new-price">{{$acc->prix_vt}} DA</p>
-                      <a href="{{route('dashboard.product.edit',['idprod' => $produit->id,'size'=> 100])}}" class="card-link">Ajouter aux pack</a>
-                    </div>
-                  </div>
+                      @if ($produit->Volum100 > 0)
+                      <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="#"><strong>#{{$produit->id}}</strong></a></td>
+                        <td>{{$produit->nameProd}}</td>
+                        <td> {{$produit->mark_prod}}</td>
+                        <td> 100 ML</td>
+                        <td> {{$produit->prix_ht_100}}</td>
+                        @if ($produit->promo_100 > 0)
+                        <td> {{$produit->prix_new_100}}</td>
+                        @else 
+                        <td> {{$produit->prix_old_100}}</td>
+                        @endif
+                        <td class="qnt-stock">{{$produit->Qte_stock_100}}</td>
+                        <td>{{$produit->Qte_vt_100}}</td>
+                        <td>
+                        <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="{{$produit->id.' 100'}}" id="flexCheckDefault" onchange='handleChange(this);'>
+                        <label class="form-check-label" for="flexCheckDefault">
+                           ajoutier aux pack
+                           </label>
+                        </div>
+                        </td>
+                      </tr>
+                      @endif
+                      @endforeach
+                      @foreach($accessoire as $acc)
+                      <tr>
+                      <td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="#"><strong>#{{$acc->id}}</strong></a></td>
+                        <td>{{$acc->nameProd}}</td>
+                        <td> {{$acc->mark_prod}}</td>
+                        <td> -- </td>
+                        <td> {{$acc->prix_ht}}</td>
+                        @if ($acc->promo > 0)
+                        <td> {{$acc->prix_new}}</td>
+                        @else
+                        <td> {{$acc->prix_old}}</td>
+                        @endif
+                        <td> {{$acc->Qte_stock}}</td>
+                        <td> {{$acc->Qte_vt}}</td>
+                        <td>
+                        <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onchange='handleChange(this);'>
+                        <label class="form-check-label" for="flexCheckDefault">
+                           ajoutier aux pack
+                           </label>
+                        </div>
+                        </td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
                 </div>
-                @endforeach
-                </div>
-              <!-- Examples -->
+              </div>
+              </form>
+              <!--/ Hoverable Table rows -->
+              <hr class="my-5" />
 @endsection

@@ -40,6 +40,13 @@ class SearchDashboard extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function addtopack(Request $request)
+    {
+        //
+        dd($request);
+    }
+
+
     public function store(Request $request)
     {
         //
@@ -56,8 +63,10 @@ class SearchDashboard extends Controller
         //
     }
     function stateproduit_search(Request $req) {
+
         $idMag = Auth::user()->id_magasin;
         $key = $req->search;
+
         $produits = Produit::select('*')->whereRaw('(id_magasin = ? and (mark_prod like ? or nameProd like ? or Descirption like ?))',[$idMag,'%'.$key.'%','%'.$key.'%','%'.$key.'%'])->get();
         $accessoire = Accessoire::select('*')
         ->whereRaw('(id_magasin = ? and (mark_prod like ? or nameProd like ? or description like ?))',[$idMag,'%'.$key.'%','%'.$key.'%','%'.$key.'%'])
@@ -69,6 +78,22 @@ class SearchDashboard extends Controller
             'id_mag' => Auth::user()->id_magasin,
         ]);
     }
+    function stateproduit_search2(Request $req) {
+
+        $idMag = Auth::user()->id_magasin;
+        $key = $req->search;
+      
+        $produits = Produit::select('*')->whereRaw('(id_magasin = ? and (mark_prod like ? or nameProd like ? or Descirption like ?))',[$idMag,'%'.$key.'%','%'.$key.'%','%'.$key.'%'])->get();
+        $accessoire = Accessoire::select('*')
+        ->whereRaw('(id_magasin = ? and (mark_prod like ? or nameProd like ? or description like ?))',[$idMag,'%'.$key.'%','%'.$key.'%','%'.$key.'%'])
+        ->get();
+        return view('dashboard.add-pack',[
+            'produits' => $produits,
+            'accessoire' => $accessoire,
+            'searchVal' => $key,
+            'id_mag' => Auth::user()->id_magasin,
+        ]);
+}
     function stateclient_search(Request $req) {
         $key = $req->search;
         $datenow = Carbon::now()->format('d/m/Y');

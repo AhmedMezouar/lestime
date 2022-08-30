@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Accessoire;
+use App\Models\Magasin;
 use App\Models\Pack;
 use App\Models\Produit;
 use Carbon\Carbon;
@@ -56,15 +57,18 @@ class ProduitController extends Controller
 
     public function storeindexpack()
     {
+        $idMag = Auth::user()->id_magasin;
+        $produits = Produit::select('*')->whereRaw('id_magasin = ?',[$idMag])->get();
+        $accessoire = Accessoire::select('*')->whereRaw('id_magasin = ?',[$idMag])->get();
+        $nomMag = Magasin::select('*')->whereRaw('id=?',[$idMag])->first()->lib_magasin;
+        return view('dashboard.add-pack',[
+            'id_mag' => Auth::user()->id_magasin,
+            'produits' => $produits,
+            'accessoire' =>$accessoire,
+            'searchVal' => null,
+            'nomMag' =>$nomMag
+        ]);
         //
-        $id = Auth::user()->id_magasin;
-        $produits =Produit::select('*')
-        ->whereRaw('id_magasin = ?',[$id])
-        ->get();
-        $accessoire =Accessoire::select('*')
-        ->whereRaw('id_magasin = ?',[$id])
-        ->get();
-        return view('dashboard.add-pack',['id_mag' => Auth::user()->id_magasin,'produits' => $produits,'accessoire' => $accessoire,'searchVal' => null]);
     }
 
     public function storeindex()

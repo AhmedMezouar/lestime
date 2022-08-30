@@ -75,6 +75,13 @@ Route::get('/product', function () {
 
 
 
+Route::get('/dashboard/index', function () {
+    return view('dashboard.index');
+})->middleware(['auth'])->name('dashboard.index');
+
+
+
+Route::get('/dashboard',[DashBoardVente::class,'index'])->middleware(['auth'])->name("dashboard");
 
 
 
@@ -101,9 +108,11 @@ Route::post('/dashboard/product',[SearchDashboard::class,'produit_search'])->mid
 Route::post('/dashboard/statistique/client',[SearchDashboard::class,'stateclient_search'])->middleware(['auth'])->name("dashboard.state.stateclient_search");
 Route::get('/dashboard/statistique/client',[StateDashboard::class,'indexclient'])->middleware(['auth'])->name("dashboard.state.client");
 Route::post('/dashboard/statistique/produit',[SearchDashboard::class,'stateproduit_search'])->middleware(['auth'])->name("dashboard.state.stateproduit_search");
+Route::post('/dashboard/product/add-pack',[SearchDashboard::class,'stateproduit_search2'])->middleware(['auth'])->name("dashboard.state.stateproduit_search2");
 Route::get('/dashboard/statistique/produit',[StateDashboard::class,'indexproduit'])->middleware(['auth'])->name("dashboard.state.produit");
 Route::get('/dashboard/statistique/Dpense',[StateDashboard::class,'indexDpense'])->middleware(['auth'])->name("dashboard.state.Dpense");
 
+Route::post('/dashboard/product/add-pack-temp',[SearchDashboard::class,'addtopack'])->middleware(['auth'])->name("dashboard.product.addpacktempo");
 Route::post('/dashboard/product/edit/updateprod',[ProduitController::class,'updateprod'])->middleware(['auth'])->name("dashboard.product.updateprod");
 Route::post('/dashboard/accessoire/edit/updateprodacc',[ProduitController::class,'updateprodacc'])->middleware(['auth'])->name("dashboard.product.updateprodacc");
 Route::post('/dashboard/product/edit/applypromo',[ProduitController::class,'applypromo'])->middleware(['auth'])->name("dashboard.product.applypromo");
