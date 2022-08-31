@@ -246,9 +246,13 @@
                 <i class="menu-icon tf-icons bx bx-stats"></i>
                 <div data-i18n="Form Elements">Statistique</div>
               </a>
-              
             </li>
-            
+            <li class="menu-item">
+              <a href="{{route('dashboard.state.Dpense')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-sort-down"></i>
+                <div data-i18n="Form Elements">Statistique depense</div>
+              </a>
+            </li>
             <!-- Tables -->
             <li class="menu-item">
               <a href="{{route('dashboard.state.produit')}}" class="menu-link">
@@ -414,24 +418,6 @@
         }
 
         }, false);
-
-        function handleChange(checkbox) {
-          if(checkbox.checked == true){
-            const result = checkbox.value.split(/(\s+)/);
-            document.cookie = result[0];
-            console.log(result[0]);
-            console.log(result[2]);
-            localStorage.setItem(result[0], result[2]);
-            }else{
-              console.log('yes is not chcked');
-           }
-         function getSavedValue  (v){
-            if (!localStorage.getItem(v)) {
-                return "";// You can change this to your defualt value. 
-            }
-            return localStorage.getItem(v);
-        }
-}
 
     </script>
     <!-- Core JS -->

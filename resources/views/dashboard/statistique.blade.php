@@ -44,7 +44,7 @@
 @endsection
 @section('Content')
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Statistique /</span> Statistique des Clients</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Statistique /</span> Statistique des Clients & Budget</h4>
               <div class="row">
                 <div class="col-3 mb-4">
                   <div class="card">
@@ -175,8 +175,9 @@
                       <tr>
                         <td> {{$tb ->ClientName}}</td>
                         <td> {{$tb ->ClientTelephone}}</td>
-                        <td> {{$tb ->Total}} </td>
                         <td> {{$tb ->Qtes}}</td>
+                        <td> {{$tb ->Total}} </td>
+
                       </tr>
                     @endforeach
                     </tbody>

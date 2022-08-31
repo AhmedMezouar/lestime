@@ -44,7 +44,7 @@
 @endsection
 @section('Content')
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Statistique /</span> Statistique des Clients</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Statistique /</span> Statistique des Dépenses</h4>
               <div class="row">
                 <div class="col-3 mb-4">
                   <div class="card">
@@ -158,25 +158,57 @@
                 </div>
               </div>
               <!-- Hoverable Table rows -->
+              <div class="row">
+                <!-- Basic Layout -->
+                <div class="col-l">
+                  <div class="card mb-4">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                      <h5 class="mb-0">Les Dépenses que vous avez </h5>
+                      <small class="text-muted float-end">Doit remplir</small>
+                    </div>
+                    <div class="card-body">
+                      <form method="POST" action="{{route('dashboard.product.storeDb')}}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-name">Vous avez dépenser sur : </label>
+                          <div class="col-sm-3">
+                            <input name="nameProd" type="text" class="form-control" id="basic-default-name" placeholder="Sponsoring, retour ... " />
+                          </div>
+                          <label class="col-sm-1 col-form-label" for="basic-default-name">La somme </label>
+                          <div class="col-sm-3">
+                            <input name="markprod" type="text" class="form-control" id="basic-default-name" placeholder="Le montant que vous avez dépenser" />
+                          </div>
+                          <div class="col-sm-3">
+                            <button type="submit" class="btn btn-primary">Ajouter a la liste de dépenses</button>
+                          </div>
+                        </div>
+                        
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                <!-- Basic with Icons -->
+              </div>
               <div class="card">
-                <h5 class="card-header">Listes des commandes</h5>
+                <h5 class="card-header">Listes des Dépenses</h5>
                 <div class="table-responsive text-nowrap">
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th>Nom de client</th>
-                        <th>Telephone de client</th>
-                        <th>Nombre de produits acheter</th>
-                        <th>Total a payé</th>
+                        <th>Dépense sur</th>
+                        <th>Date</th>
+                        <th>La somme de dépense</th>
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
                       @foreach ($table as $tb)
                       <tr>
-                        <td> {{$tb ->ClientName}}</td>
+                        <td> Sponsoring</td>
+                        <td> 2022-08-30 08:33:34</td>
+                        <td> 24000.00 DA</td> 
+                        <!-- <td> {{$tb ->ClientName}}</td>
                         <td> {{$tb ->ClientTelephone}}</td>
-                        <td> {{$tb ->Total}} </td>
-                        <td> {{$tb ->Qtes}}</td>
+                        <td> {{$tb ->Total}} </td> -->
                       </tr>
                     @endforeach
                     </tbody>

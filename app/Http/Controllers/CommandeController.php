@@ -256,7 +256,7 @@ class CommandeController extends Controller
 
         $up = DB::update('update commandes set netapayer=? where id=?',[$netapayer,$cmdid]);
 
-        return redirect()->route('ecommerce.show',['id' => $req->idMag]);
+        return redirect()->route('ecommerce.cmd.remercie',['idmag' => $req->idMag]);
 
     }
 

@@ -6,7 +6,6 @@
               
                   <form method="POST" action="{{route('dashboard.state.stateproduit_search')}}">
                   @csrf
-                  <input type="hidden" name="type_search" value="1"/>
                   <div class="nav-item d-flex align-items-center">
                   <button type="submit" class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
                   <i class="bx bx-search fs-4 lh-0"></i>
@@ -26,7 +25,6 @@
 <div class="navbar-nav align-items-center">                
                   <form method="POST" action="{{route('dashboard.state.stateproduit_search')}}">
                   @csrf
-                  <input type="hidden" name="type_search" value="1"/>
                   <div class="nav-item d-flex align-items-center">
                   <button type="submit" class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
                   <i class="bx bx-search fs-4 lh-0"></i>

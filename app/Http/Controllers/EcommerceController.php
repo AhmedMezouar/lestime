@@ -50,6 +50,10 @@ class EcommerceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function showremercie($id)
+    {
+        return view('layouts.remercie',['id_mag' => $id]);
+    }
     public function show($id)
     {
         //
@@ -92,7 +96,12 @@ class EcommerceController extends Controller
             ->whereRaw('Qte_stock > 0')
             ->whereRaw('id_magasin = ?',[$id])
             ->get();
-        return view('layouts.product',['produits'=> $produits,'accessoires'=> $accessoires,"id_mag" => $id]);
+
+            $packs = Pack::select('*')
+            ->whereRaw('id_magasin = ?',[$id])
+            ->get();
+
+        return view('layouts.product',['packs' => $packs,'produits'=> $produits,'accessoires'=> $accessoires,"id_mag" => $id]);
 
         }else{
             return redirect()->route('P404');
@@ -107,7 +116,15 @@ class EcommerceController extends Controller
         where('id_magasin', '=', $idmag)
         ->get();
 
-        return view('layouts.product-detail',['produits'=> $produits,"id_mag" => $idmag]);
+        
+        $accessoires =Accessoire::select('*')
+        ->whereRaw('Qte_stock > 0')
+        ->whereRaw('id_magasin = ?',[$idmag])
+        ->get();
+
+
+
+        return view('layouts.product-detail',['produits'=> $produits,'accessoires'=> $accessoires,"id_mag" => $idmag]);
         }else{
             return redirect()->route('P404');
         }
@@ -129,7 +146,11 @@ class EcommerceController extends Controller
         ->whereRaw('id_magasin = ?',[$idmag])
         ->orderByRaw('Qte_stock DESC')
         ->get();
-        return view('layouts.new-arrival',['produits'=> $produits,'accessoires'=> $accessoires,"id_mag" => $idmag]);
+            
+        $packs = Pack::select('*')
+        ->whereRaw('id_magasin = ?',[$idmag])
+        ->get();
+        return view('layouts.new-arrival',['packs' => $packs,'produits'=> $produits,'accessoires'=> $accessoires,"id_mag" => $idmag]);
         }else{
             return redirect()->route('P404');
         }
