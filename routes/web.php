@@ -46,6 +46,7 @@ Route::get('/ecommerce/magasin/{idmag}/contact',[EcommerceController::class,'sho
 Route::get('/ecommerce/magasin/{id}/product/{idProd}',[EcommerceController::class,'showProd'])->name("ecommerce.produit.showProd");
 
 Route::get('/ecommerce/magasin/{idmag}/produit-detail',[EcommerceController::class,'showDetails'])->name("ecommerce.produitdetails.show");
+Route::get('/ecommerce/magasin/{idmag}/remercie',[EcommerceController::class,'showremercie'])->name("ecommerce.cmd.remercie");
 Route::get('/ecommerce/magasin/{idmagnewA}/new-arrival',[EcommerceController::class,'showNewAr'])->name("ecommerce.newArriv.show");
 Route::post('/ecommerce/magasin/search/{id}',[Search::class,'produit_search'])->name("produit.search");
 Route::post('/ecommerce/magasin/searchArr/{id}',[Search::class,'produit_search2'])->name("produit.searchArrival");
@@ -109,7 +110,7 @@ Route::post('/dashboard/statistique/client',[SearchDashboard::class,'stateclient
 Route::get('/dashboard/statistique/client',[StateDashboard::class,'indexclient'])->middleware(['auth'])->name("dashboard.state.client");
 Route::post('/dashboard/statistique/produit',[SearchDashboard::class,'stateproduit_search'])->middleware(['auth'])->name("dashboard.state.stateproduit_search");
 Route::post('/dashboard/product/add-pack',[SearchDashboard::class,'stateproduit_search2'])->middleware(['auth'])->name("dashboard.state.stateproduit_search2");
-Route::get('/dashboard/statistique/produit',[StateDashboard::class,'indexproduit'])->middleware(['auth'])->name("dashboard.state.produit");
+Route::get('/dashboard/statistique/produit',[StateDashboard::class,'indexproduit'])->middleware(['aituth'])->name("dashboard.state.produit");
 Route::get('/dashboard/statistique/Dpense',[StateDashboard::class,'indexDpense'])->middleware(['auth'])->name("dashboard.state.Dpense");
 
 Route::post('/dashboard/product/add-pack-temp',[SearchDashboard::class,'addtopack'])->middleware(['auth'])->name("dashboard.product.addpacktempo");

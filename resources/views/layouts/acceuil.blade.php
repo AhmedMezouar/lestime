@@ -696,7 +696,7 @@
 									data-mainimage="{{asset("/storage/$pack->image")}}"
 									data-onlyimage="{{$pack ->image}}"
 								class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6 js-show-modal1">
-								{{$pack ->nameProd}}
+								{{$pack ->name_pack}}
 								</a>
 								<p class="pric">
 									<span class="stext-1055 cl3 p-r-15-01 newprice">

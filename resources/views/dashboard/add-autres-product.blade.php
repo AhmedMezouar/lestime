@@ -73,13 +73,12 @@
                         </div>
 
                         <div class="row mb-3">
-                          <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Choisir le sexe</label>
+                          <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Choisir la catégorie de produit</label>
                           <div class="col-sm-4">
                             <select name="sex" class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
                               <option selected>Ouvrir le menu</option>
-                              <option value="Homme">Homme</option>
-                              <option value="Femme">Femme</option>
-                              <option value="Femme et Homme">les deux</option>
+                              <option value="Homme">Accessoires</option>
+                              <option value="Femme">Diffuseur de parfum</option>
                             </select>
                         </div>
                         <label class="col-sm-3 col-form-label" for="basic-default-phone">Ajouter image de produit</label>

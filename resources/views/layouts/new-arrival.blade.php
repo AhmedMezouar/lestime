@@ -493,6 +493,71 @@
 					</div>
 				</div>
 				@endforeach
+				@foreach($packs as $pack)
+				<div class="col-sm-6 col-md-4 col-lg-4 p-b-35 isotope-item women">
+					<!-- Block2 -->
+					<div class="block2">
+						<div class="block2-pic hov-img0">
+						<img src="{{asset("/storage/$pack->image")}}" alt="IMG-PRODUCT">
+					
+						<a href="#"
+									data-obj = "{{$pack}}" 
+									data-id="{{$pack->id}}" 
+									data-name="{{$pack->name_pack}}" 
+									data-prix="{{$pack->prix_vt}}" 
+									data-type="3"
+									data-mainimage="{{asset("/storage/$pack->image")}}"
+									data-onlyimage="{{$pack ->image}}"
+									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+									Afficher le accessoire
+						</a>
+						</div>
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">
+								<a href="/product-detail" 
+								data-obj = "{{$pack}}" 
+							     	data-obj = "{{$pack}}" 
+									data-id="{{$pack->id}}" 
+									data-name="{{$pack->name_pack}}" 
+									data-prix="{{$pack->prix_vt}}" 
+									data-type="3"
+									data-mainimage="{{asset("/storage/$pack->image")}}"
+									data-onlyimage="{{$pack ->image}}"
+								class="stext-105 cl4 hov-cl1 trans-04 js-name-b2 p-b-6 js-show-modal1">
+								{{$pack ->name_pack}}
+								</a>
+								<p class="pric">
+									<span class="stext-1055 cl3 p-r-15-01 newprice">
+									    {{$pack ->prix_vt}} DA
+									</span>
+								</p>
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+							<form method="POST" action="{{route('cart.store')}}"> 
+							@csrf
+							</div>
+										<input type="hidden" name="filepath" value="{{asset("/storage/$pack->image")}}">
+										<input type="hidden" name="id_magasin" value="{{$id_mag}}" >
+										<input type="hidden" name="qteproduct" value="1" >
+										<input type="hidden" name="product_id" value="{{$pack->id}}">
+										<input type="hidden" name="product_name" value="{{$pack->name_pack}}">
+										<input type="hidden" name="product_price" value="{{$pack->prix_vt}}">
+										<input type="hidden" name="product_type" value="3">
+						           	<div class="header-cart-buttons flex-w w-full" >
+								<button type="submit" name="action" value="achat" class="flex-c-m stext-101 cl1 size-1007 bg-none bor222 hov-btn33 p-lr-15 trans-04 m-r-8 m-b-10">
+									Achat Directement
+								</button>
+							
+								        
+							        	<button type="submit"  name="action" value="ajout" class="flex-c-m stext-101 cl0 size-1007 bg3 bor22 hov-btn33 p-lr-15-01 trans-04 m-b-10">
+									Ajouter au panier
+								</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				@endforeach
 				</div>
 			</div>
 

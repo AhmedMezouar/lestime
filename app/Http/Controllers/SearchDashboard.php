@@ -48,7 +48,7 @@ class SearchDashboard extends Controller
 
     public function addtopack(Request $request)
     {
-
+        
         $idMag = Auth::user()->id_magasin;
         $pack = Pack::select('*')->whereRaw('id_magasin = ?',[$idMag])->orderByRaw('id DESC')->first();
         //
@@ -81,32 +81,52 @@ class SearchDashboard extends Controller
         $up = DB::insert('insert into packs (id_magasin,name_pack,prix_vt,prix_ht,description)
         values (?, ?, ?, ?, ?)',[$idMag,$request->name_pack,$request->prix_vt,0,$request->descr]);
         }else{
-            if ($request->hasFile('image') && $request->file('image')!= null){
+            if ($request->hasFile('image') && $request->file('image') != null){
                 $filepath = Storage::disk('public')->put('DB', $request->file('image'));
-            }else 
-                $filepath = null;
+            }else {$filepath = null;}
+
+                $request->validate([
+                    'name_pack' =>'required|unique:packs',
+                    'prix_vt'=>'required',
+                    'image' => 'required'
+                ]);
             $up = DB::insert('insert into packs (id_magasin,name_pack,prix_vt,prix_ht,description,image)
-            values (?, ?, ?, ?, ?)',[$idMag,$request->name_pack,$request->prix_vt,0,$request->descr,$filepath]);
+            values (?, ?, ?, ?, ?, ?)',[$idMag,$request->name_pack,$request->prix_vt,0,$request->descr,$filepath]);
         }
 
     }else{
         //store line
         ///dd($request->id_pack);
+        $totalht = 0;
         foreach (Cart::instance('pack')->content() as $item)
         {
+           
             if ($item->options->size == 999) {
                 //accessoire
+                $prix_ht = Accessoire::select('*')->whereRaw('id = ?',[$item->options->id_prod])->first()->prix_ht;
+                $totalht = $totalht + ($prix_ht*$item->qty);
             $up = DB::insert('insert into lign_packs (id_pack,id_prod,type,size,Qte)
             values(?, ?, ?,?,?)',[$request->id_pack,$item->options->id_prod,2,$item->options->size,$item->qty]);
             Cart::instance('pack')->remove($item->rowId);
         }else{
+            if ($item->options->size == 35) {
+                $prix_ht = Produit::select('*')->whereRaw('id = ?',[$item->options->id_prod])->first()->prix_ht_35;
+                $totalht = $totalht + ($prix_ht*$item->qty);
+            }
+            else if ($item->options->size == 50) {
+                $prix_ht = Produit::select('*')->whereRaw('id = ?',[$item->options->id_prod])->first()->prix_ht_50;
+                $totalht = $totalht + ($prix_ht*$item->qty);
+            }else if ($item->options->size == 100) {
+                $prix_ht = Produit::select('*')->whereRaw('id = ?',[$item->options->id_prod])->first()->prix_ht_100;
+                $totalht = $totalht + ($prix_ht*$item->qty);
+            }
             $up = DB::insert('insert into lign_packs (id_pack,id_prod,type,size,Qte)
             values(?, ?, ?,?,?)',[$request->id_pack,$item->options->id_prod,1,$item->options->size,$item->qty]);
             Cart::instance('pack')->remove($item->rowId);
+            }
         }
+            $up3 = DB::update('update packs set prix_ht = ? where id = ?',[$totalht,$request->id_pack]);
         }
-
-    }
             return redirect()->route('dashboard.product.storepack');
     }
 

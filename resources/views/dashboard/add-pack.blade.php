@@ -64,7 +64,7 @@
                       <small class="text-muted float-end">Doit remplir</small>
                     </div>
                     <div class="card-body">
-                    <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
+                    <form method="POST" action="{{route('dashboard.product.addpacktempo')}}" enctype="multipart/form-data">
                      @csrf
                         <div class="row mb-3">
                           <label class="col-sm-2 col-form-label" for="basic-default-name">Nom de pack</label>
@@ -128,7 +128,7 @@
                       <small class="text-muted float-end">Doit remplir</small>
                     </div>
                     <div class="card-body">
-                    <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
+                    <form method="POST" action="{{route('dashboard.product.addpacktempo')}}" enctype="multipart/form-data">
                      @csrf
                         <div class="row mb-3">
                           <label class="col-sm-2 col-form-label" for="basic-default-name">Nom de pack</label>
@@ -227,7 +227,7 @@
                       </div>
                       @endif
                       <div class="col-sm-12">
-                      <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
+                      <form method="POST" action="{{route('dashboard.product.addpacktempo')}}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" value="3" name="act">
                         @if ($pack != null)
@@ -282,7 +282,7 @@
                         <td>{{$produit->Qte_vt_35}}</td>
                         <td>
                         <div class="form-check">
-                        <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
+                        <form method="POST" action="{{route('dashboard.product.addpacktempo')}}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" value="1" name="act">
                           <input type="hidden" value="{{$produit->id}}" name="id_prod">
@@ -317,7 +317,7 @@
                         <td class="qnt-stock">{{$produit->Qte_stock_50}}</td>
                         <td>{{$produit->Qte_vt_50}}</td>
                         <td>
-                        <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
+                        <form method="POST" action="{{route('dashboard.product.addpacktempo')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-check">
                         <input type="hidden" value="1" name="act">
@@ -354,7 +354,7 @@
                         <td class="qnt-stock">{{$produit->Qte_stock_100}}</td>
                         <td>{{$produit->Qte_vt_100}}</td>
                         <td>
-                        <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
+                        <form method="POST" action="{{route('dashboard.product.addpacktempo')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-check">
                         <input type="hidden" value="1" name="act">
@@ -391,7 +391,7 @@
                         <td> {{$acc->Qte_stock}}</td>
                         <td> {{$acc->Qte_vt}}</td>
                         <td>
-                        <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
+                        <form method="POST" action="{{route('dashboard.product.addpacktempo')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-check">
                         <input type="hidden" value="1" name="act">
