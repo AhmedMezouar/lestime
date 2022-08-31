@@ -46,19 +46,207 @@
 @endsection
 @section('Content')
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Statistique /</span> Statistique des produits</h4>
-              @if (Cart::instance('pack')->count() > 0)
-              <div class="container-xxl flex-grow-1 container-p-y">
-				      @foreach (Cart::instance('pack')->content() as $item)
-              <div class="container-xxl flex-grow-1 container-p-y">
-              <h4>
-              {{$item ->name}}
-              </h4>
-              </div>
-              @endforeach
-              </div>
-              @endif
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Produit /</span> Ajouter un Pack</h4>
+              @if ($errors->any()) 
+		  @foreach ($errors->all() as $error)
+		  <div class="alert alert-danger" >
+			{{$error}}
+		  </div>
+		  @endforeach
+		@endif
+              <div class="row">
+              <!-- Basic Layout -->
+              @if ($pack != null)
+               <div class="col-l">
+                  <div class="card mb-4">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                      <h5 class="mb-0">Les caractéristiques principale d'un pack</h5>
+                      <small class="text-muted float-end">Doit remplir</small>
+                    </div>
+                    <div class="card-body">
+                    <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
+                     @csrf
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-name">Nom de pack</label>
+                          <div class="col-sm-6">
+                            <input name="name_pack" type="text" class="form-control" value="{{$pack->name_pack}}" id="basic-default-name" placeholder="Nom de pack" />
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-company">Prix de vente</label>
+                          <div class="col-sm-2">
+                            <input
+                              type="number"
+                              class="form-control"
+                              name="prix_vt"
+                              value="{{$pack->prix_vt}}"
+                              value="0"
+                              id="basic-default-company"
+                              placeholder="Prix de vente de"
+                            />
+                          </div>
+                        
+                       
+                        <label class="col-sm-3 col-form-label" for="basic-default-phone">Ajouter image de produit</label>
+                          <div class="col-sm-3">
+                            <input
+                              type="file"
+                              name="image"
+                              id="pic01"
+                              class="form-control"
+                            />
+                          </div>
+                        </div>
+                          
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-message">Description</label>
+                          <div class="col-sm-10">
+                            <textarea
+                              id="basic-default-message"
+                              class="form-control"
+                              placeholder="Ajouter un description sur votre produit"
+                              aria-label="Ajouter un description sur votre produit"
+                              aria-describedby="basic-icon-default-message2"
+                              name="descr"
+                            >{{$pack->description}}</textarea>
+                          </div>
+                          </div>
+                          <div class="col-sm-12">
+                        <input type="hidden" value="10" name="act">
+                        <button type="submit" class="btn btn-primary bttn">Ajouter le pack</button>
+                        </form>
+                        </div>
+                          </div>
+                          </div>
+                      </div>
+                     </div>
+                       @else
+                      <div class="col-l">
+                     <div class="card mb-4">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                      <h5 class="mb-0">Les caractéristiques principale d'un pack</h5>
+                      <small class="text-muted float-end">Doit remplir</small>
+                    </div>
+                    <div class="card-body">
+                    <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
+                     @csrf
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-name">Nom de pack</label>
+                          <div class="col-sm-6">
+                            <input name="name_pack" type="text" class="form-control" id="basic-default-name" placeholder="Nom de pack" />
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-company">Prix de vente</label>
+                          <div class="col-sm-2">
+                            <input
+                              type="number"
+                              class="form-control"
+                              name="prix_vt"
+                              value="0"
+                              id="basic-default-company"
+                              placeholder="Prix de vente de"
+                            />
+                          </div>
+                        
+                       
+                        <label class="col-sm-3 col-form-label" for="basic-default-phone">Ajouter image de produit</label>
+                          <div class="col-sm-3">
+                            <input
+                              type="file"
+                              name="image"
+                              id="pic01"
+                              class="form-control"
+                            />
+                          </div>
+                        </div>
+                          
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-message">Description</label>
+                          <div class="col-sm-10">
+                            <textarea
+                              id="basic-default-message"
+                              class="form-control"
+                              placeholder="Ajouter un description sur votre produit"
+                              aria-label="Ajouter un description sur votre produit"
+                              aria-describedby="basic-icon-default-message2"
+                              name="descr"
+                            ></textarea>
+                          </div>
+                          </div>
+                          <div class="col-sm-12">
+
+                        <input type="hidden" value="10" name="act">
+                        <button type="submit" class="btn btn-primary bttn">Ajouter le pack</button>
+                        </form>
+                      
+                      </div> 
+                      </div>
+                      </div>
+                      @endif
               <!-- Hoverable Table rows -->
+              <style>
+                .pack-des {
+                  display: inline;
+                  color: Black;
+                }
+                .pack-des h4 {
+                  color: Black;
+
+                  font-size: 16px;
+                  border: 2px solid #333;
+                  background-color: #ffc711;
+                  border-radius: 10px;
+                  padding: 10px;
+                  width: 200px;
+                  display: inline;
+                } 
+                .bttn {
+                  float: right;
+                  margin-right: 20px; 
+                }
+              </style>
+              <div class="row">
+                <!-- Basic Layout -->
+                <div class="col-l">
+                  <div class="card mb-4">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                      <h5 class="mb-0">Les Produits Séléctionner </h5>
+                      <small class="text-muted float-end">Doit remplir</small>
+                    </div>
+                    <div class="card-body">
+                      @if (Cart::instance('pack')->count() > 0)
+                        <div class="container-xxl flex-grow-1 container-p-y">
+                      @foreach (Cart::instance('pack')->content() as $item)
+                          <div class="container-xxl flex-grow-1 container-p-y pack-des">
+                            <h4>
+                              {{$item ->name}}( {{$item ->qty}})
+                            </h4>
+                          </div>
+                      @endforeach
+                      </div>
+                      @endif
+                      <div class="col-sm-12">
+                      <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
+                        @csrf
+                        <input type="hidden" value="3" name="act">
+                        @if ($pack != null)
+                        <input type="hidden" value="{{$pack->id}}" name="id_pack">
+                        @else
+                        <input type="hidden" value="0" name="id_pack">
+                        @endif
+                        <button type="submit" class="btn btn-primary bttn">valider le pack</button>
+                        </form>
+                        <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
+                        @csrf
+                        <input type="hidden" value="0" name="act">
+                        <button type="submit" class="btn btn-primary2 bttn">Retour au début</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                <!-- Basic with Icons -->
+              </div>
               <div class="card">
                 <h5 class="card-header">Listes des produit</h5>
                 <div class="table-responsive text-nowrap">
@@ -96,6 +284,7 @@
                         <div class="form-check">
                         <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
                         @csrf
+                        <input type="hidden" value="1" name="act">
                           <input type="hidden" value="{{$produit->id}}" name="id_prod">
                           <input type="hidden" value="{{$produit->nameProd}}" name="name">
                           <input type="hidden" value="35" name="size">
@@ -131,6 +320,7 @@
                         <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
                         @csrf
                         <div class="form-check">
+                        <input type="hidden" value="1" name="act">
                         <input type="hidden" value="{{$produit->id}}" name="id_prod">
                         <input type="hidden" value="{{$produit->nameProd}}" name="name">
                           <input type="hidden" value="50" name="size">
@@ -167,6 +357,7 @@
                         <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
                         @csrf
                         <div class="form-check">
+                        <input type="hidden" value="1" name="act">
                           <input type="hidden" value="{{$produit->id}}" name="id_prod">
                           <input type="hidden" value="{{$produit->nameProd}}" name="name">
                           <input type="hidden" value="100" name="size">
@@ -203,6 +394,7 @@
                         <form method="POST" action="{{route('dashboard.product.addpacktempo')}}">
                         @csrf
                         <div class="form-check">
+                        <input type="hidden" value="1" name="act">
                           <input type="hidden" value="{{$acc->id}}" name="id_prod">
                           <input type="hidden" value="{{$acc->nameProd}}" name="name">
                           <input type="hidden" value="0" name="size">
