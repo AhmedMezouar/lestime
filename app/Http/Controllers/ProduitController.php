@@ -58,6 +58,7 @@ class ProduitController extends Controller
     public function storeindexpack()
     {
         $idMag = Auth::user()->id_magasin;
+        $pack = Pack::select('*')->whereRaw('id_magasin = ?',[$idMag])->orderByRaw('id DESC')->first();
         $produits = Produit::select('*')->whereRaw('id_magasin = ?',[$idMag])->get();
         $accessoire = Accessoire::select('*')->whereRaw('id_magasin = ?',[$idMag])->get();
         $nomMag = Magasin::select('*')->whereRaw('id=?',[$idMag])->first()->lib_magasin;
@@ -66,7 +67,8 @@ class ProduitController extends Controller
             'produits' => $produits,
             'accessoire' =>$accessoire,
             'searchVal' => null,
-            'nomMag' =>$nomMag
+            'nomMag' =>$nomMag,
+            'pack' => $pack 
         ]);
         //
     }

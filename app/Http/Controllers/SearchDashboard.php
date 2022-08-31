@@ -6,6 +6,8 @@ use App\Models\Accessoire;
 use App\Models\Client;
 use App\Models\Commande;
 use App\Models\LignPack;
+use App\Models\Magasin;
+use App\Models\Pack;
 use App\Models\Produit;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -13,6 +15,7 @@ use Illuminate\Console\Command;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class SearchDashboard extends Controller
 {
@@ -45,21 +48,67 @@ class SearchDashboard extends Controller
 
     public function addtopack(Request $request)
     {
+
+        $idMag = Auth::user()->id_magasin;
+        $pack = Pack::select('*')->whereRaw('id_magasin = ?',[$idMag])->orderByRaw('id DESC')->first();
         //
+
+            if ($request->act == 0) {
+                //rest
+                foreach (Cart::instance('pack')->content() as $item)
+                {
+                    Cart::instance('pack')->remove($item->rowId);
+                }
+         }else if ($request->act == 1) {
+            //add to cart pack
          $id_prod =$request->id_prod;
-       
          $size =$request->size;
          $type =$request->type;
          if ($type == 1) {
             $id_prod =$id_prod.$request->type.$request->size;
-         Cart::instance('pack')->add($id_prod,$request->name."(". $size." ML)",1,0,['size' => $request->size]);
+         Cart::instance('pack')->add($id_prod,$request->name."(". $size." ML)",1,0,['size' => $request->size,'id_prod'=>$request->id_prod]);
          }else if ($type == 2) {
-         Cart::instance('pack')->add($id_prod,$request->name,1,0,['size' => 999]);
+         Cart::instance('pack')->add($id_prod,$request->name,1,0,['size' => 999,'id_prod'=>$request->id_prod]);
         }
-         return redirect()->route('dashboard.product.storepack');
+    }else if ($request->act == 10){
+        $idMag = Auth::user()->id_magasin;
+        //create the pack on database
+        if ($request->image == null) {
+            $request->validate([
+                'name_pack' =>'required|unique:packs',
+                'prix_vt'=>'required',
+            ]);
+        $up = DB::insert('insert into packs (id_magasin,name_pack,prix_vt,prix_ht,description)
+        values (?, ?, ?, ?, ?)',[$idMag,$request->name_pack,$request->prix_vt,0,$request->descr]);
+        }else{
+            if ($request->hasFile('image') && $request->file('image')!= null){
+                $filepath = Storage::disk('public')->put('DB', $request->file('image'));
+            }else 
+                $filepath = null;
+            $up = DB::insert('insert into packs (id_magasin,name_pack,prix_vt,prix_ht,description,image)
+            values (?, ?, ?, ?, ?)',[$idMag,$request->name_pack,$request->prix_vt,0,$request->descr,$filepath]);
+        }
+
+    }else{
+        //store line
+        ///dd($request->id_pack);
+        foreach (Cart::instance('pack')->content() as $item)
+        {
+            if ($item->options->size == 999) {
+                //accessoire
+            $up = DB::insert('insert into lign_packs (id_pack,id_prod,type,size,Qte)
+            values(?, ?, ?,?,?)',[$request->id_pack,$item->options->id_prod,2,$item->options->size,$item->qty]);
+            Cart::instance('pack')->remove($item->rowId);
+        }else{
+            $up = DB::insert('insert into lign_packs (id_pack,id_prod,type,size,Qte)
+            values(?, ?, ?,?,?)',[$request->id_pack,$item->options->id_prod,1,$item->options->size,$item->qty]);
+            Cart::instance('pack')->remove($item->rowId);
+        }
+        }
 
     }
-
+            return redirect()->route('dashboard.product.storepack');
+    }
 
     public function store(Request $request)
     {
